@@ -8,8 +8,8 @@ namespace Stage{
         class Attack
         interface IAttack
       
-        IMove <|-- Move
-        IAttack <|-- Attack
+        IMove <|.. Move
+        IAttack <|.. Attack
 
     }
     
@@ -22,8 +22,8 @@ namespace Stage{
         class ChildStatus
         class ParentStatus
         
-        IPlayerView <|-- PlayerView
-        IParentMove <|-- ParentMove
+        IPlayerView <|.. PlayerView
+        IParentMove <|.. ParentMove
         
         PlayerController ..> IPlayerView
         PlayerController ..> ParentStatus
@@ -34,10 +34,31 @@ namespace Stage{
     
     namespace Wave{
         class WaveSystem
+        interface IWaveSystem
         
         WaveSystem ..> Stage.Enemy.IMove
         WaveSystem ..> Stage.Enemy.IAttack
+        IWaveSystem <|.. WaveSystem
         
     }
+    
+    namespace View{
+        class OpenNewStagePopUp
+        class ClearPopUp
+        class GameOverView
+        class BaseView
+        
+        
+    }
+    
+    class SceneManager
+    
+    class SoundController
+    interface ISoundController
+    
+    ISoundController <|.. SoundController
+    
+    SceneManager ..> ISoundController
+    SceneManager ..> Stage.Wave.IWaveSystem
 }
 @enduml

@@ -7,7 +7,7 @@ namespace Title{
     class TitleView
     interface ITitleView
     
-    ITitleView <|-- TitleView
+    ITitleView <|.. TitleView
     GameManager ..> SoundController
     GameManager ..> ITitleView
 }

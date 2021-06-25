@@ -15,10 +15,10 @@ namespace SelectStage{
     
     class SelectStageManager
     
-    ISelectView <|-- SelectView
+    ISelectView <|.. SelectView
     SaveHandler ..> SaveDataClass
     
-    ISoundController <|-- SoundController
+    ISoundController <|.. SoundController
         
     SelectStageManager ..> ISelectView
     SelectStageManager ..> SaveHandler
