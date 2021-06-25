@@ -2,13 +2,13 @@
 'https://plantuml.com/class-diagram
 
 namespace Title{
-    class BGMController
+    class SoundController
     class GameManager
     class TitleView
     interface ITitleView
     
     ITitleView <|-- TitleView
-    GameManager ..> BGMController
+    GameManager ..> SoundController
     GameManager ..> ITitleView
 }
 

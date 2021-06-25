@@ -8,6 +8,9 @@ namespace SelectStage{
     class SelectView
     interface ISelectView
     
+    class SoundController
+    interface ISoundController
+    
     class SceneManager
     
     class SelectStageManager
@@ -15,8 +18,14 @@ namespace SelectStage{
     ISelectView <|-- SelectView
     SaveHandler ..> SaveDataClass
     
+    ISoundController <|-- SoundController
+        
     SelectStageManager ..> ISelectView
     SelectStageManager ..> SaveHandler
+    SelectStageManager ..> ISoundController
+    
+    SceneManager ..> ISoundController
+    SceneManager ..> ISelectView
     
 }
 
