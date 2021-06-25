@@ -1,0 +1,15 @@
+﻿@startuml
+'https://plantuml.com/class-diagram
+
+namespace Title{
+    class BGMController
+    class GameManager
+    class TitleView
+    interface ITitleView
+    
+    ITitleView <|-- TitleView
+    GameManager ..> BGMController
+    GameManager ..> ITitleView
+}
+
+@enduml

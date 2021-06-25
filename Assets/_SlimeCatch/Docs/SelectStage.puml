@@ -1,0 +1,23 @@
+﻿@startuml
+'https://plantuml.com/class-diagram
+
+namespace SelectStage{
+    class SaveDataClass
+    class SaveHandler
+    
+    class SelectView
+    interface ISelectView
+    
+    class SceneManager
+    
+    class SelectStageManager
+    
+    ISelectView <|-- SelectView
+    SaveHandler ..> SaveDataClass
+    
+    SelectStageManager ..> ISelectView
+    SelectStageManager ..> SaveHandler
+    
+}
+
+@enduml

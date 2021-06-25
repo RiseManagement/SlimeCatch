@@ -1,0 +1,43 @@
+﻿@startuml
+'https://plantuml.com/class-diagram
+
+namespace Stage{
+    namespace Enemy{
+        class Move
+        interface IMove
+        class Attack
+        interface IAttack
+      
+        IMove <|-- Move
+        IAttack <|-- Attack
+
+    }
+    
+    namespace Player{
+        class PlayerController
+        class ParentMove
+        interface IParentMove
+        class PlayerView
+        interface IPlayerView
+        class ChildStatus
+        class ParentStatus
+        
+        IPlayerView <|-- PlayerView
+        IParentMove <|-- ParentMove
+        
+        PlayerController ..> IPlayerView
+        PlayerController ..> ParentStatus
+        PlayerController ..> ChildStatus
+        PlayerController ..> IParentMove
+        
+    }
+    
+    namespace Wave{
+        class WaveSystem
+        
+        WaveSystem ..> Stage.Enemy.IMove
+        WaveSystem ..> Stage.Enemy.IAttack
+        
+    }
+}
+@enduml
