@@ -1,0 +1,18 @@
+﻿@startuml
+'https://plantuml.com/class-diagram
+
+namespace Stage{
+    namespace Enemy{
+        
+    }
+    
+    namespace Player{
+        
+    }
+    
+    namespace Wave{
+    
+    }
+}
+
+@enduml
