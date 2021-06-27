@@ -1,0 +1,137 @@
+﻿@startuml
+'https://plantuml.com/class-diagram
+
+namespace Stage{
+    namespace Enemy{
+        class Move
+        interface IMove
+        class Attack
+        interface IAttack
+      
+        IMove <|.. Move
+        IAttack <|.. Attack
+
+    }
+    
+    namespace Player{
+        class PlayerController
+        class ParentMove
+        note right : 入力系と移動はここで処理
+        interface IParentMove
+        class ParentView
+        
+        note left : 行動力ゲームの更新
+        
+        interface IParentView
+        
+        IParentView <|.up. ParentView
+        IParentMove <|.up. ParentMove
+        
+        PlayerController .up.> IParentView
+        PlayerController .up.> IParentMove
+        
+    }
+    
+    namespace StageEvent{
+        class Event{
+            - StageEnum stageEnum
+        }
+        
+        interface IEvent
+        
+        IEvent <|.. Event
+        
+    }
+    
+        
+    namespace ChildSlime{
+        class ChildStatus
+        
+        class ChildMove
+        
+        note right : ステージギミックでの動き
+        
+        interface IChildMove
+        class ChildController{
+            + list<Transform> ChildObjectList
+        }
+        interface IChildController
+        
+        IChildMove <|.. ChildMove    
+        ChildController ..> IChildMove   
+        ChildController ..> ChildStatus
+        IChildController <|.. ChildController
+    }
+    
+    
+    namespace Wave{
+        class WaveSystem
+        interface IWaveSystem
+        
+        WaveSystem ..> Stage.Enemy.IMove
+        WaveSystem ..> Stage.Enemy.IAttack
+        IWaveSystem <|.. WaveSystem
+    }
+    
+    namespace View{
+        class OpenNewStagePopUp
+        class ClearPopUp
+        class GameOverView
+        class OptionsView
+        interface IView
+        
+        
+        IView <|.. OptionsView
+        IView <|.. GameOverView
+        IView <|.. ClearPopUp
+        IView <|.. OpenNewStagePopUp
+        
+    }
+    
+    namespace Sound{
+        interface IBGMController
+        class BGMController
+        IBGMController <|.. BGMController
+    }
+  
+    
+    namespace Weapon{
+        interface IWeapon{
+            
+        }
+        class Axe
+        class Sword
+        class Arrow
+        class Spear
+        
+        Spear ..|> IWeapon
+        Axe ..|> IWeapon
+        Sword ..|> IWeapon
+        Arrow ..|> IWeapon
+        
+    }
+    
+    Stage.View.OptionsView ..> Stage.Sound.IBGMController
+    Stage.ChildSlime.ChildController ...> Stage.Weapon.IWeapon
+    
+    
+    class SceneManager
+    
+    note left : ゲームの停止と再開と画面遷移・切り替え
+    
+    SceneManager ..> Stage.Wave.IWaveSystem
+    SceneManager ..> Stage.View.IView
+    SceneManager .up.> Stage.Player.PlayerController
+    SceneManager ..> Stage.ChildSlime.IChildController
+    SceneManager ..> Stage.StageEvent.IEvent
+
+    
+    class StageEventManager
+    StageEventManager ..> Stage.StageEvent.IEvent
+    StageEventManager ..> Stage.ChildSlime.IChildController
+    
+    class BattleManager
+    BattleManager ..> Stage.ChildSlime.IChildController
+    BattleManager ..> Stage.Wave.IWaveSystem
+}
+@enduml

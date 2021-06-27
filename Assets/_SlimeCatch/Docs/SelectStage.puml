@@ -1,0 +1,38 @@
+﻿@startuml
+'https://plantuml.com/class-diagram
+
+namespace SelectStage{
+    class SaveDataClass
+    class SaveHandler
+    
+    class SelectView
+    interface ISelectView
+    
+    class SoundController
+    interface ISoundController
+    
+    class SceneManager
+    
+    class SelectStageManager
+    
+    ISelectView <|.. SelectView
+    SaveHandler ..> SaveDataClass
+    
+    ISoundController <|.. SoundController
+        
+    SelectStageManager ..> ISelectView
+    SelectStageManager ..> SaveHandler
+    SelectStageManager ..> ISoundController
+    
+    SceneManager ..> ISoundController
+    SceneManager ..> ISelectView
+    
+}
+
+SelectStage.SaveHandler ..> GameAnimal.SaveHandler
+
+namespace GameAnimal{
+    class SaveHandler
+}
+
+@enduml
