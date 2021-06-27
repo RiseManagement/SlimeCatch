@@ -55,10 +55,12 @@ namespace Stage{
         class ChildController{
             + list<Transform> ChildObjectList
         }
+        interface IChildController
         
         IChildMove <|.. ChildMove    
         ChildController ..> IChildMove   
         ChildController ..> ChildStatus
+        IChildController <|.. ChildController
     }
     
     
@@ -94,21 +96,23 @@ namespace Stage{
   
     
     namespace Weapon{
-        interface IWeapon
+        interface IWeapon{
+            
+        }
         class Axe
         class Sword
         class Arrow
         class Spear
         
-        Spear .down.|> IWeapon
-        Axe .down.|> IWeapon
-        Sword .down.|> IWeapon
-        Arrow .down.|> IWeapon
+        Spear ..|> IWeapon
+        Axe ..|> IWeapon
+        Sword ..|> IWeapon
+        Arrow ..|> IWeapon
         
     }
     
     Stage.View.OptionsView ..> Stage.Sound.IBGMController
-    Stage.ChildSlime.ChildController .up.> Stage.Weapon.IWeapon
+    Stage.ChildSlime.ChildController ...> Stage.Weapon.IWeapon
     
     
     class SceneManager
@@ -118,16 +122,16 @@ namespace Stage{
     SceneManager ..> Stage.Wave.IWaveSystem
     SceneManager ..> Stage.View.IView
     SceneManager .up.> Stage.Player.PlayerController
-    SceneManager ..> Stage.ChildSlime.ChildController
+    SceneManager ..> Stage.ChildSlime.IChildController
     SceneManager ..> Stage.StageEvent.IEvent
 
     
     class StageEventManager
     StageEventManager ..> Stage.StageEvent.IEvent
-    StageEventManager ..> Stage.ChildSlime.ChildController
+    StageEventManager ..> Stage.ChildSlime.IChildController
     
     class BattleManager
-    BattleManager ..> Stage.ChildSlime.ChildController
+    BattleManager ..> Stage.ChildSlime.IChildController
     BattleManager ..> Stage.Wave.IWaveSystem
 }
 @enduml
