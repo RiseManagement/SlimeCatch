@@ -29,4 +29,10 @@ namespace SelectStage{
     
 }
 
+SelectStage.SaveHandler ..> GameAnimal.SaveHandler
+
+namespace GameAnimal{
+    class SaveHandler
+}
+
 @enduml

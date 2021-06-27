@@ -16,21 +16,51 @@ namespace Stage{
     namespace Player{
         class PlayerController
         class ParentMove
+        note right : 入力系と移動はここで処理
         interface IParentMove
-        class PlayerView
-        interface IPlayerView
-        class ChildStatus
-        class ParentStatus
+        class ParentView
         
-        IPlayerView <|.. PlayerView
-        IParentMove <|.. ParentMove
+        note left : 行動力ゲームの更新
         
-        PlayerController ..> IPlayerView
-        PlayerController ..> ParentStatus
-        PlayerController ..> ChildStatus
-        PlayerController ..> IParentMove
+        interface IParentView
+        
+        IParentView <|.up. ParentView
+        IParentMove <|.up. ParentMove
+        
+        PlayerController .up.> IParentView
+        PlayerController .up.> IParentMove
         
     }
+    
+    namespace StageEvent{
+        class Event{
+            - StageEnum stageEnum
+        }
+        
+        interface IEvent
+        
+        IEvent <|.. Event
+        
+    }
+    
+        
+    namespace ChildSlime{
+        class ChildStatus
+        
+        class ChildMove
+        
+        note right : ステージギミックでの動き
+        
+        interface IChildMove
+        class ChildController{
+            + list<Transform> ChildObjectList
+        }
+        
+        IChildMove <|.. ChildMove    
+        ChildController ..> IChildMove   
+        ChildController ..> ChildStatus
+    }
+    
     
     namespace Wave{
         class WaveSystem
@@ -39,26 +69,65 @@ namespace Stage{
         WaveSystem ..> Stage.Enemy.IMove
         WaveSystem ..> Stage.Enemy.IAttack
         IWaveSystem <|.. WaveSystem
-        
     }
     
     namespace View{
         class OpenNewStagePopUp
         class ClearPopUp
         class GameOverView
-        class BaseView
+        class OptionsView
+        interface IView
         
+        
+        IView <|.. OptionsView
+        IView <|.. GameOverView
+        IView <|.. ClearPopUp
+        IView <|.. OpenNewStagePopUp
         
     }
     
+    namespace Sound{
+        interface IBGMController
+        class BGMController
+        IBGMController <|.. BGMController
+    }
+  
+    
+    namespace Weapon{
+        interface IWeapon
+        class Axe
+        class Sword
+        class Arrow
+        class Spear
+        
+        Spear .down.|> IWeapon
+        Axe .down.|> IWeapon
+        Sword .down.|> IWeapon
+        Arrow .down.|> IWeapon
+        
+    }
+    
+    Stage.View.OptionsView ..> Stage.Sound.IBGMController
+    Stage.ChildSlime.ChildController .up.> Stage.Weapon.IWeapon
+    
+    
     class SceneManager
     
-    class SoundController
-    interface ISoundController
+    note left : ゲームの停止と再開と画面遷移・切り替え
     
-    ISoundController <|.. SoundController
-    
-    SceneManager ..> ISoundController
     SceneManager ..> Stage.Wave.IWaveSystem
+    SceneManager ..> Stage.View.IView
+    SceneManager .up.> Stage.Player.PlayerController
+    SceneManager ..> Stage.ChildSlime.ChildController
+    SceneManager ..> Stage.StageEvent.IEvent
+
+    
+    class StageEventManager
+    StageEventManager ..> Stage.StageEvent.IEvent
+    StageEventManager ..> Stage.ChildSlime.ChildController
+    
+    class BattleManager
+    BattleManager ..> Stage.ChildSlime.ChildController
+    BattleManager ..> Stage.Wave.IWaveSystem
 }
 @enduml
