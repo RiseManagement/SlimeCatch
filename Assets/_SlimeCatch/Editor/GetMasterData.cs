@@ -1,6 +1,6 @@
 ﻿using System;
 using _SlimeCatch.Enemy;
-using _SlimeCatch.Stage.Scripts.Wave;
+using _SlimeCatch.Wave;
 using _SlimeCatch.Weapon;
 using Cysharp.Threading.Tasks;
 using UnityEditor;

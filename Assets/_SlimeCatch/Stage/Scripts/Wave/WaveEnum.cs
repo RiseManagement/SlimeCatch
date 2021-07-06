@@ -1,4 +1,4 @@
-﻿namespace _SlimeCatch.Stage.Scripts.Wave
+﻿namespace _SlimeCatch.Wave
 {
     public enum WaveEnum
     {

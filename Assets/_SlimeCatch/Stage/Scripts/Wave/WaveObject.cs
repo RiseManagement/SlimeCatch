@@ -1,7 +1,7 @@
 ﻿using NaughtyAttributes;
 using UnityEngine;
 
-namespace _SlimeCatch.Stage.Scripts.Wave
+namespace _SlimeCatch.Wave
 {
     [CreateAssetMenu(fileName = "WaveInfo", menuName = "Create/WaveInfo", order = 0)]
     public class WaveObject : ScriptableObject

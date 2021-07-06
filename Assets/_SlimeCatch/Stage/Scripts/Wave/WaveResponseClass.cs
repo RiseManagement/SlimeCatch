@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace _SlimeCatch.Stage.Scripts.Wave
+namespace _SlimeCatch.Wave
 {
     [Serializable]
     public class WaveResponseClass
