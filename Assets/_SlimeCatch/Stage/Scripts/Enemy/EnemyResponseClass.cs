@@ -1,17 +1,19 @@
-﻿using System.Collections.Generic;
-using _SlimeCatch.Weapon;
+﻿using System;
+using System.Collections.Generic;
 
 namespace _SlimeCatch.Enemy
 {
+    [Serializable]
     public class EnemyResponseClass
     {
-        public List<EnemyClass> EnemyList = new List<EnemyClass>();
+        public List<EnemyClass> slimeCatchInfoList = new List<EnemyClass>();
     }
+    [Serializable]
     public class EnemyClass
     {
-        public string EnemyName;
+        public string Name;
         public int EnemySize;
-        public WeaponEnum BaseWeapon;
-        public WeaponEnum SpecialWeapon;
+        public string BaseWeapon;
+        public string SpecialWeapon;
     }
 }

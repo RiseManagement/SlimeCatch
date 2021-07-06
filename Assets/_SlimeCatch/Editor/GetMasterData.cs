@@ -1,4 +1,6 @@
-﻿using _SlimeCatch.Enemy;
+﻿using System;
+using _SlimeCatch.Enemy;
+using _SlimeCatch.Stage.Scripts.Wave;
 using _SlimeCatch.Weapon;
 using Cysharp.Threading.Tasks;
 using UnityEditor;
@@ -13,37 +15,28 @@ namespace _SlimeCatch.Editor
         [MenuItem("MData更新/敵情報")]
         private static async void EnemyUpdateWindow()
         {
-            await GetWeaponInfo();
+            var response = await GetData<EnemyResponseClass>("敵情報");
+            CreateEnemyObject(response);
         }
+        
         
         [MenuItem("MData更新/武器情報")]
         private static async void WeaponUpdateWindow()
         {
-            await GetEnemyInfo();
-        }
-
-        private static async UniTask<EnemyResponseClass> GetEnemyInfo()
-        {
-            var request = UnityWebRequest.Get($"{SlimeCatchDataApiUrl}?sheetName=敵情報");
-            await request.SendWebRequest();
-            if (request.isHttpError || request.isNetworkError)
-            {
-                Debug.LogError($"APIからの取得エラー->:{request.error}");
-            }
-            else
-            {
-                var json = request.downloadHandler.text;
-                Debug.Log($"json:{json}");
-                var data = JsonUtility.FromJson<EnemyResponseClass>(json);
-                return data;
-            }
-
-            return null;
+            var response = await GetData<WeaponResponseClass>("武器情報");
+            CreateWeaponObject(response);
         }
         
-        private static async UniTask<WeaponResponseClass> GetWeaponInfo()
+        [MenuItem("MData更新/Wave情報")]
+        private static async void WaveUpdateWindow()
         {
-            var request = UnityWebRequest.Get($"{SlimeCatchDataApiUrl}?sheetName=武器詳細");
+            var response = await GetData<WaveResponseClass>("Wave情報");
+            CreateWaveObject(response);
+        }
+        
+        private static async UniTask<T> GetData<T>(string sheetName)
+        {
+            var request = UnityWebRequest.Get($"{SlimeCatchDataApiUrl}?sheetName={sheetName}");
             await request.SendWebRequest();
             if (request.isHttpError || request.isNetworkError)
             {
@@ -52,12 +45,53 @@ namespace _SlimeCatch.Editor
             else
             {
                 var json = request.downloadHandler.text;
-                Debug.Log($"json:{json}");
-                var data = JsonUtility.FromJson<WeaponResponseClass>(json);
+                var data = JsonUtility.FromJson<T>(json);
                 return data;
             }
 
-            return null;
+            return default;
+        }
+
+        private static void CreateEnemyObject(EnemyResponseClass enemyResponseClass)
+        {
+            foreach (var info in enemyResponseClass.slimeCatchInfoList)
+            {
+                var instance = CreateInstance<EnemyObject>();
+                instance.BaseWeapon = (WeaponEnum)Enum.Parse(typeof(WeaponEnum),info.BaseWeapon);
+                instance.SpecialWeapon = (WeaponEnum)Enum.Parse(typeof(WeaponEnum),info.SpecialWeapon);
+                instance.EnemyName = info.Name;
+                instance.EnemySize = info.EnemySize;
+                
+                AssetDatabase.CreateAsset(instance,$"Assets/_SlimeCatch/Resources/Enemy/{info.Name}.asset");
+                AssetDatabase.Refresh();
+            }
+        }
+
+        private static void CreateWeaponObject(WeaponResponseClass weaponResponseClass)
+        {
+            foreach (var info in weaponResponseClass.slimeCatchInfoList)
+            {
+                var instance = CreateInstance<WeaponObject>();
+                instance.WeaponName = (WeaponEnum)Enum.Parse(typeof(WeaponEnum),info.Name);
+                instance.WeaponOrbit = (WeaponOrbitEnum)Enum.Parse(typeof(WeaponOrbitEnum),info.Orbit);
+                
+                AssetDatabase.CreateAsset(instance,$"Assets/_SlimeCatch/Resources/Weapon/{info.Name}.asset");
+                AssetDatabase.Refresh();
+            }
+        }
+
+        private static void CreateWaveObject(WaveResponseClass waveResponseClass)
+        {
+            foreach (var info in waveResponseClass.slimeCatchInfoList)
+            {
+                var instance = CreateInstance<WaveObject>();
+                instance.StageName = (WaveEnum)Enum.Parse(typeof(WaveEnum),info.StageName);
+                instance.SlimeCount = info.SlimeCount;
+                instance.WaveCount = info.WaveCount;
+                
+                AssetDatabase.CreateAsset(instance,$"Assets/_SlimeCatch/Resources/Wave/{info.StageName}.asset");
+                AssetDatabase.Refresh();
+            }
         }
     }
 }

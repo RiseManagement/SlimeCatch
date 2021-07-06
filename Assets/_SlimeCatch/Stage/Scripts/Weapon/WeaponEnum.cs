@@ -2,6 +2,7 @@
 {
     public enum WeaponEnum
     {
+        None,
         Axe,
         Arrow,
         WaterBalloon,
