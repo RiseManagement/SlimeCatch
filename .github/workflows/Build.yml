@@ -1,0 +1,62 @@
+name: Manual Build
+
+env:
+  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+
+# Controls when the action will run. 
+on: 
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '.github/**'
+  # Triggers the workflow on push or pull request events but only for the main branch
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  remove-old-artifacts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - name: Remove old artifacts
+      uses: c-hive/gha-remove-artifacts@v1
+      with:
+        age: '1 days'
+ 
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        projectPath:
+          - .
+        unityVersion:
+          - 2019.4.28f1
+        targetPlatform:
+         - StandaloneWindows64
+    needs: remove-old-artifacts
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        lfs: false
+        clean: false
+        
+#     Cache
+    - uses: actions/cache@v2
+      with:
+        path: Library
+        key: Library
+
+    # Build
+    - name: Build project
+      uses: game-ci/unity-builder@v2.0-alpha-8
+      with:
+        unityVersion: ${{ matrix.unityVersion }}
+        targetPlatform: ${{ matrix.targetPlatform }}
+
+    # Output
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Build-${{ matrix.targetPlatform }}
+        path: build/${{ matrix.targetPlatform }}
