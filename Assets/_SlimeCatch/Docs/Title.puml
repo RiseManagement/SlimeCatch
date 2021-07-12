@@ -3,13 +3,10 @@
 
 namespace Title{
     class SoundController
+    note left: SE・BGMの管理
     class GameManager
-    class TitleView
-    interface ITitleView
-    
-    ITitleView <|.. TitleView
-    GameManager ..> SoundController
-    GameManager ..> ITitleView
+    note left: 次のシーンへの遷移部分の管理
+
 }
 
 @enduml

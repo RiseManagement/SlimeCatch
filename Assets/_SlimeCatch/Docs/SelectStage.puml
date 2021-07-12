@@ -3,29 +3,17 @@
 
 namespace SelectStage{
     class SaveDataClass
+    note right: セーブするデータクラス
     class SaveHandler
-    
-    class SelectView
-    interface ISelectView
-    
-    class SoundController
-    interface ISoundController
-    
+    note right: セーブの実装
+
     class SceneManager
+    note left: シーン遷移の実装
     
-    class SelectStageManager
-    
-    ISelectView <|.. SelectView
+
     SaveHandler ..> SaveDataClass
-    
-    ISoundController <|.. SoundController
-        
-    SelectStageManager ..> ISelectView
-    SelectStageManager ..> SaveHandler
-    SelectStageManager ..> ISoundController
-    
-    SceneManager ..> ISoundController
-    SceneManager ..> ISelectView
+
+
     
 }
 
@@ -33,6 +21,7 @@ SelectStage.SaveHandler ..> GameAnimal.SaveHandler
 
 namespace GameAnimal{
     class SaveHandler
+    note right: ゲームアニマールのセーブプラグイン
 }
 
 @enduml
