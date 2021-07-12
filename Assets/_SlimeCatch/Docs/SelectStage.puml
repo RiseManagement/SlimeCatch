@@ -3,9 +3,12 @@
 
 namespace SelectStage{
     class SaveDataClass
+    note right: セーブするデータクラス
     class SaveHandler
+    note right: セーブの実装
 
     class SceneManager
+    note left: シーン遷移の実装
     
 
     SaveHandler ..> SaveDataClass
@@ -18,6 +21,7 @@ SelectStage.SaveHandler ..> GameAnimal.SaveHandler
 
 namespace GameAnimal{
     class SaveHandler
+    note right: ゲームアニマールのセーブプラグイン
 }
 
 @enduml
