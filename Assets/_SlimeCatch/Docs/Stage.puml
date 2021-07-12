@@ -4,12 +4,8 @@
 namespace Stage{
     namespace Enemy{
         class Move
-        interface IMove
         class Attack
-        interface IAttack
-      
-        IMove <|.. Move
-        IAttack <|.. Attack
+
 
     }
     
@@ -17,32 +13,18 @@ namespace Stage{
         class PlayerController
         class ParentMove
         note right : 入力系と移動はここで処理
-        interface IParentMove
         class ParentView
-        
         note left : 行動力ゲームの更新
+       
         
-        interface IParentView
-        
-        IParentView <|.up. ParentView
-        IParentMove <|.up. ParentMove
-        
-        PlayerController .up.> IParentView
-        PlayerController .up.> IParentMove
+        PlayerController .up.> ParentView
+        PlayerController .up.> ParentMove
         
     }
-    
-    namespace StageEvent{
-        class Event{
-            - StageEnum stageEnum
-        }
-        
-        interface IEvent
-        
-        IEvent <|.. Event
-        
+
+    class Event{
+        - StageEnum stageEnum
     }
-    
         
     namespace ChildSlime{
         class ChildStatus
@@ -51,87 +33,74 @@ namespace Stage{
         
         note right : ステージギミックでの動き
         
-        interface IChildMove
         class ChildController{
             + list<Transform> ChildObjectList
         }
-        interface IChildController
-        
-        IChildMove <|.. ChildMove    
-        ChildController ..> IChildMove   
+
+        ChildController ..> ChildMove   
         ChildController ..> ChildStatus
-        IChildController <|.. ChildController
     }
+
+    class WaveSystem
     
-    
-    namespace Wave{
-        class WaveSystem
-        interface IWaveSystem
-        
-        WaveSystem ..> Stage.Enemy.IMove
-        WaveSystem ..> Stage.Enemy.IAttack
-        IWaveSystem <|.. WaveSystem
-    }
+    Stage.WaveSystem ..> Stage.Enemy.Move
+    Stage.WaveSystem ..> Stage.Enemy.Attack
     
     namespace View{
         class OpenNewStagePopUp
         class ClearPopUp
         class GameOverView
         class OptionsView
-        interface IView
+        interface IView{
+            + void PopUpViw(VieEnum)
+        }
         
+        enum VieEnum
         
+        IView ..> VieEnum
         IView <|.. OptionsView
         IView <|.. GameOverView
         IView <|.. ClearPopUp
         IView <|.. OpenNewStagePopUp
         
     }
-    
-    namespace Sound{
-        interface IBGMController
-        class BGMController
-        IBGMController <|.. BGMController
-    }
-  
+    class BGMController
     
     namespace Weapon{
-        interface IWeapon{
-            
-        }
         class Axe
         class Sword
         class Arrow
         class Spear
-        
-        Spear ..|> IWeapon
-        Axe ..|> IWeapon
-        Sword ..|> IWeapon
-        Arrow ..|> IWeapon
-        
+        class MolotovCocktail
+        class WaterBalloon
     }
     
-    Stage.View.OptionsView ..> Stage.Sound.IBGMController
-    Stage.ChildSlime.ChildController ...> Stage.Weapon.IWeapon
+    Stage.View.OptionsView ..> Stage.BGMController
+    Stage.ChildSlime.ChildController ...> Stage.Weapon.Axe
+    Stage.ChildSlime.ChildController ...> Stage.Weapon.Sword
+    Stage.ChildSlime.ChildController ...> Stage.Weapon.Arrow
+    Stage.ChildSlime.ChildController ...> Stage.Weapon.Spear
+    Stage.ChildSlime.ChildController ...> Stage.Weapon.WaterBalloon
+    Stage.ChildSlime.ChildController ...> Stage.Weapon.MolotovCocktail
     
     
     class SceneManager
     
     note left : ゲームの停止と再開と画面遷移・切り替え
     
-    SceneManager ..> Stage.Wave.IWaveSystem
+    SceneManager ..> Stage.WaveSystem
     SceneManager ..> Stage.View.IView
     SceneManager .up.> Stage.Player.PlayerController
-    SceneManager ..> Stage.ChildSlime.IChildController
-    SceneManager ..> Stage.StageEvent.IEvent
+    SceneManager ..> Stage.ChildSlime.ChildController
+    SceneManager ..> Stage.Event
 
     
     class StageEventManager
-    StageEventManager ..> Stage.StageEvent.IEvent
-    StageEventManager ..> Stage.ChildSlime.IChildController
+    StageEventManager ..> Stage.Event
+    StageEventManager ..> Stage.ChildSlime.ChildController
     
     class BattleManager
-    BattleManager ..> Stage.ChildSlime.IChildController
-    BattleManager ..> Stage.Wave.IWaveSystem
+    BattleManager ..> Stage.ChildSlime.ChildController
+    BattleManager ..> Stage.WaveSystem
 }
 @enduml
