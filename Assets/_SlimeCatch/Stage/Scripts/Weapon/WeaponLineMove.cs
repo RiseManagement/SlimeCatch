@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace _SlimeCatch.Weapon
 {
-    public class WeaponLineMove : MonoBehaviour
+    public class WeaponLineMove : MonoBehaviour,IWeaponMove
     {
         private Transform _transform;
         private Vector3 _firstPosition;
         private const float MiddleTopPoint = 2f;
 
-        private void Start()
+        private void Awake()
         {
             _transform = GetComponent<Transform>();
             _firstPosition = _transform.position;
@@ -20,10 +20,10 @@ namespace _SlimeCatch.Weapon
         public void TestLineMove()
         {
             _transform.position = _firstPosition;
-            LineMove(new Vector3(5f,0,0));
+            WeaponMove(new Vector3(5f,0,0));
         }
 
-        private void LineMove(Vector3 endPosition)
+        public void WeaponMove(Vector3 endPosition)
         {
             var middlePoint = new Vector3(
                 endPosition.x + _transform.position.x,
@@ -35,7 +35,7 @@ namespace _SlimeCatch.Weapon
                 middlePoint,
                 endPosition
             };
-            _transform.DOLocalPath(movePath, 3f,PathType.CatmullRom,PathMode.Sidescroller2D).SetEase(Ease.OutSine).SetOptions(false);
+            _transform.DOPath(movePath, 2f,PathType.CatmullRom,PathMode.Sidescroller2D).SetEase(Ease.OutSine).SetOptions(false);
         }
     }
 }
