@@ -298,7 +298,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302f6aee071273746aa01efb78a45c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -0.007
+  moveDistance: 5
+  moveTime: 5
+  weaponList:
+  - {fileID: 81079531344277352, guid: 8b214a2be9194bf4fb8c0475eb0f1d38, type: 3}
+  - {fileID: 81079531344277352, guid: 8b214a2be9194bf4fb8c0475eb0f1d38, type: 3}
+  - {fileID: 5891285841019303545, guid: 4b3e87341a4c98b48ae39031c642bc63, type: 3}
+  - {fileID: 9200208618667222180, guid: 34003ddd67c789347a01f11ca14b15c1, type: 3}
 --- !u!1 &828830145
 GameObject:
   m_ObjectHideFlags: 0
