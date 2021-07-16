@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class slimeextendtest : MonoBehaviour
+public class SlimeExtend : MonoBehaviour
 {
     private Vector3 m_mouseDownPosition = Vector3.zero;
     Quaternion rotation;
@@ -32,7 +32,7 @@ public class slimeextendtest : MonoBehaviour
         //スクリーン座標をワールド座標に変換する
         Vector3 mousePos        = Camera.main.ScreenToWorldPoint( inputPosition );
         float   dist            = Vector3.Distance( mousePos, m_mouseDownPosition );
-        float distD = dist / 2;
+        float distD = dist;
         
         float distx = Mathf.Clamp(dist, 0.05f, 4.0f);
         float distDs = Mathf.Clamp(distD, 1.478829f, 1.641793f);
