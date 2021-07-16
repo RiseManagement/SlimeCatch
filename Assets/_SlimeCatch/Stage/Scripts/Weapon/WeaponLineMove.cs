@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -8,7 +9,6 @@ namespace _SlimeCatch.Weapon
     {
         private Transform _transform;
         private Vector3 _firstPosition;
-        private const float MiddleTopPoint = 2f;
 
         private void Awake()
         {
@@ -20,14 +20,26 @@ namespace _SlimeCatch.Weapon
         public void TestLineMove()
         {
             _transform.position = _firstPosition;
-            WeaponMove(new Vector3(5f,0,0));
+            WeaponMove(new Vector3(5f,0,0),WeaponOrbitEnum.Line);
         }
 
-        public void WeaponMove(Vector3 endPosition)
+        public void WeaponMove(Vector3 endPosition,WeaponOrbitEnum weaponOrbit)
         {
+            var middleTopPoint = 0f;
+            switch (weaponOrbit)
+            {
+                case WeaponOrbitEnum.Curve:
+                    middleTopPoint = 4f;
+                    break;
+                case WeaponOrbitEnum.Line:
+                    middleTopPoint = 2f;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(weaponOrbit), weaponOrbit, null);
+            }
             var middlePoint = new Vector3(
                 endPosition.x + _transform.position.x,
-                _firstPosition.y + MiddleTopPoint
+                _firstPosition.y + middleTopPoint
                 );
             Vector3[] movePath =
             {
