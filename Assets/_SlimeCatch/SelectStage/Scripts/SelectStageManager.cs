@@ -1,4 +1,5 @@
 ﻿using System;
+using _SlimeCatch.Title;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class SelectStageManager : MonoBehaviour
 {
     private bool _isInput;
+    [SerializeField] private AudioController audioController;
 
     private async void Start()
     {
@@ -17,6 +19,7 @@ public class SelectStageManager : MonoBehaviour
     {
         if (_isInput)
         {
+            audioController.ClickOnPlaySe();
             SceneManager.LoadSceneAsync("Stage1");
         }
     }
@@ -25,6 +28,7 @@ public class SelectStageManager : MonoBehaviour
     {
         if (_isInput)
         {
+            audioController.ClickOnPlaySe();
             SceneManager.LoadSceneAsync("Stage2");
         }
     }
@@ -33,6 +37,7 @@ public class SelectStageManager : MonoBehaviour
     {
         if (_isInput)
         {
+            audioController.ClickOnPlaySe();
             SceneManager.LoadSceneAsync("Stage3");
         }
     }
@@ -41,6 +46,7 @@ public class SelectStageManager : MonoBehaviour
     {
         if (_isInput)
         {
+            audioController.ClickOnPlaySe();
             SceneManager.LoadSceneAsync("Stage4");
         }
     }
@@ -49,6 +55,7 @@ public class SelectStageManager : MonoBehaviour
     {
         if (_isInput)
         {
+            audioController.ClickOnPlaySe();
             SceneManager.LoadSceneAsync("Stage5");
         }
     }
@@ -57,6 +64,7 @@ public class SelectStageManager : MonoBehaviour
     {
         if (_isInput)
         {
+            audioController.ClickOnPlaySe();
             SceneManager.LoadSceneAsync("Stage6");
         }
     }
