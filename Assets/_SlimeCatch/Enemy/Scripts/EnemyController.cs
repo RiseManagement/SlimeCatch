@@ -19,16 +19,17 @@ public class EnemyController : MonoBehaviour
     private async void Start()
     {
         await Walk(moveDistance,moveTime);
+        await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
+        await ThrowWeapon();
+        await Walk(-moveDistance, moveTime);
     }
 
     private async UniTask Walk(float distance,float time)
     {
         await transform.DOMoveX(distance, time).SetRelative(true).ToAwaiter();
-        await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
-        ThrowWeapon();
     }
 
-    private async void ThrowWeapon()
+    private async UniTask ThrowWeapon()
     {
         await weaponList.ToUniTaskAsyncEnumerable().ForEachAwaitAsync(async x =>
         {
