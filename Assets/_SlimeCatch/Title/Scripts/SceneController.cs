@@ -8,6 +8,7 @@ namespace _SlimeCatch.Title
 {
     public class SceneController : MonoBehaviour
     {
+        [SerializeField] private AudioController audioController;
         [SerializeField] private Button gameStartButton;
         private CanvasGroup _canvasGroup;
 
@@ -24,6 +25,7 @@ namespace _SlimeCatch.Title
                 .Take(1)
                 .Subscribe(async _ =>
                 {
+                    audioController.ClickOnPlaySe();
                     await _canvasGroup.DOFade(0f, FadeOutTime).ToAwaiter();
                     SceneManager.LoadSceneAsync("SelectStage");
                 }).AddTo(this);
