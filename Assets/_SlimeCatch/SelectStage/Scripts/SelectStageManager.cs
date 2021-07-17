@@ -1,72 +1,87 @@
 ﻿using System;
+using _SlimeCatch.Save;
 using _SlimeCatch.Title;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SelectStageManager : MonoBehaviour
+namespace _SlimeCatch.SelectStage
 {
-    private bool _isInput;
-    [SerializeField] private AudioController audioController;
-
-    private async void Start()
+    
+    public class SelectStageManager : MonoBehaviour
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(2f));
-        _isInput = true;
-    }
+        private bool _isInput;
+        [SerializeField] private AudioController audioController; 
+        private StageIconView _stageIconView;
+        private ILoadController _loadController;
 
-    public void SelectStage1()
-    {
-        if (_isInput)
+        private void Awake()
         {
-            audioController.ClickOnPlaySe();
-            SceneManager.LoadSceneAsync("Stage1");
-        }
-    }
+            _loadController = new SaveLoadController();
+            _stageIconView = GetComponent<StageIconView>();
 
-    public void SelectStage2()
-    {
-        if (_isInput)
+        }
+
+        private async void Start()
         {
-            audioController.ClickOnPlaySe();
-            SceneManager.LoadSceneAsync("Stage2");
+            _stageIconView.SetInteractable(_loadController.GetStageClearList());
+            await UniTask.Delay(TimeSpan.FromSeconds(2f));
+            _isInput = true;
         }
-    }
 
-    public void SelectStage3()
-    {
-        if (_isInput)
+        public void SelectStage1()
         {
-            audioController.ClickOnPlaySe();
-            SceneManager.LoadSceneAsync("Stage3");
+            if (_isInput)
+            {
+                audioController.ClickOnPlaySe();
+                SceneManager.LoadSceneAsync("Stage1");
+            }
         }
-    }
 
-    public void SelectStage4()
-    {
-        if (_isInput)
+        public void SelectStage2()
         {
-            audioController.ClickOnPlaySe();
-            SceneManager.LoadSceneAsync("Stage4");
+            if (_isInput)
+            {
+                audioController.ClickOnPlaySe();
+                SceneManager.LoadSceneAsync("Stage2");
+            }
         }
-    }
 
-    public void SelectStage5()
-    {
-        if (_isInput)
+        public void SelectStage3()
         {
-            audioController.ClickOnPlaySe();
-            SceneManager.LoadSceneAsync("Stage5");
+            if (_isInput)
+            {
+                audioController.ClickOnPlaySe();
+                SceneManager.LoadSceneAsync("Stage3");
+            }
         }
-    }
 
-    public void SelectStage6()
-    {
-        if (_isInput)
+        public void SelectStage4()
         {
-            audioController.ClickOnPlaySe();
-            SceneManager.LoadSceneAsync("Stage6");
+            if (_isInput)
+            {
+                audioController.ClickOnPlaySe();
+                SceneManager.LoadSceneAsync("Stage4");
+            }
         }
-    }
 
+        public void SelectStage5()
+        {
+            if (_isInput)
+            {
+                audioController.ClickOnPlaySe();
+                SceneManager.LoadSceneAsync("Stage5");
+            }
+        }
+
+        public void SelectStage6()
+        {
+            if (_isInput)
+            {
+                audioController.ClickOnPlaySe();
+                SceneManager.LoadSceneAsync("Stage6");
+            }
+        }
+
+    }
 }
