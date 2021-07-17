@@ -1,7 +1,6 @@
-﻿using System;
-using _SlimeCatch.Save;
+﻿using _SlimeCatch.Save;
 using _SlimeCatch.Title;
-using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,10 +12,13 @@ namespace _SlimeCatch.SelectStage
         private bool _isInput;
         [SerializeField] private AudioController audioController; 
         private StageIconView _stageIconView;
+        private CanvasGroup _canvasGroup;
         private ILoadController _loadController;
+        private const float FadeInAnimationTime = 1f;
 
         private void Awake()
         {
+            _canvasGroup = GetComponent<CanvasGroup>();
             _loadController = new SaveLoadController();
             _stageIconView = GetComponent<StageIconView>();
 
@@ -25,7 +27,7 @@ namespace _SlimeCatch.SelectStage
         private async void Start()
         {
             _stageIconView.SetInteractable(_loadController.GetStageClearList());
-            await UniTask.Delay(TimeSpan.FromSeconds(2f));
+            await _canvasGroup.DOFade(1f,FadeInAnimationTime).ToAwaiter();
             _isInput = true;
         }
 
