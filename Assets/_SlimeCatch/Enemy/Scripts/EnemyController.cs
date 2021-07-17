@@ -34,7 +34,7 @@ public class EnemyController : MonoBehaviour
         await weaponList.ToUniTaskAsyncEnumerable().ForEachAwaitAsync(async x =>
         {
             var weaponObject = Instantiate(x, transform);
-            weaponObject.GetComponent<IWeaponMove>().WeaponMove(new Vector3(5,0,0));
+            weaponObject.GetComponent<IWeaponMove>().WeaponMove(new Vector3(5,0,0),WeaponOrbitEnum.Curve);
             await UniTask.Delay(TimeSpan.FromSeconds(2f));
             Destroy(weaponObject);
         });
