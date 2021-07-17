@@ -882,7 +882,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2072785089}
   m_Layer: 0
-  m_Name: ChildSlime
+  m_Name: ChildSlimes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
