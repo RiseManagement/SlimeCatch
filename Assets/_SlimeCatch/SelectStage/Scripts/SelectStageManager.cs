@@ -1,6 +1,4 @@
-﻿using System;
-using _SlimeCatch.Title;
-using Cysharp.Threading.Tasks;
+﻿using _SlimeCatch.Title;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,6 +8,7 @@ public class SelectStageManager : MonoBehaviour
     private bool _isInput;
     [SerializeField] private AudioController audioController;
     private CanvasGroup _canvasGroup;
+    private const float FadeInTime = 1f;
 
     private void Awake()
     {
@@ -18,7 +17,7 @@ public class SelectStageManager : MonoBehaviour
 
     private async void Start()
     {
-        await _canvasGroup.DOFade(1, 1f).ToAwaiter();
+        await _canvasGroup.DOFade(1, FadeInTime).ToAwaiter();
         _isInput = true;
     }
 
