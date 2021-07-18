@@ -21,11 +21,11 @@ public class ActiveGauge : MonoBehaviour
         //掴んでいる時に減らす
         if (SlimeExtend._initMousePosition != SlimeExtend._CurrentMousePosition)
         {
-            ReduceValue -= Time.deltaTime * 16;
+            ReduceValue -= Time.deltaTime * 20;
         }
         else
         {
-            ReduceValue += Time.deltaTime * 16;
+            ReduceValue += Time.deltaTime * 20;
         }
             ValueChange(ReduceValue);
     }
