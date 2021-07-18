@@ -9,7 +9,7 @@ namespace _SlimeCatch.Wave
 	{
 		//タイマー
 		float timer = 6;
-		float cnt;
+		float timercnt;
 
 		//ステージ情報obj
 		public StageManagerObject stagemanagerobj;
@@ -18,6 +18,19 @@ namespace _SlimeCatch.Wave
 		public int wavecnt;
 		public int slimecnt;
 		public WaveEnum stagename;
+
+		public enum WaveStep
+		{
+			EnemyAppear,	//敵の出現
+			SlimeCntReset,	//スライムのカウントリセット
+			TimeReset,      //時間リセット
+			CoolTime,		//クールタイム(タイム継続)
+			NextWave,		//次のWave
+			WaveEnd,		//Wave終了
+		}
+
+		public WaveStep wavestep;
+
 
 		//エネミー出現用obj
 		public GameObject enemyappearobj;
@@ -52,7 +65,7 @@ namespace _SlimeCatch.Wave
 		// Start is called before the first frame update
 		void Start()
 		{
-			cnt = timer;
+			timercnt = timer;
 
 			if(waveobj)
 			{
@@ -68,28 +81,79 @@ namespace _SlimeCatch.Wave
 		// Update is called once per frame
 		void Update()
 		{
-			cnt -= Time.deltaTime;
-
-			Debug.Log(waveobj.WaveCount - wavecnt + "Wave");
-			
-			//敵の出現
-			if(slimecnt > 0)
+			switch (wavestep)
 			{
+				case WaveStep.EnemyAppear:
+					EnemyAppear();
+					if (slimecnt <= 0)
+					{
+						Debug.Log("残り" + wavecnt + "Wave");
+						wavestep = WaveStep.CoolTime;
+					}
+					break;
+
+				case WaveStep.CoolTime:
+					timercnt -= Time.deltaTime;
+					if (timercnt < 0)
+					{
+						Debug.Log(timer + "秒たちました");
+						wavestep = WaveStep.TimeReset;
+					}
+					break;
+
+				case WaveStep.TimeReset:
+					NextWaveTimerSet();
+					wavestep = WaveStep.SlimeCntReset;
+					break;
+
+				case WaveStep.SlimeCntReset:
+					SlimeCountReset();
+					wavestep = WaveStep.NextWave;
+					break;
+
+				case WaveStep.NextWave:
+					wavecnt--;
+
+					wavestep = WaveStep.EnemyAppear;
+					if (wavecnt <= 0) { wavestep = WaveStep.WaveEnd; }
+					break;
+
+				case WaveStep.WaveEnd:
+					Debug.Log("Wave終了");
+					break;
+			}
+			Debug.Log(waveobj.WaveCount - wavecnt + 1 + "Wave");			
+		}
+
+		/// <summary>
+		/// 敵の出現
+		/// </summary>
+		void EnemyAppear()
+		{
+			if (slimecnt > 0)
+			{
+				//出現パターン
+
+				
 				enemyAppearcs.AppearEnemySize_S();
 				slimecnt--;
 			}
+		}
 
-			//敵の固まりが終了したら+6秒経ったら
-			if (cnt < 0)
-			{
-				Debug.Log(timer + "秒たちました");
-				if (Input.GetKeyDown(KeyCode.F12))
-				{
-					wavecnt--;
-					cnt = timer;
-					Debug.Log("残り" + wavecnt + "Wave");
-				}
-			}
+		/// <summary>
+		/// 次のWaveの移行のためのタイマーセット
+		/// </summary>
+		void NextWaveTimerSet()
+		{
+			timercnt = timer;
+		}
+
+		/// <summary>
+		/// スライムのカウントをリセット
+		/// </summary>
+		void SlimeCountReset()
+		{
+			slimecnt = waveobj.SlimeCount;
 		}
 	}
 }
