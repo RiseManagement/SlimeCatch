@@ -11,7 +11,7 @@ public class ActiveGauge : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ReduceValue = 100;
+        ReduceValue = 5;
         ValueChange(ReduceValue);
     }
 
@@ -21,11 +21,11 @@ public class ActiveGauge : MonoBehaviour
         //掴んでいる時に減らす
         if (SlimeExtend._initMousePosition != SlimeExtend._CurrentMousePosition)
         {
-            ReduceValue -= Time.deltaTime * 20;
+            ReduceValue -= Time.deltaTime;
         }
         else
         {
-            ReduceValue += Time.deltaTime * 20;
+            ReduceValue += Time.deltaTime;
         }
             ValueChange(ReduceValue);
     }
