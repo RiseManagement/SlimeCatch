@@ -8,12 +8,11 @@ namespace _SlimeCatch.Wave
 	public class WaveController : MonoBehaviour
 	{
 		//タイマー
-		float timer = 6;
+		const float timer = 6;
 		float timercnt;
 
 		//ステージ情報obj
-		public StageManagerObject stagemanagerobj;
-		WaveObject waveobj;
+		[SerializeField] private WaveObject waveobj;
 
 		public int wavecnt;
 		public int slimecnt;
@@ -35,32 +34,6 @@ namespace _SlimeCatch.Wave
 		//エネミー出現用obj
 		public GameObject enemyappearobj;
 		EnemyAppear enemyAppearcs;
-
-		private void Awake()
-		{
-			//シーンの名前によって入れる物を変える
-			switch (SceneManager.GetActiveScene().name)
-			{
-				case "Stage1":
-					waveobj = stagemanagerobj.waveObjects[0];
-					break;
-				case "Stage2":
-					waveobj = stagemanagerobj.waveObjects[1];
-					break;
-				case "Stage3":
-					waveobj = stagemanagerobj.waveObjects[2];
-					break;
-				case "Stage4":
-					waveobj = stagemanagerobj.waveObjects[3];
-					break;
-				case "Stage5":
-					waveobj = stagemanagerobj.waveObjects[4];
-					break;
-				case "Stage6":
-					waveobj = stagemanagerobj.waveObjects[5];
-					break;
-			}
-		}
 
 		// Start is called before the first frame update
 		void Start()
