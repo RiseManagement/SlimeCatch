@@ -3,7 +3,6 @@
     public enum WeaponOrbitEnum
     {
         Line,
-        Curve,
-        None
+        Curve
     }
 }
