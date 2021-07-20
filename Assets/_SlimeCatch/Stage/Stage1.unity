@@ -463,62 +463,10 @@ MonoBehaviour:
   moveDistance: 5
   moveTime: 5
   weaponList:
-  - {fileID: 1324460206889486503, guid: 1e8c761498939aa4a9c517f9430166ea, type: 3}
+  - {fileID: 81079531344277352, guid: 8b214a2be9194bf4fb8c0475eb0f1d38, type: 3}
+  - {fileID: 81079531344277352, guid: 8b214a2be9194bf4fb8c0475eb0f1d38, type: 3}
   - {fileID: 5891285841019303545, guid: 4b3e87341a4c98b48ae39031c642bc63, type: 3}
-  - {fileID: 1324460206889486503, guid: 1e8c761498939aa4a9c517f9430166ea, type: 3}
-  - {fileID: 5891285841019303545, guid: 4b3e87341a4c98b48ae39031c642bc63, type: 3}
-  enemyObject: {fileID: 11400000, guid: 6a7c8e6332f40b34fb8560d2421831a2, type: 2}
-  _weaponNameDecision: {fileID: 734216890}
---- !u!1 &734216889
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 734216891}
-  - component: {fileID: 734216890}
-  m_Layer: 0
-  m_Name: WeaponOrbitSreachObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &734216890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 734216889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f61d4230fca9dac47a163e644fa0a188, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponObjectList:
-  - {fileID: 11400000, guid: 8d0850cbcb1c6a34ea61222bbea425ea, type: 2}
-  - {fileID: 11400000, guid: 58cf9fd604978f54a8c744b8668c55cf, type: 2}
-  - {fileID: 11400000, guid: cb1b6dc466784224ebfd4a396161e330, type: 2}
-  - {fileID: 11400000, guid: ffd4c7407709c5c4fb762930f53eaf97, type: 2}
-  - {fileID: 11400000, guid: 8d34353dcd7cec04285254f78a5e9913, type: 2}
-  - {fileID: 11400000, guid: 400a205b5ca027c4fb9579c7f76438bc, type: 2}
---- !u!4 &734216891
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 734216889}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  - {fileID: 9200208618667222180, guid: 34003ddd67c789347a01f11ca14b15c1, type: 3}
 --- !u!1 &828830145
 GameObject:
   m_ObjectHideFlags: 0
