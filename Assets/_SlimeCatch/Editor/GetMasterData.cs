@@ -85,7 +85,7 @@ namespace _SlimeCatch.Editor
             foreach (var info in waveResponseClass.slimeCatchInfoList)
             {
                 var instance = CreateInstance<WaveObject>();
-                instance.StageName = (WaveEnum)Enum.Parse(typeof(WaveEnum),info.StageName);
+                instance.StageName = (StageEnum)Enum.Parse(typeof(StageEnum),info.StageName);
                 instance.SlimeCount = info.SlimeCount;
                 instance.WaveCount = info.WaveCount;
                 
