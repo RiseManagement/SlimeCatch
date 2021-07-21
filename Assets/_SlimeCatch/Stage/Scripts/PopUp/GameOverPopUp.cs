@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace _SlimeCatch.Stage.PopUp
 {
-    public class GameOverController : MonoBehaviour
+    public class GameOverPopUp : MonoBehaviour
     {
         [SerializeField] private Button retryButton;
         [SerializeField] private Button backStageSelectButton;
@@ -14,15 +14,19 @@ namespace _SlimeCatch.Stage.PopUp
         {
             retryButton.OnClickAsObservable().Subscribe(_ =>
             {
-                Debug.Log("retry");
                 gameObject.SetActive(false);
             }).AddTo(this);
 
             backStageSelectButton.OnClickAsObservable().Subscribe(_ =>
             {
-                Debug.Log("back stage");
+                gameObject.SetActive(false);
                 SceneManager.LoadSceneAsync("_SlimeCatch/SelectStage/SelectStage");
             }).AddTo(this);
+        }
+
+        public void SetView()
+        {
+            gameObject.SetActive(true);
         }
     }
 }
