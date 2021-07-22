@@ -12,15 +12,17 @@ namespace _SlimeCatch.Stage.PopUp
 
         private void Start()
         {
-            this.UpdateAsObservable().Subscribe(_ =>
-            {
-                if (Input.GetKeyDown(KeyCode.C))
+            this.UpdateAsObservable().Where(_ => Input.GetKeyDown(KeyCode.C))
+                .Take(1)
+                .Subscribe(_ =>
                 {
                     gameClearPopUp.SetView(StageEnum.Forest);
-                }else if (Input.GetKeyDown(KeyCode.O))
-                {
-                    gameOverPopUp.SetView();
-                }
+                }).AddTo(this);
+            this.UpdateAsObservable()
+                .Where(_=>Input.GetKeyDown(KeyCode.O))
+                .Subscribe(_ =>
+            {
+                gameOverPopUp.SetView();
             }).AddTo(this);
         }
     }
