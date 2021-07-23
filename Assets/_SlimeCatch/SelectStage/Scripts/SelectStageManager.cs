@@ -14,7 +14,7 @@ namespace _SlimeCatch.SelectStage
         private StageIconView _stageIconView;
         private CanvasGroup _canvasGroup;
         private ILoadController _loadController;
-        private const float FadeInAnimationTime = 1f;
+        private const float AnimationTime = 1f;
 
         private void Awake()
         {
@@ -27,7 +27,7 @@ namespace _SlimeCatch.SelectStage
         private async void Start()
         {
             _stageIconView.SetInteractable(_loadController.GetStageClearList());
-            await _canvasGroup.DOFade(1f,FadeInAnimationTime).ToAwaiter();
+            await _canvasGroup.DOFade(1f,AnimationTime).ToAwaiter();
             _isInput = true;
         }
 
@@ -35,8 +35,7 @@ namespace _SlimeCatch.SelectStage
         {
             if (_isInput)
             {
-                audioController.ClickOnPlaySe();
-                SceneManager.LoadSceneAsync("Stage1");
+                ChangeToStage(1);
             }
         }
 
@@ -44,8 +43,7 @@ namespace _SlimeCatch.SelectStage
         {
             if (_isInput)
             {
-                audioController.ClickOnPlaySe();
-                SceneManager.LoadSceneAsync("Stage2");
+                ChangeToStage(2);
             }
         }
 
@@ -53,8 +51,7 @@ namespace _SlimeCatch.SelectStage
         {
             if (_isInput)
             {
-                audioController.ClickOnPlaySe();
-                SceneManager.LoadSceneAsync("Stage3");
+                ChangeToStage(3);
             }
         }
 
@@ -62,8 +59,7 @@ namespace _SlimeCatch.SelectStage
         {
             if (_isInput)
             {
-                audioController.ClickOnPlaySe();
-                SceneManager.LoadSceneAsync("Stage4");
+                ChangeToStage(4);
             }
         }
 
@@ -71,8 +67,7 @@ namespace _SlimeCatch.SelectStage
         {
             if (_isInput)
             {
-                audioController.ClickOnPlaySe();
-                SceneManager.LoadSceneAsync("Stage5");
+                ChangeToStage(5);
             }
         }
 
@@ -80,9 +75,15 @@ namespace _SlimeCatch.SelectStage
         {
             if (_isInput)
             {
-                audioController.ClickOnPlaySe();
-                SceneManager.LoadSceneAsync("Stage6");
+                ChangeToStage(6);
             }
+        }
+
+        private async void ChangeToStage(int stageNo)
+        {
+            audioController.ClickOnPlaySe();
+            await _canvasGroup.DOFade(0f,AnimationTime).ToAwaiter();
+            SceneManager.LoadSceneAsync($"stage{stageNo}");
         }
 
     }
