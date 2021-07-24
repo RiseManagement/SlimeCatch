@@ -1,6 +1,6 @@
 ﻿namespace _SlimeCatch.Wave
 {
-    public enum WaveEnum
+    public enum StageEnum
     {
         Forest,
         Desert,
