@@ -18,7 +18,7 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private EnemyObject enemyObject;
 
-    [SerializeField] private WeaponNameDecision _weaponNameDecision;
+    [SerializeField] private WeaponNameDecision weaponNameDecision;
     
     // Start is called before the first frame update
     private async void Start()
@@ -37,18 +37,18 @@ public class EnemyController : MonoBehaviour
     private async UniTask ThrowWeapon()
     {
         var isBaseWeapon = false;
-        var weaponOrbit = WeaponOrbitEnum.None;
+        WeaponOrbitEnum weaponOrbit;
         await weaponList.ToUniTaskAsyncEnumerable().ForEachAwaitAsync(async x =>
         {
             var weaponObject = Instantiate(x, transform);
             if (isBaseWeapon)
             {
-                weaponOrbit = _weaponNameDecision.WeaponOrbitSearch(enemyObject.BaseWeapon);
+                weaponOrbit = weaponNameDecision.WeaponOrbitSearch(enemyObject.BaseWeapon);
                 isBaseWeapon = false;
             }
             else
             {
-                weaponOrbit = _weaponNameDecision.WeaponOrbitSearch(enemyObject.SpecialWeapon);
+                weaponOrbit = weaponNameDecision.WeaponOrbitSearch(enemyObject.SpecialWeapon);
                 isBaseWeapon = true;
             }
             weaponObject.GetComponent<IWeaponMove>().WeaponMove(new Vector3(5,0,0),weaponOrbit);
