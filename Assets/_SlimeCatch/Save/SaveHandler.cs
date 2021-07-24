@@ -11,7 +11,15 @@ namespace _SlimeCatch.Save
 
         public static bool Load(int stageNo)
         {
-            return SaveGame.Load<bool>($"stage{stageNo}");
+            return true;
+            // if (SaveGame.Exists($"stage{stageNo}"))
+            // {
+            //     return SaveGame.Load<bool>($"stage{stageNo}");
+            // }
+            // else
+            // {
+            //     return false;
+            // }
         }
     }
 }
