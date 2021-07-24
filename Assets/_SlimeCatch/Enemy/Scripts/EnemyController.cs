@@ -14,14 +14,22 @@ public class EnemyController : MonoBehaviour
     [SerializeField,Label("移動時間"),Range(1,5)] private float moveTime;
 
     [SerializeField] private List<GameObject> weaponList;
-    
+
+	private bool attackfinish = false;
+	public bool AttckFinish
+	{
+		get { return attackfinish; }
+	}    
     // Start is called before the first frame update
     private async void Start()
     {
         await Walk(moveDistance,moveTime);
         await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
         await ThrowWeapon();
-        await Walk(-moveDistance, moveTime);
+
+		attackfinish = true;
+
+		await Walk(-moveDistance, moveTime);
     }
 
     private async UniTask Walk(float distance,float time)

@@ -16,6 +16,10 @@ public class EnemyAppear : MonoBehaviour
 	[SerializeField]
 	EnemyObj enemyobj;
 
+
+	//出現した敵の取得（一体のみ）
+	GameObject Getenemyobj;
+
 	// Start is called before the first frame update
 	void Start()
     {
@@ -28,27 +32,35 @@ public class EnemyAppear : MonoBehaviour
 
     }
 
-	public void AppearEnemySize_S()
+	public GameObject AppearEnemySize_S()
 	{
 		Debug.Log("Enemy_S" + "出現した");
-		Instantiate(enemyobj.enemy_S);
+		Getenemyobj = Instantiate(enemyobj.enemy_S);
+
+		return Getenemyobj;
 	}
 
-	public void AppearEnemySize_M()
+	public GameObject AppearEnemySize_M()
 	{
 		Debug.Log("Enemy_M" + "出現した");
-		Instantiate(enemyobj.enemy_M);
+		Getenemyobj = Instantiate(enemyobj.enemy_M);
+
+		return Getenemyobj;
 	}
 
-	public void AppearEnemySize_L()
+	public GameObject AppearEnemySize_L()
 	{
 		Debug.Log("Enemy_L" + "出現した");
-		Instantiate(enemyobj.enemy_L);
+		Getenemyobj = Instantiate(enemyobj.enemy_L);
+
+		return Getenemyobj;
 	}
 
-	public void AppearEnemySize_XL()
+	public GameObject AppearEnemySize_XL()
 	{
 		Debug.Log("Enemy_XL" + "出現した");
-		Instantiate(enemyobj.enemy_XL);
+		Getenemyobj = Instantiate(enemyobj.enemy_XL);
+
+		return Getenemyobj;
 	}
 }

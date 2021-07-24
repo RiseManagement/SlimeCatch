@@ -52,3 +52,4 @@ MonoBehaviour:
       type: 3}
     enemy_XL: {fileID: 8473212906718116001, guid: 9966b8189f14286419c60001384c097e,
       type: 3}
+  Getenemyobj: {fileID: 0}
