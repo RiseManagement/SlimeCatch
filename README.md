@@ -37,21 +37,6 @@ close #85
 Please add prefix to the beginning of the message.     
 ex) feat: xxx xxx xxx
 
-- feat: A new feature
-- fix: A bug fix
-- docs: Documentation only changes
-- style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-- add: Adding some packages or libraries
-- update: update some packages or libraries
-
-# ブランチモデル
-__prefix__
-- main
-- feature
-- fix
-
-
-
 ## main
 - 直接コミットされない
 - バージョンごとのタグはここから
