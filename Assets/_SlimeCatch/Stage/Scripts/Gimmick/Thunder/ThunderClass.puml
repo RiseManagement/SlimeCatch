@@ -1,0 +1,15 @@
+﻿@startuml
+'https://plantuml.com/class-diagram
+
+namespace _SlimeCatch.Stage.Gimmick{
+    class ThunderAnimationHandler
+    class ThunderManager
+    class ThunderSeHandler
+    class ViewFlash
+    
+    ThunderManager ..> ViewFlash
+    ThunderManager ..> ThunderSeHandler
+    ThunderManager ..> ThunderAnimationHandler
+}
+
+@enduml
