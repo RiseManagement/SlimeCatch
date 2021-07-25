@@ -3,104 +3,31 @@
 
 namespace Stage{
     namespace Enemy{
-        class Move
-        class Attack
-
-
+        class EnemyController
+        class WeaponNameDecision
+        
+        EnemyController ..> WeaponNameDecision
     }
     
-    namespace Player{
-        class PlayerController
-        class ParentMove
-        note right : 入力系と移動はここで処理
-        class ParentView
-        note left : 行動力ゲームの更新
-       
+    namespace Gimmick{
+        class ThunderAnimationHandler
+        class ThunderManager
+        class ThunderSeHandler
+        class ViewFlash
         
-        PlayerController .up.> ParentView
-        PlayerController .up.> ParentMove
-        
+        ThunderManager ..> ViewFlash
+        ThunderManager ..> ThunderSeHandler
+        ThunderManager ..> ThunderAnimationHandler
     }
-
-    class Event{
-        - StageEnum stageEnum
-    }
-        
-    namespace ChildSlime{
-        class ChildStatus
-        
-        class ChildMove
-        
-        note right : ステージギミックでの動き
-        
-        class ChildController{
-            + list<Transform> ChildObjectList
-        }
-
-        ChildController ..> ChildMove   
-        ChildController ..> ChildStatus
-    }
-
-    class WaveSystem
-    
-    Stage.WaveSystem ..> Stage.Enemy.Move
-    Stage.WaveSystem ..> Stage.Enemy.Attack
-    
-    namespace View{
-        class OpenNewStagePopUp
-        class ClearPopUp
-        class GameOverView
-        class OptionsView
-        interface IView{
-            + void PopUpViw(VieEnum)
-        }
-        
-        enum VieEnum
-        
-        IView ..> VieEnum
-        IView <|.. OptionsView
-        IView <|.. GameOverView
-        IView <|.. ClearPopUp
-        IView <|.. OpenNewStagePopUp
-        
-    }
-    class BGMController
     
     namespace Weapon{
-        class Axe
-        class Sword
-        class Arrow
-        class Spear
-        class MolotovCocktail
-        class WaterBalloon
+        interface IWeaponMove
+        enum WeaponEnum
+        class WeaponLineMove
+        
+        IWeaponMove <|-- WeaponLineMove
     }
     
-    Stage.View.OptionsView ..> Stage.BGMController
-    Stage.ChildSlime.ChildController ...> Stage.Weapon.Axe
-    Stage.ChildSlime.ChildController ...> Stage.Weapon.Sword
-    Stage.ChildSlime.ChildController ...> Stage.Weapon.Arrow
-    Stage.ChildSlime.ChildController ...> Stage.Weapon.Spear
-    Stage.ChildSlime.ChildController ...> Stage.Weapon.WaterBalloon
-    Stage.ChildSlime.ChildController ...> Stage.Weapon.MolotovCocktail
-    
-    
-    class SceneManager
-    
-    note left : ゲームの停止と再開と画面遷移・切り替え
-    
-    SceneManager ..> Stage.WaveSystem
-    SceneManager ..> Stage.View.IView
-    SceneManager .up.> Stage.Player.PlayerController
-    SceneManager ..> Stage.ChildSlime.ChildController
-    SceneManager ..> Stage.Event
-
-    
-    class StageEventManager
-    StageEventManager ..> Stage.Event
-    StageEventManager ..> Stage.ChildSlime.ChildController
-    
-    class BattleManager
-    BattleManager ..> Stage.ChildSlime.ChildController
-    BattleManager ..> Stage.WaveSystem
+    Stage.Enemy.EnemyController ..> Stage.Weapon.IWeaponMove
 }
 @enduml
