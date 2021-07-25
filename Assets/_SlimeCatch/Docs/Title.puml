@@ -2,10 +2,9 @@
 'https://plantuml.com/class-diagram
 
 namespace Title{
-    class SoundController
+    class SceneController
     note left: SE・BGMの管理
-    class GameManager
-    note left: 次のシーンへの遷移部分の管理
+    class AudioController
 
 }
 
