@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChildSlime_direction : MonoBehaviour
+public class ChildlenSlimeWeaponCollider : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,14 +16,14 @@ public class ChildSlime_direction : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D other)
     {
 
-        if (collision.gameObject.tag == "Weapon")
+        if (other.gameObject.CompareTag("Weapon"))
         {
 
             Destroy(this.gameObject);
-            Destroy(collision.gameObject);
+            Destroy(other.gameObject);
         }
     }
 }

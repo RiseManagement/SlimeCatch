@@ -398,8 +398,8 @@ GameObject:
   m_Component:
   - component: {fileID: 905214189}
   - component: {fileID: 905214188}
-  - component: {fileID: 905214191}
   - component: {fileID: 905214190}
+  - component: {fileID: 905214191}
   m_Layer: 0
   m_Name: child_Slime (5)
   m_TagString: Untagged
@@ -519,8 +519,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1043573129}
   - component: {fileID: 1043573128}
-  - component: {fileID: 1043573131}
   - component: {fileID: 1043573130}
+  - component: {fileID: 1043573131}
   m_Layer: 0
   m_Name: child_Slime
   m_TagString: Untagged
@@ -640,8 +640,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1115214582}
   - component: {fileID: 1115214581}
-  - component: {fileID: 1115214584}
   - component: {fileID: 1115214583}
+  - component: {fileID: 1115214584}
   m_Layer: 0
   m_Name: child_Slime (2)
   m_TagString: Untagged
@@ -761,8 +761,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1202793698}
   - component: {fileID: 1202793697}
-  - component: {fileID: 1202793700}
   - component: {fileID: 1202793699}
+  - component: {fileID: 1202793700}
   m_Layer: 0
   m_Name: child_Slime (6)
   m_TagString: Untagged
@@ -882,8 +882,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1258338955}
   - component: {fileID: 1258338954}
-  - component: {fileID: 1258338957}
   - component: {fileID: 1258338956}
+  - component: {fileID: 1258338957}
   m_Layer: 0
   m_Name: child_Slime (3)
   m_TagString: Untagged
@@ -1205,8 +1205,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1904461117}
   - component: {fileID: 1904461116}
-  - component: {fileID: 1904461119}
   - component: {fileID: 1904461118}
+  - component: {fileID: 1904461119}
   m_Layer: 0
   m_Name: child_Slime (4)
   m_TagString: Untagged
@@ -1326,8 +1326,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2090883701}
   - component: {fileID: 2090883700}
-  - component: {fileID: 2090883703}
   - component: {fileID: 2090883702}
+  - component: {fileID: 2090883703}
   m_Layer: 0
   m_Name: child_Slime (1)
   m_TagString: Untagged
