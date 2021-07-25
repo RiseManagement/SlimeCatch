@@ -2,22 +2,30 @@
 'https://plantuml.com/class-diagram
 
 namespace SelectStage{
-    class SaveDataClass
-    note right: セーブするデータクラス
-    class SaveHandler
-    note right: セーブの実装
-
-    class SceneManager
-    note left: シーン遷移の実装
+ 
+    class ConnectStageAnimation
+    class SelectStageManager
+    class StageIconView
+    class AudioController
     
-
-    SaveHandler ..> SaveDataClass
-
-
-    
+    SelectStageManager ..> AudioController
+    SelectStageManager ..> StageIconView
 }
 
-SelectStage.SaveHandler ..> GameAnimal.SaveHandler
+namespace Save{
+    class SaveHandler
+    class SaveLoadController
+    interface ILoadController
+    interface ISaveController
+    
+    SaveLoadController ..> SaveHandler
+    
+    ILoadController <|-- SaveLoadController
+    ISaveController <|-- SaveLoadController
+}
+
+Save.SaveLoadController ..> GameAnimal.SaveHandler
+SelectStage.SelectStageManager ...> Save.ILoadController
 
 namespace GameAnimal{
     class SaveHandler
