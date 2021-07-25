@@ -5,6 +5,14 @@ using UnityEngine;
 
 public class EnemyAppear : MonoBehaviour
 {
+	public enum EnemySize
+	{
+		S,
+		M,
+		L,
+		XL
+	}
+
 	[System.Serializable]
 	struct EnemyObj
 	{
@@ -13,8 +21,7 @@ public class EnemyAppear : MonoBehaviour
 		[SerializeField] public GameObject enemy_L;
 		[SerializeField] public GameObject enemy_XL;
 	}
-	[SerializeField]
-	EnemyObj enemyobj;
+	[SerializeField] EnemyObj enemyobj;
 
 
 	//出現した敵の取得（一体のみ）
@@ -32,35 +39,23 @@ public class EnemyAppear : MonoBehaviour
 
     }
 
-	public GameObject AppearEnemySize_S()
+	public GameObject AppearEnemySize(EnemySize enemy)
 	{
-		Debug.Log("Enemy_S" + "出現した");
-		Getenemyobj = Instantiate(enemyobj.enemy_S);
-
-		return Getenemyobj;
-	}
-
-	public GameObject AppearEnemySize_M()
-	{
-		Debug.Log("Enemy_M" + "出現した");
-		Getenemyobj = Instantiate(enemyobj.enemy_M);
-
-		return Getenemyobj;
-	}
-
-	public GameObject AppearEnemySize_L()
-	{
-		Debug.Log("Enemy_L" + "出現した");
-		Getenemyobj = Instantiate(enemyobj.enemy_L);
-
-		return Getenemyobj;
-	}
-
-	public GameObject AppearEnemySize_XL()
-	{
-		Debug.Log("Enemy_XL" + "出現した");
-		Getenemyobj = Instantiate(enemyobj.enemy_XL);
-
+		switch (enemy)
+		{
+			case EnemySize.S:
+				Getenemyobj = Instantiate(enemyobj.enemy_S);
+				break;
+			case EnemySize.M:
+				Getenemyobj = Instantiate(enemyobj.enemy_M);
+				break;
+			case EnemySize.L:
+				Getenemyobj = Instantiate(enemyobj.enemy_L);
+				break;
+			case EnemySize.XL:
+				Getenemyobj = Instantiate(enemyobj.enemy_XL);
+				break;
+		}
 		return Getenemyobj;
 	}
 }

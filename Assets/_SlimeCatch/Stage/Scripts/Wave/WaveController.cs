@@ -9,20 +9,20 @@ namespace _SlimeCatch.Wave
 	{
 		//タイマー
 		const float timer = 6;
-		float timercnt;
+		float timerCount;
 
 		//ステージ情報obj
-		[SerializeField] private WaveObject waveobj;
+		[SerializeField] private WaveObject waveObj;
 
-		public int wavecnt;
-		public int slimecnt;
+		public int waveCount;
+		public int slimeCount;
 
 		//Wave進行
 		public enum WaveStep
 		{
 			EnemyAppear,    //敵の出現
 			EnemyAttack,	//敵の攻撃
-			SlimeCntReset,	//スライムのカウントリセット
+			slimeCountReset,	//スライムのカウントリセット
 			TimeReset,      //時間リセット
 			CoolTime,		//クールタイム(タイム継続)
 			NextWave,		//次のWave
@@ -32,31 +32,31 @@ namespace _SlimeCatch.Wave
 		public WaveStep wavestep;
 
 		//エネミー出現用obj
-		public GameObject enemyappearobj;
+		public GameObject enemyAppearObj;
 		EnemyAppear enemyAppearcs;
 
-		[SerializeField] private GameObject getenemyobj;
+		[SerializeField] private GameObject getenemyObj;
 
 		// Start is called before the first frame update
 		void Start()
 		{
-			timercnt = timer;
+			timerCount = timer;
 
-			if(waveobj)
+			if(waveObj)
 			{
-				wavecnt = waveobj.WaveCount;
-				slimecnt = waveobj.SlimeCount;
+				waveCount = waveObj.WaveCount;
+				slimeCount = waveObj.SlimeCount;
 			}
 
-			Instantiate(enemyappearobj);
-			enemyAppearcs = enemyappearobj.GetComponent<EnemyAppear>();
+			Instantiate(enemyAppearObj);
+			enemyAppearcs = enemyAppearObj.GetComponent<EnemyAppear>();
 		}
 
 		// Update is called once per frame
 		void Update()
 		{
 			Wavestep();
-			Debug.Log(waveobj.WaveCount - wavecnt + 1 + "Wave");			
+			Debug.Log(waveObj.WaveCount - waveCount + 1 + "Wave");			
 		}
 
 		void Wavestep()
@@ -67,7 +67,7 @@ namespace _SlimeCatch.Wave
 					EnemyAppear();
 					wavestep = WaveStep.EnemyAttack;
 					//次のステップ
-					if (slimecnt <= 0)
+					if (slimeCount <= 0)
 						wavestep = WaveStep.CoolTime;
 					break;
 
@@ -76,26 +76,26 @@ namespace _SlimeCatch.Wave
 					break;
 
 				case WaveStep.CoolTime:
-					timercnt -= Time.deltaTime;
-					if (timercnt < 0)
+					timerCount -= Time.deltaTime;
+					if (timerCount < 0)
 						wavestep = WaveStep.TimeReset;
 					break;
 
 				case WaveStep.TimeReset:
 					NextWaveTimerSet();
-					wavestep = WaveStep.SlimeCntReset;
+					wavestep = WaveStep.slimeCountReset;
 					break;
 
-				case WaveStep.SlimeCntReset:
+				case WaveStep.slimeCountReset:
 					SlimeCountReset();
 					wavestep = WaveStep.NextWave;
 					break;
 
 				case WaveStep.NextWave:
-					wavecnt--;
+					waveCount--;
 
 					wavestep = WaveStep.EnemyAppear;
-					if (wavecnt <= 0) { wavestep = WaveStep.WaveEnd; }
+					if (waveCount <= 0) { wavestep = WaveStep.WaveEnd; }
 					break;
 
 				case WaveStep.WaveEnd:
@@ -109,11 +109,11 @@ namespace _SlimeCatch.Wave
 		/// </summary>
 		void EnemyAppear()
 		{
-			if (slimecnt > 0)
+			if (slimeCount > 0)
 			{
 				//出現パターン
 				{
-					getenemyobj = enemyAppearcs.AppearEnemySize_S();
+					getenemyObj = enemyAppearcs.AppearEnemySize(global::EnemyAppear.EnemySize.S);
 				}
 			}
 		}
@@ -123,7 +123,7 @@ namespace _SlimeCatch.Wave
 		/// </summary>
 		void NextWaveTimerSet()
 		{
-			timercnt = timer;
+			timerCount = timer;
 		}
 
 		/// <summary>
@@ -131,7 +131,7 @@ namespace _SlimeCatch.Wave
 		/// </summary>
 		void SlimeCountReset()
 		{
-			slimecnt = waveobj.SlimeCount;
+			slimeCount = waveObj.SlimeCount;
 		}
 
 		/// <summary>
@@ -139,11 +139,11 @@ namespace _SlimeCatch.Wave
 		/// </summary>
 		void EnemyAttack()
 		{
-			bool attackfinish = getenemyobj.GetComponent<EnemyController>().AttckFinish;
+			bool attackfinish = getenemyObj.GetComponent<EnemyController>().AttckFinish;
 			if (attackfinish)
 			{
 				wavestep = WaveStep.EnemyAppear;
-				slimecnt--;
+				slimeCount--;
 			}
 		}
 	}
