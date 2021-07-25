@@ -9,6 +9,8 @@ namespace _SlimeCatch.Stage.Gimmick
     {
         private Animator _animator;
         private SpriteRenderer _spriteRenderer;
+        [SerializeField] private ViewFlash viewFlash;
+        
         private static readonly int IsThunder = Animator.StringToHash("IsThunder");
         [SerializeField,Range(5,20)] private int thunderLoopTime;
         [SerializeField] private float fadeAnimationTime = 1f;
