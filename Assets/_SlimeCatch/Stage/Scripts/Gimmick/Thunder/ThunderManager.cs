@@ -11,7 +11,9 @@ namespace _SlimeCatch.Stage.Gimmick
         [SerializeField] private ViewFlash viewFlash;
         [SerializeField] private ThunderSeHandler thunderSeHandler;
 
-        private const float LoopTime = 12f;
+        //指定時間+7sが実際のループ時間
+        //todo 雷アニメーションを待っている時間などが考慮されていない
+        private const float LoopTime = 20f;
 
         private void Start()
         {
