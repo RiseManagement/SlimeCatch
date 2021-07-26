@@ -1,146 +1,47 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _SlimeCatch.Wave
 {
 	public class WaveController : MonoBehaviour
 	{
-		//タイマー
-		private const float Timer = 6;
-		private float _timerCount;
 
 		//ステージ情報obj
 		[SerializeField] private WaveObject waveObj;
-
-		private int _waveCount;
-		private int _slimeCount;
-
-		//Wave進行
-		public enum WaveStep
-		{
-			EnemyAppear,    //敵の出現
-			EnemyAttack,	//敵の攻撃
-			slimeCountReset,	//スライムのカウントリセット
-			TimeReset,      //時間リセット
-			CoolTime,		//クールタイム(タイム継続)
-			NextWave,		//次のWave
-			WaveEnd,		//Wave終了
-		}
-
-		public WaveStep wavestep;
-
-		//エネミー出現用obj
-		public GameObject enemyAppearObj;
-		private EnemyAppear _enemyAppears;
-
-		[SerializeField] private GameObject getenemyObj;
+		[SerializeField] private List<GameObject> enemyObjectList;
 
 		// Start is called before the first frame update
-		private void Start()
+		private async void Start()
 		{
-			_timerCount = Timer;
-
-			if(waveObj)
+			for (var waveCount = 0; waveCount < waveObj.WaveCount; waveCount++)
 			{
-				_waveCount = waveObj.WaveCount;
-				_slimeCount = waveObj.SlimeCount;
-			}
-
-			Instantiate(enemyAppearObj);
-			_enemyAppears = enemyAppearObj.GetComponent<EnemyAppear>();
-		}
-
-		// Update is called once per frame
-		void Update()
-		{
-			WaveStepUpdate();
-		}
-
-		private void WaveStepUpdate()
-		{
-			switch (wavestep)
-			{
-				case WaveStep.EnemyAppear:
-					EnemyAppear();
-					wavestep = WaveStep.EnemyAttack;
-					//次のステップ
-					if (_slimeCount <= 0)
-						wavestep = WaveStep.CoolTime;
-					break;
-
-				case WaveStep.EnemyAttack:
-					EnemyAttack();
-					break;
-
-				case WaveStep.CoolTime:
-					_timerCount -= Time.deltaTime;
-					if (_timerCount < 0)
-						wavestep = WaveStep.TimeReset;
-					break;
-
-				case WaveStep.TimeReset:
-					NextWaveTimerSet();
-					wavestep = WaveStep.slimeCountReset;
-					break;
-
-				case WaveStep.slimeCountReset:
-					SlimeCountReset();
-					wavestep = WaveStep.NextWave;
-					break;
-
-				case WaveStep.NextWave:
-					_waveCount--;
-
-					wavestep = WaveStep.EnemyAppear;
-					if (_waveCount <= 0) { wavestep = WaveStep.WaveEnd; }
-					break;
-
-				case WaveStep.WaveEnd:
-					Debug.Log("Wave終了");
-					break;
+				Debug.Log($"{waveCount+1}Wave目");
+				var result = await UniTask.WhenAny(EnemyAppearCycle());
+				Debug.Log($"f time:{DateTime.Now}");
+				await UniTask.Delay(TimeSpan.FromSeconds(6f));
+				Debug.Log($"e time:{DateTime.Now}");
 			}
 		}
 
-		/// <summary>
-		/// 敵の出現
-		/// </summary>
-		private void EnemyAppear()
+		private async UniTask<bool> EnemyAppearCycle()
 		{
-			if (_slimeCount > 0)
+			var r = Random.Range(1, 5);
+			for (var enemyIndex = 0; enemyIndex < r; enemyIndex++)
 			{
-				//出現パターン
+				var enemy = Instantiate(enemyObjectList[Random.Range(0, enemyObjectList.Count)],transform);
+				var enemyController = enemy.GetComponent<EnemyController>();
+				await UniTask.WaitUntil(() => enemyController.AttackFinish);
+				if (enemyIndex + 1 == r)
 				{
-					getenemyObj = _enemyAppears.AppearEnemySize(global::EnemyAppear.EnemySize.S);
+					await UniTask.WaitUntil(() => enemyController.MoveEnd);
 				}
 			}
-		}
 
-		/// <summary>
-		/// 次のWaveの移行のためのタイマーセット
-		/// </summary>
-		void NextWaveTimerSet()
-		{
-			_timerCount = Timer;
-		}
-
-		/// <summary>
-		/// スライムのカウントをリセット
-		/// </summary>
-		void SlimeCountReset()
-		{
-			_slimeCount = waveObj.SlimeCount;
-		}
-
-		/// <summary>
-		/// 敵の攻撃終了
-		/// </summary>
-		void EnemyAttack()
-		{
-			bool attackfinish = getenemyObj.GetComponent<EnemyController>().AttackFinish;
-			if (attackfinish)
-			{
-				wavestep = WaveStep.EnemyAppear;
-				_slimeCount--;
-			}
+			return true;
 		}
 	}
 }
