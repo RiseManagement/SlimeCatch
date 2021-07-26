@@ -168,7 +168,7 @@ PrefabInstance:
     - target: {fileID: 1682609907135125857, guid: c62b2bb8e35481b4ea723f077e0bb36b,
         type: 3}
       propertyPath: m_Name
-      value: child_Slime (12)
+      value: ChildSlime
       objectReference: {fileID: 0}
     - target: {fileID: 1682609907135125871, guid: c62b2bb8e35481b4ea723f077e0bb36b,
         type: 3}
@@ -243,7 +243,7 @@ PrefabInstance:
     - target: {fileID: 1682609907135125857, guid: c62b2bb8e35481b4ea723f077e0bb36b,
         type: 3}
       propertyPath: m_Name
-      value: child_Slime (9)
+      value: ChildSlime
       objectReference: {fileID: 0}
     - target: {fileID: 1682609907135125871, guid: c62b2bb8e35481b4ea723f077e0bb36b,
         type: 3}
@@ -548,7 +548,7 @@ PrefabInstance:
     - target: {fileID: 1682609907135125857, guid: c62b2bb8e35481b4ea723f077e0bb36b,
         type: 3}
       propertyPath: m_Name
-      value: child_Slime (8)
+      value: ChildSlime
       objectReference: {fileID: 0}
     - target: {fileID: 1682609907135125871, guid: c62b2bb8e35481b4ea723f077e0bb36b,
         type: 3}
@@ -704,7 +704,7 @@ PrefabInstance:
     - target: {fileID: 1682609907135125857, guid: c62b2bb8e35481b4ea723f077e0bb36b,
         type: 3}
       propertyPath: m_Name
-      value: child_Slime (11)
+      value: ChildSlime
       objectReference: {fileID: 0}
     - target: {fileID: 1682609907135125871, guid: c62b2bb8e35481b4ea723f077e0bb36b,
         type: 3}
@@ -860,7 +860,7 @@ PrefabInstance:
     - target: {fileID: 1682609907135125857, guid: c62b2bb8e35481b4ea723f077e0bb36b,
         type: 3}
       propertyPath: m_Name
-      value: child_Slime (10)
+      value: ChildSlime
       objectReference: {fileID: 0}
     - target: {fileID: 1682609907135125871, guid: c62b2bb8e35481b4ea723f077e0bb36b,
         type: 3}
@@ -987,7 +987,7 @@ PrefabInstance:
     - target: {fileID: 1682609907135125857, guid: c62b2bb8e35481b4ea723f077e0bb36b,
         type: 3}
       propertyPath: m_Name
-      value: child_Slime (7)
+      value: ChildSlime
       objectReference: {fileID: 0}
     - target: {fileID: 1682609907135125871, guid: c62b2bb8e35481b4ea723f077e0bb36b,
         type: 3}
@@ -1062,7 +1062,7 @@ PrefabInstance:
     - target: {fileID: 1682609907135125857, guid: c62b2bb8e35481b4ea723f077e0bb36b,
         type: 3}
       propertyPath: m_Name
-      value: child_Slime
+      value: ChildSlime
       objectReference: {fileID: 0}
     - target: {fileID: 1682609907135125871, guid: c62b2bb8e35481b4ea723f077e0bb36b,
         type: 3}
