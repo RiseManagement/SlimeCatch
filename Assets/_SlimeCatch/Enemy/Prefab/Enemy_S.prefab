@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8473212906718116003}
   - component: {fileID: 8473212906718116002}
   - component: {fileID: 8473212906718116004}
+  - component: {fileID: -836077326526250847}
   m_Layer: 0
   m_Name: Enemy_S
   m_TagString: Untagged
@@ -101,3 +102,24 @@ MonoBehaviour:
   - {fileID: 81079531344277352, guid: 8b214a2be9194bf4fb8c0475eb0f1d38, type: 3}
   - {fileID: 5891285841019303545, guid: 4b3e87341a4c98b48ae39031c642bc63, type: 3}
   - {fileID: 9200208618667222180, guid: 34003ddd67c789347a01f11ca14b15c1, type: 3}
+  enemyObject: {fileID: 11400000, guid: 6a7c8e6332f40b34fb8560d2421831a2, type: 2}
+  _weaponNameDecision: {fileID: -836077326526250847}
+--- !u!114 &-836077326526250847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473212906718116001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcc5b72ddc5a99a4ba63da519fff0812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponObjectList:
+  - {fileID: 11400000, guid: 8d0850cbcb1c6a34ea61222bbea425ea, type: 2}
+  - {fileID: 11400000, guid: 58cf9fd604978f54a8c744b8668c55cf, type: 2}
+  - {fileID: 11400000, guid: cb1b6dc466784224ebfd4a396161e330, type: 2}
+  - {fileID: 11400000, guid: ffd4c7407709c5c4fb762930f53eaf97, type: 2}
+  - {fileID: 11400000, guid: 8d34353dcd7cec04285254f78a5e9913, type: 2}
+  - {fileID: 11400000, guid: 400a205b5ca027c4fb9579c7f76438bc, type: 2}

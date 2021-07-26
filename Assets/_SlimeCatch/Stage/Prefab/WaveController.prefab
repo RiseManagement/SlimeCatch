@@ -43,9 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61f8a9646ec0a2e468ecb3bc8a7c26aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stagemanagerobj: {fileID: 11400000, guid: 9e57dcc5d0c801447b34de4467207de0, type: 2}
-  wavecnt: 0
-  slimecnt: 0
-  stagename: 0
-  enemyappearobj: {fileID: 6617356680127790613, guid: 8acf119ebd71cc841b8c0a79c8a168c6,
+  waveObj: {fileID: 0}
+  waveCount: 0
+  slimeCount: 0
+  wavestep: 0
+  enemyAppearObj: {fileID: 6617356680127790613, guid: 8acf119ebd71cc841b8c0a79c8a168c6,
     type: 3}
+  getenemyObj: {fileID: 0}

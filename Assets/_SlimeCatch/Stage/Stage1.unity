@@ -514,6 +514,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaveController
       objectReference: {fileID: 0}
+    - target: {fileID: 5304574305715088411, guid: d29e295cebaf8544282ce480d6a9aaec,
+        type: 3}
+      propertyPath: waveObj
+      value: 
+      objectReference: {fileID: 11400000, guid: 5727f68d8d4e1bb4696abe5a362be04f,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d29e295cebaf8544282ce480d6a9aaec, type: 3}
 --- !u!1 &1484291842

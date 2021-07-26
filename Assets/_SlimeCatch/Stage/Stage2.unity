@@ -957,6 +957,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5304574305715088411, guid: d29e295cebaf8544282ce480d6a9aaec,
         type: 3}
+      propertyPath: waveObj
+      value: 
+      objectReference: {fileID: 11400000, guid: 641d8cd3387f5bd479f102e1044dd7e3,
+        type: 2}
+    - target: {fileID: 5304574305715088411, guid: d29e295cebaf8544282ce480d6a9aaec,
+        type: 3}
       propertyPath: waveobj
       value: 
       objectReference: {fileID: 11400000, guid: 641d8cd3387f5bd479f102e1044dd7e3,
