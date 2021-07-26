@@ -1,7 +1,4 @@
-﻿using NaughtyAttributes;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyAppear : MonoBehaviour
 {
@@ -26,18 +23,6 @@ public class EnemyAppear : MonoBehaviour
 
 	//出現した敵の取得（一体のみ）
 	GameObject Getenemyobj;
-
-	// Start is called before the first frame update
-	void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
 	public GameObject AppearEnemySize(EnemySize enemy)
 	{

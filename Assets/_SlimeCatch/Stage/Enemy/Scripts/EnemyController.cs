@@ -16,13 +16,9 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private List<GameObject> weaponList;
 
-	private bool attackfinish = false;
-	public bool AttckFinish
-	{
-		get { return attackfinish; }
-	}
+    public bool AttackFinish { get; private set; }
 
-	[SerializeField] private EnemyObject enemyObject;
+    [SerializeField] private EnemyObject enemyObject;
 
     [SerializeField] private WeaponNameDecision _weaponNameDecision;
     
@@ -33,7 +29,7 @@ public class EnemyController : MonoBehaviour
         await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
         await ThrowWeapon();
 
-		attackfinish = true;
+		AttackFinish = true;
 
 		await Walk(-moveDistance, moveTime);
     }
