@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _SlimeCatch.Weapon
 {
-    public class WeaponLineMove : MonoBehaviour,IWeaponMove
+    public class WeaponMoveHandler : MonoBehaviour,IWeaponMove
     {
         private Transform _transform;
         private Vector3 _firstPosition;

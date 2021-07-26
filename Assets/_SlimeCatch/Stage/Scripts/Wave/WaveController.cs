@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -19,11 +18,8 @@ namespace _SlimeCatch.Wave
 		{
 			for (var waveCount = 0; waveCount < waveObj.WaveCount; waveCount++)
 			{
-				Debug.Log($"{waveCount+1}Wave目");
-				var result = await UniTask.WhenAny(EnemyAppearCycle());
-				Debug.Log($"f time:{DateTime.Now}");
+				await UniTask.WhenAny(EnemyAppearCycle());
 				await UniTask.Delay(TimeSpan.FromSeconds(6f));
-				Debug.Log($"e time:{DateTime.Now}");
 			}
 		}
 
