@@ -43,10 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61f8a9646ec0a2e468ecb3bc8a7c26aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveObj: {fileID: 0}
-  waveCount: 0
-  slimeCount: 0
-  wavestep: 0
-  enemyAppearObj: {fileID: 6617356680127790613, guid: 8acf119ebd71cc841b8c0a79c8a168c6,
-    type: 3}
-  getenemyObj: {fileID: 0}
+  waveObj: {fileID: 11400000, guid: 5727f68d8d4e1bb4696abe5a362be04f, type: 2}
+  enemyObjectList:
+  - {fileID: 11400000, guid: 00261307cb29ca14d9c63da9f8d62f4e, type: 2}
+  - {fileID: 11400000, guid: 6a7c8e6332f40b34fb8560d2421831a2, type: 2}
+  - {fileID: 11400000, guid: b7f37b13bbe5bff49b5e8e1f4254b0f6, type: 2}
+  - {fileID: 11400000, guid: 12e83bda61e05a040a137b76c2408cc4, type: 2}
