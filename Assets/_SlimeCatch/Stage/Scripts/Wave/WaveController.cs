@@ -18,6 +18,7 @@ namespace _SlimeCatch.Wave
 		{
 			for (var waveCount = 0; waveCount < waveObj.WaveCount; waveCount++)
 			{
+				Debug.Log($"{waveCount+1}ウェーブ目");
 				await UniTask.WhenAny(EnemyAppearCycle());
 				await UniTask.Delay(TimeSpan.FromSeconds(6f));
 			}
