@@ -1,4 +1,5 @@
 ﻿using System;
+using System;
 using System.Collections.Generic;
 using _SlimeCatch.Enemy;
 using Cysharp.Threading.Tasks;
@@ -18,7 +19,6 @@ namespace _SlimeCatch.Wave
 		{
 			for (var waveCount = 0; waveCount < waveObj.WaveCount; waveCount++)
 			{
-				Debug.Log($"{waveCount+1}ウェーブ目");
 				await UniTask.WhenAny(EnemyAppearCycle(waveCount));
 				await UniTask.Delay(TimeSpan.FromSeconds(WaveIntervalTime));
 			}
@@ -26,7 +26,6 @@ namespace _SlimeCatch.Wave
 
 		private async UniTask<bool> EnemyAppearCycle(int waveIndex)
 		{
-			//todo S,Mがランダムで出現する
 			var sCount = waveObj.WaveEnemyInfoList[waveIndex].S;
 			var mCount = waveObj.WaveEnemyInfoList[waveIndex].M;
 			var smCount = sCount + mCount;
@@ -53,32 +52,23 @@ namespace _SlimeCatch.Wave
 						r = 0;
 					}
 				}
-				var enemyObject = Instantiate(enemyObjectList[r].EnemyGameObject, transform);
-				enemyController = enemyObject.GetComponent<EnemyController>();
-				await UniTask.WaitUntil(() => enemyController.AttackFinish);
-				
+
+				await EnemyAttack(r);
+
 			}
 			
-			// //todo 関数にまとめたい
-			// //Lの出現
-			// for (var lIndex = 0; lIndex < waveObj.WaveEnemyInfoList[waveIndex].L; lIndex++)
-			// {
-			// 	enemyObject = Instantiate(enemyObjectList[2].EnemyGameObject, transform);
-			// 	await EnemyAttack(enemyObject);
-			// }
-			//
-			// //XLの出現
-			// for (var lIndex = 0; lIndex < waveObj.WaveEnemyInfoList[waveIndex].L; lIndex++)
-			// {
-			// 	enemyObject = Instantiate(enemyObjectList[3].EnemyGameObject, transform);
-			// 	await EnemyAttack(enemyObject);
-			//
-			// 	//todo ウェーブの間隔6sが実装出ていない
-			// 	if (lIndex + 1 == waveObj.WaveEnemyInfoList[waveIndex].L)
-			// 	{
-			// 		await WaitEndMove();
-			// 	}
-			// }
+			//todo 関数にまとめたい
+			//Lの出現
+			for (var lIndex = 0; lIndex < waveObj.WaveEnemyInfoList[waveIndex].L; lIndex++)
+			{
+				await EnemyAttack(2);
+			}
+			
+			//XLの出現
+			for (var xlIndex = 0; xlIndex < waveObj.WaveEnemyInfoList[waveIndex].XL; xlIndex++)
+			{
+				await EnemyAttack(3);
+			}
 			
 			//waveの最後の敵の場合は消えるまで待つ
 			if (waveEnemyIndex == waveObj.WaveEnemyInfoList[waveIndex].waveSumEnemyCount())
@@ -87,6 +77,13 @@ namespace _SlimeCatch.Wave
 			}
 			
 			return true;
+
+			async UniTask EnemyAttack(int enemyIndex)
+			{
+				var enemyObject = Instantiate(enemyObjectList[enemyIndex].EnemyGameObject, transform);
+				enemyController = enemyObject.GetComponent<EnemyController>();
+				await UniTask.WaitUntil(() => enemyController.AttackFinish);
+			}
 		}
 	}
 }
