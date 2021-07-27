@@ -15,3 +15,12 @@ MonoBehaviour:
   StageName: 4
   SlimeCount: 8
   WaveCount: 2
+  WaveEnemyInfoList:
+  - S: 6
+    M: 5
+    L: 0
+    XL: 0
+  - S: 4
+    M: 2
+    L: 3
+    XL: 2
