@@ -21,5 +21,7 @@ namespace _SlimeCatch.Wave
         [Min(0)] public int M;
         [Min(0)] public int L;
         [Min(0)] public int XL;
+
+        public int waveSumEnemyCount() => S + M + L + XL;
     }
 }
