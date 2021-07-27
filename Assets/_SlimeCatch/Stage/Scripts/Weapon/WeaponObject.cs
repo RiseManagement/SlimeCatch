@@ -8,5 +8,6 @@ namespace _SlimeCatch.Weapon
     {
         [ReadOnly] public WeaponEnum WeaponName;
         [ReadOnly] public WeaponOrbitEnum WeaponOrbit;
+        public GameObject WeaponGameObject;
     }
 }
