@@ -14,12 +14,19 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField,Label("移動時間"),Range(1,5)] private float moveTime;
 
-    [SerializeField] private List<GameObject> weaponList;
+    public bool AttackFinish { get; private set; }
+    public bool MoveEnd { get; private set; }
 
     [SerializeField] private EnemyObject enemyObject;
 
-    [SerializeField] private WeaponNameDecision _weaponNameDecision;
+    private WeaponDecision _weaponDecision;
+    private const int EnemyThrowWeaponCount = 4;
     
+    private void Awake()
+    {
+        _weaponDecision = GetComponent<WeaponDecision>();
+    }
+
     // Start is called before the first frame update
     private async void Start()
     {
@@ -27,6 +34,8 @@ public class EnemyController : MonoBehaviour
         await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
         await ThrowWeapon();
         await Walk(-moveDistance, moveTime);
+        MoveEnd = true;
+        Destroy(gameObject);
     }
 
     private async UniTask Walk(float distance,float time)
@@ -36,24 +45,23 @@ public class EnemyController : MonoBehaviour
 
     private async UniTask ThrowWeapon()
     {
-        var isBaseWeapon = false;
-        var weaponOrbit = WeaponOrbitEnum.None;
-        await weaponList.ToUniTaskAsyncEnumerable().ForEachAwaitAsync(async x =>
+
+        for (var throwIndex = 0; throwIndex < EnemyThrowWeaponCount; throwIndex++)
         {
-            var weaponObject = Instantiate(x, transform);
-            if (isBaseWeapon)
+            WeaponObject weaponInfo = null;
+            if (enemyObject.SpecialWeapon != WeaponEnum.None && throwIndex % 2 == 0)
             {
-                weaponOrbit = _weaponNameDecision.WeaponOrbitSearch(enemyObject.BaseWeapon);
-                isBaseWeapon = false;
+                weaponInfo = _weaponDecision.WeaponOrbitSearch(enemyObject.SpecialWeapon);
             }
             else
             {
-                weaponOrbit = _weaponNameDecision.WeaponOrbitSearch(enemyObject.SpecialWeapon);
-                isBaseWeapon = true;
+                weaponInfo = _weaponDecision.WeaponOrbitSearch(enemyObject.BaseWeapon);
             }
-            weaponObject.GetComponent<IWeaponMove>().WeaponMove(new Vector3(5,0,0),weaponOrbit);
+            var weaponObject = Instantiate(weaponInfo.WeaponGameObject, transform);
+            weaponObject.GetComponent<IWeaponMove>().WeaponMove(new Vector3(5,0,0),weaponInfo.WeaponOrbit);
             await UniTask.Delay(TimeSpan.FromSeconds(2f));
+            AttackFinish = true;
             Destroy(weaponObject);
-        });
+        }
     }
 }

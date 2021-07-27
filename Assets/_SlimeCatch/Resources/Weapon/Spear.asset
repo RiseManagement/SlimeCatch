@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponName: 5
   WeaponOrbit: 0
+  WeaponGameObject: {fileID: 9200208618667222180, guid: 34003ddd67c789347a01f11ca14b15c1,
+    type: 3}

@@ -11,5 +11,6 @@ namespace _SlimeCatch.Enemy
         [ReadOnly] public int EnemySize;
         [ReadOnly] public WeaponEnum BaseWeapon;
         [ReadOnly] public WeaponEnum SpecialWeapon;
+        public GameObject EnemyGameObject;
     }
 }
