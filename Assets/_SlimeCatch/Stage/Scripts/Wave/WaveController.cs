@@ -1,5 +1,4 @@
 ﻿using System;
-using System;
 using System.Collections.Generic;
 using _SlimeCatch.Enemy;
 using Cysharp.Threading.Tasks;
@@ -39,7 +38,7 @@ namespace _SlimeCatch.Wave
 				if (r % 2 == 0)
 				{
 					sCount--;
-					if (sCount == 0)
+					if (sCount <= 0)
 					{
 						r = 1;
 					}
@@ -47,7 +46,7 @@ namespace _SlimeCatch.Wave
 				else
 				{
 					mCount--;
-					if (mCount == 0)
+					if (mCount <= 0)
 					{
 						r = 0;
 					}
@@ -56,8 +55,7 @@ namespace _SlimeCatch.Wave
 				await EnemyAttack(r);
 
 			}
-			
-			//todo 関数にまとめたい
+		
 			//Lの出現
 			for (var lIndex = 0; lIndex < waveObj.WaveEnemyInfoList[waveIndex].L; lIndex++)
 			{
