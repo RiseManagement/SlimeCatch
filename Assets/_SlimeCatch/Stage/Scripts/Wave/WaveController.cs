@@ -11,64 +11,82 @@ namespace _SlimeCatch.Wave
 	{
 		[SerializeField] private WaveObject waveObj;
 		[SerializeField] private List<EnemyObject> enemyObjectList;
+		private const float WaveIntervalTime = 6f;
 
 		// Start is called before the first frame update
 		private async void Start()
 		{
 			for (var waveCount = 0; waveCount < waveObj.WaveCount; waveCount++)
 			{
+				Debug.Log($"{waveCount+1}ウェーブ目");
 				await UniTask.WhenAny(EnemyAppearCycle(waveCount));
-				await UniTask.Delay(TimeSpan.FromSeconds(6f));
+				await UniTask.Delay(TimeSpan.FromSeconds(WaveIntervalTime));
 			}
 		}
 
 		private async UniTask<bool> EnemyAppearCycle(int waveIndex)
 		{
+			//todo S,Mがランダムで出現する
 			var sCount = waveObj.WaveEnemyInfoList[waveIndex].S;
 			var mCount = waveObj.WaveEnemyInfoList[waveIndex].M;
 			var smCount = sCount + mCount;
-			GameObject enemyObject;
+			var waveEnemyIndex = 0;
+			EnemyController enemyController = null; 
 			//S,Mの敵の出現
 			for (var smIndex = 0; smIndex < smCount; smIndex++)
 			{
 				var r = Random.Range(0, 2);
-				//todo S,Mの出現するに合わせて出現部分を修正する
+				waveEnemyIndex++;
 				if (r % 2 == 0)
 				{
-					Debug.Log("S敵の出現");
-					enemyObject = Instantiate(enemyObjectList[0].EnemyGameObject, transform);
+					sCount--;
+					if (sCount == 0)
+					{
+						r = 1;
+					}
 				}
 				else
 				{
-					Debug.Log("M敵の出現");
-					enemyObject = Instantiate(enemyObjectList[1].EnemyGameObject, transform);
+					mCount--;
+					if (mCount == 0)
+					{
+						r = 0;
+					}
 				}
-
-				await EnemyAttack(enemyObject);
-			}
-			
-			//todo 関数にまとめたい
-			//Lの出現
-			for (var lIndex = 0; lIndex < waveObj.WaveEnemyInfoList[waveIndex].L; lIndex++)
-			{
-				enemyObject = Instantiate(enemyObjectList[2].EnemyGameObject, transform);
-				await EnemyAttack(enemyObject);
-			}
-			
-			//XLの出現
-			for (var lIndex = 0; lIndex < waveObj.WaveEnemyInfoList[waveIndex].L; lIndex++)
-			{
-				enemyObject = Instantiate(enemyObjectList[3].EnemyGameObject, transform);
-				await EnemyAttack(enemyObject);
-			}
-
-			return true;
-
-			async UniTask EnemyAttack(GameObject enemyGameObject)
-			{
-				var enemyController = enemyGameObject.GetComponent<EnemyController>();
+				var enemyObject = Instantiate(enemyObjectList[r].EnemyGameObject, transform);
+				enemyController = enemyObject.GetComponent<EnemyController>();
 				await UniTask.WaitUntil(() => enemyController.AttackFinish);
+				
 			}
+			
+			// //todo 関数にまとめたい
+			// //Lの出現
+			// for (var lIndex = 0; lIndex < waveObj.WaveEnemyInfoList[waveIndex].L; lIndex++)
+			// {
+			// 	enemyObject = Instantiate(enemyObjectList[2].EnemyGameObject, transform);
+			// 	await EnemyAttack(enemyObject);
+			// }
+			//
+			// //XLの出現
+			// for (var lIndex = 0; lIndex < waveObj.WaveEnemyInfoList[waveIndex].L; lIndex++)
+			// {
+			// 	enemyObject = Instantiate(enemyObjectList[3].EnemyGameObject, transform);
+			// 	await EnemyAttack(enemyObject);
+			//
+			// 	//todo ウェーブの間隔6sが実装出ていない
+			// 	if (lIndex + 1 == waveObj.WaveEnemyInfoList[waveIndex].L)
+			// 	{
+			// 		await WaitEndMove();
+			// 	}
+			// }
+			
+			//waveの最後の敵の場合は消えるまで待つ
+			if (waveEnemyIndex == waveObj.WaveEnemyInfoList[waveIndex].waveSumEnemyCount())
+			{
+				await UniTask.WaitUntil(() => !(enemyController is null) && enemyController.MoveEnd);
+			}
+			
+			return true;
 		}
 	}
 }
