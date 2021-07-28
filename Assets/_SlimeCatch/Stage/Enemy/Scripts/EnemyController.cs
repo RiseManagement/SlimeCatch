@@ -51,23 +51,94 @@ public class EnemyController : MonoBehaviour
 
     private async UniTask ThrowWeapon()
     {
-
-        for (var throwIndex = 0; throwIndex < EnemyThrowWeaponCount; throwIndex++)
+        
+        if (enemyObject.EnemySize == 2)
         {
-            WeaponObject weaponInfo = null;
-            if (enemyObject.SpecialWeapon != WeaponEnum.None && throwIndex % 2 == 0)
+            
+            for (var throwIndex = 0; throwIndex < EnemyThrowWeaponCount; throwIndex++)
             {
-                weaponInfo = _weaponDecision.WeaponOrbitSearch(enemyObject.SpecialWeapon);
+                WeaponObject weaponInfo = null;
+                if (enemyObject.SpecialWeapon != WeaponEnum.None && throwIndex % 2 == 0)
+                {
+                    weaponInfo = _weaponDecision.WeaponOrbitSearch(enemyObject.SpecialWeapon);
+                }
+                else
+                {
+                    weaponInfo = _weaponDecision.WeaponOrbitSearch(enemyObject.BaseWeapon);
+                }
+
+                var weaponObject = Instantiate(weaponInfo.WeaponGameObject, new Vector3(-5.2f, -0.5f, 0), Quaternion.Euler(0, 180, 40), transform);
+                weaponObject.GetComponent<IWeaponMove>().WeaponMove(new Vector3(5, 0, 0), weaponInfo.WeaponOrbit);
+                await UniTask.Delay(TimeSpan.FromSeconds(2f));
+                AttackFinish = true;
+                Destroy(weaponObject);
             }
-            else
+        }
+        if (enemyObject.EnemySize == 3)
+        {
+            
+            for (var throwIndex = 0; throwIndex < EnemyThrowWeaponCount; throwIndex++)
             {
-                weaponInfo = _weaponDecision.WeaponOrbitSearch(enemyObject.BaseWeapon);
+                WeaponObject weaponInfo = null;
+                if (enemyObject.SpecialWeapon != WeaponEnum.None && throwIndex % 2 == 0)
+                {
+                    weaponInfo = _weaponDecision.WeaponOrbitSearch(enemyObject.SpecialWeapon);
+                }
+                else
+                {
+                    weaponInfo = _weaponDecision.WeaponOrbitSearch(enemyObject.BaseWeapon);
+                }
+
+                var weaponObject = Instantiate(weaponInfo.WeaponGameObject, new Vector3(-5.2f, -0.4f, 0), Quaternion.Euler(0, 180, 40), transform);
+                weaponObject.GetComponent<IWeaponMove>().WeaponMove(new Vector3(5, 0, 0), weaponInfo.WeaponOrbit);
+                await UniTask.Delay(TimeSpan.FromSeconds(2f));
+                AttackFinish = true;
+                Destroy(weaponObject);
             }
-            var weaponObject = Instantiate(weaponInfo.WeaponGameObject, transform);
-            weaponObject.GetComponent<IWeaponMove>().WeaponMove(new Vector3(5,0,0),weaponInfo.WeaponOrbit);
-            await UniTask.Delay(TimeSpan.FromSeconds(2f));
-            AttackFinish = true;
-            Destroy(weaponObject);
+        }
+        if (enemyObject.EnemySize == 4)
+        {
+            
+            for (var throwIndex = 0; throwIndex < EnemyThrowWeaponCount; throwIndex++)
+            {
+                WeaponObject weaponInfo = null;
+                if (enemyObject.SpecialWeapon != WeaponEnum.None && throwIndex % 2 == 0)
+                {
+                    weaponInfo = _weaponDecision.WeaponOrbitSearch(enemyObject.SpecialWeapon);
+                }
+                else
+                {
+                    weaponInfo = _weaponDecision.WeaponOrbitSearch(enemyObject.BaseWeapon);
+                }
+
+                var weaponObject = Instantiate(weaponInfo.WeaponGameObject, new Vector3(-5.2f, -0.3f, 0), Quaternion.Euler(0, 180, 40), transform);
+                weaponObject.GetComponent<IWeaponMove>().WeaponMove(new Vector3(5, 0, 0), weaponInfo.WeaponOrbit);
+                await UniTask.Delay(TimeSpan.FromSeconds(2f));
+                AttackFinish = true;
+                Destroy(weaponObject);
+            }
+        }
+        if (enemyObject.EnemySize == 6)
+        {
+            
+            for (var throwIndex = 0; throwIndex < EnemyThrowWeaponCount; throwIndex++)
+            {
+                WeaponObject weaponInfo = null;
+                if (enemyObject.SpecialWeapon != WeaponEnum.None && throwIndex % 2 == 0)
+                {
+                    weaponInfo = _weaponDecision.WeaponOrbitSearch(enemyObject.SpecialWeapon);
+                }
+                else
+                {
+                    weaponInfo = _weaponDecision.WeaponOrbitSearch(enemyObject.BaseWeapon);
+                }
+
+                var weaponObject = Instantiate(weaponInfo.WeaponGameObject, new Vector3(-5.2f, -0.2f, 0), Quaternion.Euler(0, 180, 40), transform);
+                weaponObject.GetComponent<IWeaponMove>().WeaponMove(new Vector3(5, 0, 0), weaponInfo.WeaponOrbit);
+                await UniTask.Delay(TimeSpan.FromSeconds(2f));
+                AttackFinish = true;
+                Destroy(weaponObject);
+            }
         }
     }
 }
