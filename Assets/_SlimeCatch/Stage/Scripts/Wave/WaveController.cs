@@ -12,6 +12,8 @@ namespace _SlimeCatch.Wave
 		[SerializeField] private WaveObject waveObj;
 		[SerializeField] private List<EnemyObject> enemyObjectList;
 		private const float WaveIntervalTime = 6f;
+		public bool endWave;
+		public StageEnum GetStageEnum() => waveObj.StageName;
 
 		// Start is called before the first frame update
 		private async void Start()
@@ -19,6 +21,10 @@ namespace _SlimeCatch.Wave
 			for (var waveCount = 0; waveCount < waveObj.WaveCount; waveCount++)
 			{
 				await UniTask.WhenAny(EnemyAppearCycle(waveCount));
+				if (waveCount + 1 == waveObj.WaveCount)
+				{
+					endWave = true;
+				}
 				await UniTask.Delay(TimeSpan.FromSeconds(WaveIntervalTime));
 			}
 		}
