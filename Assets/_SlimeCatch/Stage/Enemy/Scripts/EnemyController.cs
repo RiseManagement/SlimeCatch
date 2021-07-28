@@ -18,12 +18,14 @@ public class EnemyController : MonoBehaviour
     public bool MoveEnd { get; private set; }
 
     [SerializeField] private EnemyObject enemyObject;
+    private Transform _transform;
 
     private WeaponDecision _weaponDecision;
     private const int EnemyThrowWeaponCount = 4;
     
     private void Awake()
     {
+        _transform = GetComponent<Transform>();
         _weaponDecision = GetComponent<WeaponDecision>();
     }
 
@@ -40,6 +42,10 @@ public class EnemyController : MonoBehaviour
 
     private async UniTask Walk(float distance,float time)
     {
+        if (distance < 0)
+        {
+            _transform.Rotate(new Vector3(0f,180f,0f));
+        }
         await transform.DOMoveX(distance, time).SetRelative(true).ToAwaiter();
     }
 
