@@ -504,7 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d969e46d7a635149bf5f63ec95c5c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlimeExtend: {fileID: 2811600654174385519}
+  slimeExtend: {fileID: 2811600654174385519}
   ActiveSlider: {fileID: 2811600655800163642}
 --- !u!1 &2811600655983293881
 GameObject:

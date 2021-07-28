@@ -1,40 +1,45 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class ActiveGauge : MonoBehaviour
+namespace _SlimeCatch.Player
 {
-    [SerializeField] _SlimeCatch.Player.SlimeExtend SlimeExtend;
-    [SerializeField] Slider ActiveSlider = null;
-    float ReduceValue = 0;
-    // Start is called before the first frame update
-    void Start()
+    
+    public class ActiveGauge : MonoBehaviour
     {
-        ReduceValue = 5;
-        ValueChange(ReduceValue);
-    }
+        [SerializeField] private SlimeExtend slimeExtend;
+        [SerializeField] private Slider ActiveSlider = null;
 
-    // Update is called once per frame
-    void Update()
-    {
-        //掴んでいる時に減らす
-        if (SlimeExtend._initMousePosition != SlimeExtend._CurrentMousePosition)
+        private float _reduceValue = 0;
+
+        private void Start()
         {
-            ReduceValue -= Time.deltaTime;
+            _reduceValue = 5;
+            ValueChange(_reduceValue);
         }
-        else
+
+        // Update is called once per frame
+        private void Update()
         {
-            ReduceValue += Time.deltaTime;
+            //掴んでいる時に減らす
+            if (slimeExtend._initMousePosition != slimeExtend._CurrentMousePosition)
+            {
+                _reduceValue -= Time.deltaTime;
+            }
+            else
+            {
+                _reduceValue += Time.deltaTime;
+            }
+
+            ValueChange(_reduceValue);
         }
-            ValueChange(ReduceValue);
-    }
-    void ValueChange(float CurrentValue)
-    {
-        ActiveSlider.value = CurrentValue;
-        if (ActiveSlider.value <= 0)
+
+        private void ValueChange(float CurrentValue)
         {
-            SlimeExtend._GaugeEmpty = true;
+            ActiveSlider.value = CurrentValue;
+            if (ActiveSlider.value <= 0)
+            {
+                slimeExtend._GaugeEmpty = true;
+            }
         }
     }
 }
