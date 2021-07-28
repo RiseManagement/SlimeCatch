@@ -19,9 +19,11 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private EnemyObject enemyObject;
 
     [SerializeField] private WeaponNameDecision _weaponNameDecision;
-    
-    // Start is called before the first frame update
-    private async void Start()
+
+	[SerializeField] private GameObject childsslimesObject;
+
+	// Start is called before the first frame update
+	private async void Start()
     {
         await Walk(moveDistance,moveTime);
         await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
@@ -51,7 +53,11 @@ public class EnemyController : MonoBehaviour
                 weaponOrbit = _weaponNameDecision.WeaponOrbitSearch(enemyObject.SpecialWeapon);
                 isBaseWeapon = true;
             }
-            weaponObject.GetComponent<IWeaponMove>().WeaponMove(new Vector3(5,0,0),weaponOrbit);
+
+			var r = UnityEngine.Random.Range(0, 6);
+			var childslime = childsslimesObject.transform.GetChild(r);
+
+			weaponObject.GetComponent<IWeaponMove>().WeaponMove(childslime.transform.position, weaponOrbit);
             await UniTask.Delay(TimeSpan.FromSeconds(2f));
             Destroy(weaponObject);
         });
