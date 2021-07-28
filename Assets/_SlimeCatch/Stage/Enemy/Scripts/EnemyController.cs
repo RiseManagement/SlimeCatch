@@ -89,7 +89,7 @@ public class EnemyController : MonoBehaviour
                     weaponInfo = _weaponDecision.WeaponOrbitSearch(enemyObject.BaseWeapon);
                 }
 
-                var weaponObject = Instantiate(weaponInfo.WeaponGameObject, new Vector3(-5.2f, -0.4f, 0), Quaternion.Euler(0, 180, 40), transform);
+                var weaponObject = Instantiate(weaponInfo.WeaponGameObject, new Vector3(-5.2f, -0.125f, 0), Quaternion.Euler(0, 180, 40), transform);
                 weaponObject.GetComponent<IWeaponMove>().WeaponMove(new Vector3(5, 0, 0), weaponInfo.WeaponOrbit);
                 await UniTask.Delay(TimeSpan.FromSeconds(2f));
                 AttackFinish = true;
@@ -111,7 +111,7 @@ public class EnemyController : MonoBehaviour
                     weaponInfo = _weaponDecision.WeaponOrbitSearch(enemyObject.BaseWeapon);
                 }
 
-                var weaponObject = Instantiate(weaponInfo.WeaponGameObject, new Vector3(-5.2f, -0.3f, 0), Quaternion.Euler(0, 180, 40), transform);
+                var weaponObject = Instantiate(weaponInfo.WeaponGameObject, new Vector3(-5.2f, 0.2f, 0), Quaternion.Euler(0, 180, 40), transform);
                 weaponObject.GetComponent<IWeaponMove>().WeaponMove(new Vector3(5, 0, 0), weaponInfo.WeaponOrbit);
                 await UniTask.Delay(TimeSpan.FromSeconds(2f));
                 AttackFinish = true;
@@ -133,7 +133,7 @@ public class EnemyController : MonoBehaviour
                     weaponInfo = _weaponDecision.WeaponOrbitSearch(enemyObject.BaseWeapon);
                 }
 
-                var weaponObject = Instantiate(weaponInfo.WeaponGameObject, new Vector3(-5.2f, -0.2f, 0), Quaternion.Euler(0, 180, 40), transform);
+                var weaponObject = Instantiate(weaponInfo.WeaponGameObject, new Vector3(-5.2f, 0.625f, 0), Quaternion.Euler(0, 180, 40), transform);
                 weaponObject.GetComponent<IWeaponMove>().WeaponMove(new Vector3(5, 0, 0), weaponInfo.WeaponOrbit);
                 await UniTask.Delay(TimeSpan.FromSeconds(2f));
                 AttackFinish = true;
