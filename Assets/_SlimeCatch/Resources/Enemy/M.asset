@@ -16,3 +16,5 @@ MonoBehaviour:
   EnemySize: 3
   BaseWeapon: 2
   SpecialWeapon: 3
+  EnemyGameObject: {fileID: 8473212906718116001, guid: 991fa97f533405143b2b5e18a799b4b3,
+    type: 3}

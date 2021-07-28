@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _SlimeCatch.Weapon
 {
-    public class WeaponLineMove : MonoBehaviour,IWeaponMove
+    public class WeaponMoveHandler : MonoBehaviour,IWeaponMove
     {
         private Transform _transform;
         private Vector3 _firstPosition;
@@ -21,6 +21,13 @@ namespace _SlimeCatch.Weapon
         {
             _transform.position = _firstPosition;
             WeaponMove(new Vector3(5f,0,0),WeaponOrbitEnum.Line);
+        }
+        
+        [Button("曲線武器デバック")]
+        public void TestCurveMove()
+        {
+            _transform.position = _firstPosition;
+            WeaponMove(new Vector3(5f,0,0),WeaponOrbitEnum.Curve);
         }
 
         public void WeaponMove(Vector3 endPosition,WeaponOrbitEnum weaponOrbit)

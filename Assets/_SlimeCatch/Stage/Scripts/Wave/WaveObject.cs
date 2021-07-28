@@ -1,4 +1,6 @@
-﻿using NaughtyAttributes;
+﻿using System;
+using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace _SlimeCatch.Wave
@@ -9,5 +11,17 @@ namespace _SlimeCatch.Wave
         [ReadOnly] public StageEnum StageName;
         [ReadOnly] public int SlimeCount;
         [ReadOnly] public int WaveCount;
+        public List<WaveEnemyInfo> WaveEnemyInfoList;
+    }
+
+    [Serializable]
+    public class WaveEnemyInfo
+    {
+        [Min(0)] public int S;
+        [Min(0)] public int M;
+        [Min(0)] public int L;
+        [Min(0)] public int XL;
+
+        public int waveSumEnemyCount() => S + M + L + XL;
     }
 }
