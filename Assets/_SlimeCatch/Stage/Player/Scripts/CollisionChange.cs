@@ -1,29 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CollisionChange : MonoBehaviour
+namespace _SlimeCatch.Player
 {
-    [SerializeField] _SlimeCatch.Player.SlimeExtend SlimeExtend;
-    [SerializeField] private GameObject player;
-
-    // Start is called before the first frame update
-    void Start()
+    
+    public class CollisionChange : MonoBehaviour
     {
-        
-    }
+        private SlimeExtend _slimeExtend;
 
-    // Update is called once per frame
-    void Update()
-    {
-        //掴んでいる時に減らす
-        if (SlimeExtend._initMousePosition != SlimeExtend._CurrentMousePosition)
+        private void Awake()
         {
-            player.layer = LayerMask.NameToLayer("Default");
+            _slimeExtend = GetComponent<SlimeExtend>();
         }
-        else
+
+        // Update is called once per frame
+        private void Update()
         {
-            player.layer = LayerMask.NameToLayer("CollisionOff");
+            //掴んでいる時に減らす
+            gameObject.layer = LayerMask.NameToLayer(_slimeExtend._initMousePosition != _slimeExtend._CurrentMousePosition ? "Default" : "CollisionOff");
         }
     }
 }
