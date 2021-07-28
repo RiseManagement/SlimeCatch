@@ -61,7 +61,7 @@ public class EnemyController : MonoBehaviour
             }
             var weaponObject = Instantiate(weaponInfo.WeaponGameObject, transform);
 
-			var r = UnityEngine.Random.Range(0, 6);
+			var r = UnityEngine.Random.Range(0, childsslimesObject.transform.childCount);
 			var childslime = childsslimesObject.transform.GetChild(r);
 
 			weaponObject.GetComponent<IWeaponMove>().WeaponMove(childslime.transform.position, weaponInfo.WeaponOrbit);

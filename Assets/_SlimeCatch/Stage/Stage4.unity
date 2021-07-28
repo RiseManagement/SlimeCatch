@@ -692,6 +692,53 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7586861093515883206, guid: 6647788fd4ed406498af9b3a8de203b1,
+        type: 3}
+      propertyPath: enemyObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a7c8e6332f40b34fb8560d2421831a2,
+        type: 2}
+    - target: {fileID: 7586861093515883206, guid: 6647788fd4ed406498af9b3a8de203b1,
+        type: 3}
+      propertyPath: childsslimesObject
+      value: 
+      objectReference: {fileID: 187729644}
+    - target: {fileID: 7586861093515883207, guid: 6647788fd4ed406498af9b3a8de203b1,
+        type: 3}
+      propertyPath: Axe
+      value: 
+      objectReference: {fileID: 11400000, guid: 8d0850cbcb1c6a34ea61222bbea425ea,
+        type: 2}
+    - target: {fileID: 7586861093515883207, guid: 6647788fd4ed406498af9b3a8de203b1,
+        type: 3}
+      propertyPath: Arrow
+      value: 
+      objectReference: {fileID: 11400000, guid: 58cf9fd604978f54a8c744b8668c55cf,
+        type: 2}
+    - target: {fileID: 7586861093515883207, guid: 6647788fd4ed406498af9b3a8de203b1,
+        type: 3}
+      propertyPath: Spear
+      value: 
+      objectReference: {fileID: 11400000, guid: 8d34353dcd7cec04285254f78a5e9913,
+        type: 2}
+    - target: {fileID: 7586861093515883207, guid: 6647788fd4ed406498af9b3a8de203b1,
+        type: 3}
+      propertyPath: Sword
+      value: 
+      objectReference: {fileID: 11400000, guid: 400a205b5ca027c4fb9579c7f76438bc,
+        type: 2}
+    - target: {fileID: 7586861093515883207, guid: 6647788fd4ed406498af9b3a8de203b1,
+        type: 3}
+      propertyPath: WaterBalloon
+      value: 
+      objectReference: {fileID: 11400000, guid: cb1b6dc466784224ebfd4a396161e330,
+        type: 2}
+    - target: {fileID: 7586861093515883207, guid: 6647788fd4ed406498af9b3a8de203b1,
+        type: 3}
+      propertyPath: MolotovCocktail
+      value: 
+      objectReference: {fileID: 11400000, guid: ffd4c7407709c5c4fb762930f53eaf97,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6647788fd4ed406498af9b3a8de203b1, type: 3}
 --- !u!1001 &1318643696
