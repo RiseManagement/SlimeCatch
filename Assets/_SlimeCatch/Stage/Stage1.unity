@@ -121,18 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &69378461 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1682609907135125857, guid: c62b2bb8e35481b4ea723f077e0bb36b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1987282032}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &79577713 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1682609907135125857, guid: c62b2bb8e35481b4ea723f077e0bb36b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1929284410}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &111812978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -302,12 +290,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &567575339 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1682609907135125857, guid: c62b2bb8e35481b4ea723f077e0bb36b,
-    type: 3}
-  m_PrefabInstance: {fileID: 821112807}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &821112807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -568,12 +550,6 @@ PrefabInstance:
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d29e295cebaf8544282ce480d6a9aaec, type: 3}
---- !u!1 &1107062239 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1682609907135125857, guid: c62b2bb8e35481b4ea723f077e0bb36b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1941036963}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1511953281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -581,11 +557,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2811600654317254464, guid: aa2030b5ab0dac848a605436fbd89068,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2811600655983293880, guid: aa2030b5ab0dac848a605436fbd89068,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -658,12 +629,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa2030b5ab0dac848a605436fbd89068, type: 3}
---- !u!1 &1629089709 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1682609907135125857, guid: c62b2bb8e35481b4ea723f077e0bb36b,
-    type: 3}
-  m_PrefabInstance: {fileID: 111812978}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1929284410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -762,17 +727,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: child_Slime
       objectReference: {fileID: 0}
-    - target: {fileID: 1682609907135125869, guid: c62b2bb8e35481b4ea723f077e0bb36b,
-        type: 3}
-      propertyPath: GameManager
-      value: 
-      objectReference: {fileID: 2119309221}
-    - target: {fileID: 1682609907135125869, guid: c62b2bb8e35481b4ea723f077e0bb36b,
-        type: 3}
-      propertyPath: MolotovCocktail
-      value: 
-      objectReference: {fileID: 7259061987229467266, guid: e51f37b31f49ea5418f21159ab130bbd,
-        type: 3}
     - target: {fileID: 1682609907135125871, guid: c62b2bb8e35481b4ea723f077e0bb36b,
         type: 3}
       propertyPath: m_RootOrder
@@ -1037,28 +991,8 @@ PrefabInstance:
       objectReference: {fileID: 860025240}
     - target: {fileID: 6104134666639110399, guid: ce715580cd2528a4fb971f2bcd7aa777,
         type: 3}
-      propertyPath: SlimeChild.Array.data[0]
+      propertyPath: chileSlimes
       value: 
-      objectReference: {fileID: 1107062239}
-    - target: {fileID: 6104134666639110399, guid: ce715580cd2528a4fb971f2bcd7aa777,
-        type: 3}
-      propertyPath: SlimeChild.Array.data[1]
-      value: 
-      objectReference: {fileID: 69378461}
-    - target: {fileID: 6104134666639110399, guid: ce715580cd2528a4fb971f2bcd7aa777,
-        type: 3}
-      propertyPath: SlimeChild.Array.data[2]
-      value: 
-      objectReference: {fileID: 1629089709}
-    - target: {fileID: 6104134666639110399, guid: ce715580cd2528a4fb971f2bcd7aa777,
-        type: 3}
-      propertyPath: SlimeChild.Array.data[3]
-      value: 
-      objectReference: {fileID: 79577713}
-    - target: {fileID: 6104134666639110399, guid: ce715580cd2528a4fb971f2bcd7aa777,
-        type: 3}
-      propertyPath: SlimeChild.Array.data[4]
-      value: 
-      objectReference: {fileID: 567575339}
+      objectReference: {fileID: 2072785088}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce715580cd2528a4fb971f2bcd7aa777, type: 3}

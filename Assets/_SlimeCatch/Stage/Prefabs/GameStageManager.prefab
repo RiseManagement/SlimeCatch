@@ -61,12 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3856a24b23e6622428f1eb39f9249e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlimeChild:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  chileSlimes: {fileID: 0}
 --- !u!1001 &3528644725949044165
 PrefabInstance:
   m_ObjectHideFlags: 0

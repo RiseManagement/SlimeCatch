@@ -1,27 +1,43 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UniRx;
 using UnityEngine;
 
 public class ChildSlimeList : MonoBehaviour
 {
-    [SerializeField]
-    private List<GameObject> SlimeChild=new List<GameObject>();
+    private readonly List<GameObject> _slimeChild = new List<GameObject>();
+    [SerializeField] private GameObject chileSlimes;
+    private readonly Subject<int> _damageSlimeChild = new Subject<int>();
+    private const int MAXOffActiveCount = 2;
 
-    public void ChildSlimeRandomOff()
+    private void Awake()
     {
-        for (int i = 0; i < 2; i++)
+        foreach (Transform child in chileSlimes.transform)
         {
-            var SlimeNum = Random.Range(0, SlimeChild.Count);
-            GameObject SlimeChildList = SlimeChild[SlimeNum];
-            SlimeChildList.SetActive(false);
-
-            SlimeChild.RemoveAt(SlimeNum);
+            _slimeChild.Add(child.gameObject);
         }
     }
 
-    public void SlimeColliderDecision(GameObject gameObject)
+    private void Start()
     {
-        SlimeChild.Remove(gameObject);
+        foreach (var (child, index) in _slimeChild.Select((item, index) => (item, index)))
+        {
+            child.GetComponent<ChildrenSlimeWeaponCollider>().IsAttack.Subscribe(_ => _damageSlimeChild.OnNext(index));
+        }
+        _damageSlimeChild.Subscribe(value =>
+        {
+            _slimeChild[value].SetActive(false);
+            SlimeNoActive();
+        }).AddTo(this);
     }
-    
+
+    private void SlimeNoActive()
+    {
+        var count = 0;
+        foreach (var child in _slimeChild.Where(child => child.activeSelf && count < MAXOffActiveCount))
+        {
+            child.SetActive(false);
+            count++;
+        }
+    }
 }
