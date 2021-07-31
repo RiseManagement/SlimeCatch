@@ -1,9 +1,12 @@
-﻿using NaughtyAttributes;
+﻿using System;
+using Cysharp.Threading.Tasks;
+using NaughtyAttributes;
+using UniRx;
 using UnityEngine;
 
 namespace _SlimeCatch.Stage.Gimmick.Avalanche.Scripts
 {
-    public class AvalancheManager : MonoBehaviour
+    public class AvalancheManager : GimmickManager
     {
         [SerializeField] private CameraShake cameraShake;
 
@@ -11,6 +14,18 @@ namespace _SlimeCatch.Stage.Gimmick.Avalanche.Scripts
         public void ShakeTest()
         {
             cameraShake.Shake();
+        }
+
+        protected override void GimmickStart()
+        {
+            Observable.Interval(TimeSpan.FromSeconds(LoopTime))
+                .Subscribe(async timeValue =>
+                {
+                    gimmickSeHandler.PlayOnFirstSe();
+                    await UniTask.Delay(TimeSpan.FromSeconds(3f));
+                    gimmickSeHandler.PlayOnSecondSe();
+                    gimmickAnimationHandler.StartAnimation();
+                }).AddTo(this);
         }
     }
 }
