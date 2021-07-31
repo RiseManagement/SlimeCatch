@@ -16,6 +16,7 @@ namespace _SlimeCatch.Wave
 		public StageEnum GetStageEnum() => waveObj.StageName;
 
 		//子供スライムのObj
+		//[SerializeField] private List<EnemyObject> childsslimeObjectList;
 		[SerializeField] private GameObject childsslimesObject;
 		public GameObject ChildsSlimesObject
 		{
@@ -95,6 +96,20 @@ namespace _SlimeCatch.Wave
 				enemyController = enemyObject.GetComponent<EnemyController>();
 				await UniTask.WaitUntil(() => enemyController.AttackFinish);
 			}
+		}   
+		
+		/// <summary>
+		/// 子供スライムに攻撃するターゲット
+		/// </summary>
+		/// <returns></returns>
+		public Vector3 ChildSlimeAimTargetPosition()
+		{
+			int childcount = childsslimesObject.transform.childCount;   //生存している子供スライムの数を数える
+			var r = UnityEngine.Random.Range(0, childcount);    //子供スライム選び中
+			var childslime = childsslimesObject.transform.GetChild(r);  //ターゲット確定
+
+			return childslime.position;  //狙う子供スライムの座標を返す
 		}
+
 	}
 }
