@@ -15,6 +15,13 @@ namespace _SlimeCatch.Wave
 		public bool endWave;
 		public StageEnum GetStageEnum() => waveObj.StageName;
 
+		//子供スライムのObj
+		[SerializeField] private GameObject childsslimesObject;
+		public GameObject ChildsSlimesObject
+		{
+			get { return childsslimesObject; }
+		}	
+
 		// Start is called before the first frame update
 		private async void Start()
 		{
