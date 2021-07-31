@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace _SlimeCatch.Player
 {
@@ -6,8 +8,8 @@ namespace _SlimeCatch.Player
     public class SlimeExtend : MonoBehaviour
     {
         private Vector3 _mMouseDownPosition = Vector3.zero;
-        public bool gaugeEmpty;
         private bool _isExtend;
+        private bool _isRestore;
         private float _activeValue = 5f;
         private BoxCollider2D _mCollider;
         private const float MScaleX = 2.677196f;
@@ -22,61 +24,55 @@ namespace _SlimeCatch.Player
 
         private void Update()
         {
-            if (_isExtend)
+            if (_isExtend && 0f < _activeValue)
             {
                 _activeValue -= Time.deltaTime;
+                var inputPosition   = new Vector3( Input.mousePosition.x, Input.mousePosition.y, 9.5f );
+                //スクリーン座標をワールド座標に変換する
+                var mousePos = Camera.main.ScreenToWorldPoint( inputPosition );
+                var dist = Vector3.Distance( mousePos, _mMouseDownPosition );
+
+                var distX = Mathf.Clamp(dist, 0.05f, 4.0f);
+                var distDs = Mathf.Clamp(dist, 1.478829f, 1.641793f);
+
+                transform.localScale    = new Vector3( 0.5f,distX ,0.5f  );
+                _mCollider.size = new Vector3(MScaleX, distDs);
             }
-            else
-            {
-                if (_activeValue <= 5f)
-                {
-                    _activeValue += Time.deltaTime;
-                }
-                
+            else if(_activeValue <= 5f && _isRestore)
+            { 
+                _activeValue += Time.deltaTime;
             }
             parentActiveBar.SetActiveValue(_activeValue);
+
+            if (_activeValue <= 0f)
+            {
+                WaitRestoreEnergy();
+            }
         }
 
         private void OnMouseDown()
         {
             // マウスクリックした際の初期位置を保存。
             _mMouseDownPosition = transform.position;
-        }
-
-        private void OnMouseDrag()
-        {
             _isExtend = true;
             _collisionChange.ChangeLayer(true);
-            if (gaugeEmpty)
-            {
-                transform.position = _mMouseDownPosition;
-                transform.rotation = Quaternion.identity;
-                transform.localScale = Vector3.one;
-                return;
-            }
-            //マウスをドラッグしてる際の位置を取得
-            var inputPosition   = new Vector3( Input.mousePosition.x, Input.mousePosition.y, 9.5f );
-            //スクリーン座標をワールド座標に変換する
-            var mousePos = Camera.main.ScreenToWorldPoint( inputPosition );
-            var dist = Vector3.Distance( mousePos, _mMouseDownPosition );
-
-            var distX = Mathf.Clamp(dist, 0.05f, 4.0f);
-            var distDs = Mathf.Clamp(dist, 1.478829f, 1.641793f);
-
-            transform.localScale    = new Vector3( 0.5f,distX ,0.5f  );
-            _mCollider.size = new Vector3(MScaleX, distDs);
+            _isRestore = false;
         }
-
 
         private void OnMouseUp()
         {
-            _isExtend = false;
-            _collisionChange.ChangeLayer(false);
-            // 位置、回転、スケールを元に戻す。
+            WaitRestoreEnergy();
+        }
+
+        private async void WaitRestoreEnergy()
+        {
             transform.position      = _mMouseDownPosition;
             transform.rotation      = Quaternion.identity;
             transform.localScale    = Vector3.one;
-            gaugeEmpty = false;
+            _collisionChange.ChangeLayer(false);
+            _isExtend = false;
+            await UniTask.Delay(TimeSpan.FromSeconds(2f));
+            _isRestore = true;
         }
     }
 }
