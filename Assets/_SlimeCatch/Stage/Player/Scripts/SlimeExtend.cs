@@ -2,6 +2,7 @@
 
 namespace _SlimeCatch.Player
 {
+    [RequireComponent(typeof(BoxCollider2D))]
     public class SlimeExtend : MonoBehaviour
     {
         private Vector3 _mMouseDownPosition = Vector3.zero;
@@ -10,9 +11,11 @@ namespace _SlimeCatch.Player
         public bool _GaugeEmpty = false;
         private BoxCollider2D _mCollider;
         private const float MScaleX = 2.677196f;
+        private CollisionChange _collisionChange;
 
-        private void Start()
+        private void Awake()
         {
+            _collisionChange = GetComponent<CollisionChange>();
             _mCollider = GetComponent<BoxCollider2D>();
         }
 
@@ -25,7 +28,8 @@ namespace _SlimeCatch.Player
 
         private void OnMouseDrag()
         {
-            if (_GaugeEmpty == true)
+            _collisionChange.ChangeLayer(true);
+            if (_GaugeEmpty)
             {
                 _CurrentMousePosition = _initMousePosition;
                 transform.position = _mMouseDownPosition;
@@ -50,6 +54,7 @@ namespace _SlimeCatch.Player
 
         private void OnMouseUp()
         {
+            _collisionChange.ChangeLayer(false);
             // 位置、回転、スケールを元に戻す。
             transform.position      = _mMouseDownPosition;
             transform.rotation      = Quaternion.identity;
