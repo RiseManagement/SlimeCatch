@@ -5,13 +5,15 @@ using UnityEngine;
 
 namespace _SlimeCatch.Stage.Gimmick
 {
-    public class ThunderHandler : MonoBehaviour
+    public class ThunderAnimationHandler : MonoBehaviour
     {
         private Animator _animator;
         private SpriteRenderer _spriteRenderer;
+
         private static readonly int IsThunder = Animator.StringToHash("IsThunder");
-        [SerializeField,Range(5,20)] private int thunderLoopTime;
         [SerializeField] private float fadeAnimationTime = 1f;
+        private readonly Subject<Unit> _thunderAnimationEndSubject = new Subject<Unit>();
+        public IObservable<Unit> ThunderAnimationEndObservable() => _thunderAnimationEndSubject;
 
         private void Awake()
         {
@@ -19,16 +21,7 @@ namespace _SlimeCatch.Stage.Gimmick
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
-        private void Start()
-        {
-            Observable.Interval(TimeSpan.FromSeconds(thunderLoopTime))
-                .Subscribe(_ =>
-                {
-                    StartAnimation();
-                }).AddTo(this);
-        }
-
-        private void StartAnimation()
+        public void StartAnimation()
         {
             _spriteRenderer.DOFade(1f, fadeAnimationTime).ToAwaiter();
             _animator.SetBool(IsThunder,true);
@@ -39,6 +32,7 @@ namespace _SlimeCatch.Stage.Gimmick
         {
             await _spriteRenderer.DOFade(0f, fadeAnimationTime).ToAwaiter();
             _animator.SetBool(IsThunder,false);
+            _thunderAnimationEndSubject.OnNext(Unit.Default);
         }
     }
 }
