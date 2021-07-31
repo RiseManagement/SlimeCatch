@@ -13,13 +13,23 @@ namespace _SlimeCatch.Player
         private float _activeValue = 5f;
         private BoxCollider2D _mCollider;
         private const float MScaleX = 2.677196f;
-        private CollisionChange _collisionChange;
         [SerializeField] private ParentActiveBar parentActiveBar;
+        private CollisionChange _collisionChange;
+        private AngleRotation _angleRotation;
+        private Camera _mainCamera;
+        private Transform _transform;
 
         private void Awake()
         {
+            _transform = GetComponent<Transform>();
             _collisionChange = GetComponent<CollisionChange>();
+            _angleRotation = GetComponent<AngleRotation>();
             _mCollider = GetComponent<BoxCollider2D>();
+        }
+
+        private void Start()
+        {
+            _mainCamera = Camera.main;
         }
 
         private void Update()
@@ -27,16 +37,7 @@ namespace _SlimeCatch.Player
             if (_isExtend && 0f < _activeValue)
             {
                 _activeValue -= Time.deltaTime;
-                var inputPosition   = new Vector3( Input.mousePosition.x, Input.mousePosition.y, 9.5f );
-                //スクリーン座標をワールド座標に変換する
-                var mousePos = Camera.main.ScreenToWorldPoint( inputPosition );
-                var dist = Vector3.Distance( mousePos, _mMouseDownPosition );
-
-                var distX = Mathf.Clamp(dist, 0.05f, 4.0f);
-                var distDs = Mathf.Clamp(dist, 1.478829f, 1.641793f);
-
-                transform.localScale    = new Vector3( 0.5f,distX ,0.5f  );
-                _mCollider.size = new Vector3(MScaleX, distDs);
+                SetScale();
             }
             else if(_activeValue <= 5f && _isRestore)
             { 
@@ -64,11 +65,26 @@ namespace _SlimeCatch.Player
             WaitRestoreEnergy();
         }
 
+        private void SetScale()
+        {
+            var inputPosition   = new Vector3( Input.mousePosition.x, Input.mousePosition.y, 9.5f );
+            //スクリーン座標をワールド座標に変換する
+            var mousePos = _mainCamera.ScreenToWorldPoint( inputPosition );
+            _angleRotation.UpdateSlimeRotation(mousePos,_transform);
+            var dist = Vector3.Distance( mousePos, _mMouseDownPosition );
+
+            var distX = Mathf.Clamp(dist, 0.05f, 4.0f);
+            var distDs = Mathf.Clamp(dist, 1.478829f, 1.641793f);
+
+            transform.localScale    = new Vector3( 0.5f,distX ,0.5f  );
+            _mCollider.size = new Vector3(MScaleX, distDs);
+        }
+
         private async void WaitRestoreEnergy()
         {
-            transform.position      = _mMouseDownPosition;
-            transform.rotation      = Quaternion.identity;
-            transform.localScale    = Vector3.one;
+            _transform.position      = _mMouseDownPosition;
+            _transform.rotation      = Quaternion.identity;
+            _transform.localScale    = Vector3.one;
             _collisionChange.ChangeLayer(false);
             _isExtend = false;
             await UniTask.Delay(TimeSpan.FromSeconds(2f));
