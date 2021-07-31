@@ -133,6 +133,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: child_Slime (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1682609907135125869, guid: c62b2bb8e35481b4ea723f077e0bb36b,
+        type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 2119309221}
+    - target: {fileID: 1682609907135125869, guid: c62b2bb8e35481b4ea723f077e0bb36b,
+        type: 3}
+      propertyPath: MolotovCocktail
+      value: 
+      objectReference: {fileID: 7259061987229467266, guid: e51f37b31f49ea5418f21159ab130bbd,
+        type: 3}
     - target: {fileID: 1682609907135125871, guid: c62b2bb8e35481b4ea723f077e0bb36b,
         type: 3}
       propertyPath: m_RootOrder
@@ -291,6 +302,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: child_Slime (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1682609907135125869, guid: c62b2bb8e35481b4ea723f077e0bb36b,
+        type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 2119309221}
+    - target: {fileID: 1682609907135125869, guid: c62b2bb8e35481b4ea723f077e0bb36b,
+        type: 3}
+      propertyPath: MolotovCocktail
+      value: 
+      objectReference: {fileID: 7259061987229467266, guid: e51f37b31f49ea5418f21159ab130bbd,
+        type: 3}
     - target: {fileID: 1682609907135125871, guid: c62b2bb8e35481b4ea723f077e0bb36b,
         type: 3}
       propertyPath: m_RootOrder
@@ -514,6 +536,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaveController
       objectReference: {fileID: 0}
+    - target: {fileID: 5304574305715088411, guid: d29e295cebaf8544282ce480d6a9aaec,
+        type: 3}
+      propertyPath: enemyObjectList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b7f37b13bbe5bff49b5e8e1f4254b0f6,
+        type: 2}
+    - target: {fileID: 5304574305715088411, guid: d29e295cebaf8544282ce480d6a9aaec,
+        type: 3}
+      propertyPath: enemyObjectList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b7f37b13bbe5bff49b5e8e1f4254b0f6,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d29e295cebaf8544282ce480d6a9aaec, type: 3}
 --- !u!1001 &1511953281
@@ -523,11 +557,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2811600654317254464, guid: aa2030b5ab0dac848a605436fbd89068,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2811600655983293880, guid: aa2030b5ab0dac848a605436fbd89068,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -612,6 +641,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: child_Slime (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1682609907135125869, guid: c62b2bb8e35481b4ea723f077e0bb36b,
+        type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 2119309221}
+    - target: {fileID: 1682609907135125869, guid: c62b2bb8e35481b4ea723f077e0bb36b,
+        type: 3}
+      propertyPath: MolotovCocktail
+      value: 
+      objectReference: {fileID: 7259061987229467266, guid: e51f37b31f49ea5418f21159ab130bbd,
+        type: 3}
     - target: {fileID: 1682609907135125871, guid: c62b2bb8e35481b4ea723f077e0bb36b,
         type: 3}
       propertyPath: m_RootOrder
@@ -762,6 +802,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: child_Slime (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1682609907135125869, guid: c62b2bb8e35481b4ea723f077e0bb36b,
+        type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 2119309221}
+    - target: {fileID: 1682609907135125869, guid: c62b2bb8e35481b4ea723f077e0bb36b,
+        type: 3}
+      propertyPath: MolotovCocktail
+      value: 
+      objectReference: {fileID: 7259061987229467266, guid: e51f37b31f49ea5418f21159ab130bbd,
+        type: 3}
     - target: {fileID: 1682609907135125871, guid: c62b2bb8e35481b4ea723f077e0bb36b,
         type: 3}
       propertyPath: m_RootOrder
@@ -860,6 +911,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2119309221 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3528644725119350873, guid: ce715580cd2528a4fb971f2bcd7aa777,
+    type: 3}
+  m_PrefabInstance: {fileID: 3528644724860398961}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3528644724860398961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -932,5 +989,10 @@ PrefabInstance:
       propertyPath: waveController
       value: 
       objectReference: {fileID: 860025240}
+    - target: {fileID: 6104134666639110399, guid: ce715580cd2528a4fb971f2bcd7aa777,
+        type: 3}
+      propertyPath: chileSlimes
+      value: 
+      objectReference: {fileID: 2072785088}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce715580cd2528a4fb971f2bcd7aa777, type: 3}

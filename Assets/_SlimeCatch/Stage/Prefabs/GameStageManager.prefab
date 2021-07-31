@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3528644725119350872}
   - component: {fileID: 3528644725119350875}
+  - component: {fileID: 6104134666639110399}
   m_Layer: 0
   m_Name: GameStageManager
   m_TagString: Untagged
@@ -48,6 +49,19 @@ MonoBehaviour:
   gameClearPopUp: {fileID: 3645623363476923868}
   gameOverPopUp: {fileID: 2412638240864323836}
   waveController: {fileID: 0}
+--- !u!114 &6104134666639110399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3528644725119350873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3856a24b23e6622428f1eb39f9249e81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chileSlimes: {fileID: 0}
 --- !u!1001 &3528644725949044165
 PrefabInstance:
   m_ObjectHideFlags: 0

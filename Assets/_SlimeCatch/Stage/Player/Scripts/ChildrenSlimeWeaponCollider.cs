@@ -1,11 +1,16 @@
-﻿using UnityEngine;
+﻿using UniRx;
+using UnityEngine;
 
 public class ChildrenSlimeWeaponCollider : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D other)
+    public readonly BoolReactiveProperty IsAttack = new BoolReactiveProperty();
+
+    public void OnCollisionEnter2D(Collision2D other)
     {
-        if (!other.gameObject.CompareTag("Weapon")) return;
-        Destroy(gameObject);
-        Destroy(other.gameObject);
+        if (other.gameObject.CompareTag("MolotovCocktail"))
+        {
+            IsAttack.Value = true;
+        }
     }
+    
 }
