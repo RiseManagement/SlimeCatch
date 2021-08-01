@@ -24,14 +24,6 @@ namespace _SlimeCatch.Stage.Enemy.Scripts
 
         private WeaponDecision _weaponDecision;
         private const int EnemyThrowWeaponCount = 4;
-
-        private float _high;
-
-        public EnemyController(float high)
-        {
-            _high = high;
-        }
-
         private void Awake()
         {
             _transform = GetComponent<Transform>();
@@ -61,21 +53,22 @@ namespace _SlimeCatch.Stage.Enemy.Scripts
 
         private async UniTask ThrowWeapon()
         {
+            var high = 0f;
             switch (enemyObject.EnemySize)
             {
                 case 2:
-                    _high = -0.5f;
+                    high = -0.5f;
                     break;
                 case 3:
-                    _high = 1.5f;
+                    high = 1.5f;
 
                     break;
                 case 4:
-                    _high = 2.5f;
+                    high = 2.5f;
 
                     break;
                 case 6:
-                    _high = 3.5f;
+                    high = 3.5f;
 
                     break;
             }
@@ -92,7 +85,7 @@ namespace _SlimeCatch.Stage.Enemy.Scripts
                     weaponInfo = _weaponDecision.WeaponOrbitSearch(enemyObject.BaseWeapon);
                 }
 
-                var weaponObject = Instantiate(weaponInfo.WeaponGameObject, new Vector3(-5.2f, _high, 0),
+                var weaponObject = Instantiate(weaponInfo.WeaponGameObject, new Vector3(-5.2f, high, 0),
                     Quaternion.Euler(0, 180, 40), transform);
                 weaponObject.GetComponent<IWeaponMove>().WeaponMove(new Vector3(5, 0, 0), weaponInfo.WeaponOrbit);
                 await UniTask.Delay(TimeSpan.FromSeconds(2f));
