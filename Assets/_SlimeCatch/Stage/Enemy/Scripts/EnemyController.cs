@@ -24,10 +24,12 @@ namespace _SlimeCatch.Stage.Enemy.Scripts
 
         private WeaponDecision _weaponDecision;
         private const int EnemyThrowWeaponCount = 4;
+        private ChildSlimeList _childSlimeList;
         private void Awake()
         {
             _transform = GetComponent<Transform>();
             _weaponDecision = GetComponent<WeaponDecision>();
+            _childSlimeList = GameObject.FindObjectOfType<ChildSlimeList>();
         }
 
         // Start is called before the first frame update
@@ -85,9 +87,8 @@ namespace _SlimeCatch.Stage.Enemy.Scripts
                     weaponInfo = _weaponDecision.WeaponOrbitSearch(enemyObject.BaseWeapon);
                 }
 
-                var weaponObject = Instantiate(weaponInfo.WeaponGameObject, new Vector3(-5.2f, high, 0),
-                    Quaternion.Euler(0, 180, 40), transform);
-                weaponObject.GetComponent<IWeaponMove>().WeaponMove(new Vector3(5, 0, 0), weaponInfo.WeaponOrbit);
+                var weaponObject = Instantiate(weaponInfo.WeaponGameObject, new Vector3(-5.2f, high, 0), Quaternion.Euler(0, 180, 40), transform);
+                weaponObject.GetComponent<IWeaponMove>().WeaponMove(_childSlimeList.GetAliveSlime(), weaponInfo.WeaponOrbit);
                 await UniTask.Delay(TimeSpan.FromSeconds(2f));
                 AttackFinish = true;
                 Destroy(weaponObject);

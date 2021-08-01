@@ -288,7 +288,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &821112807
 PrefabInstance:
@@ -455,20 +455,8 @@ Transform:
   m_LocalScale: {x: 1.92155, y: 1.3332732, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &860025240 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5304574305715088411, guid: d29e295cebaf8544282ce480d6a9aaec,
-    type: 3}
-  m_PrefabInstance: {fileID: 980002488}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61f8a9646ec0a2e468ecb3bc8a7c26aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &980002488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -479,7 +467,7 @@ PrefabInstance:
     - target: {fileID: 5304574305715088408, guid: d29e295cebaf8544282ce480d6a9aaec,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5304574305715088408, guid: d29e295cebaf8544282ce480d6a9aaec,
         type: 3}
@@ -536,20 +524,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaveController
       objectReference: {fileID: 0}
-    - target: {fileID: 5304574305715088411, guid: d29e295cebaf8544282ce480d6a9aaec,
-        type: 3}
-      propertyPath: enemyObjectList.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: b7f37b13bbe5bff49b5e8e1f4254b0f6,
-        type: 2}
-    - target: {fileID: 5304574305715088411, guid: d29e295cebaf8544282ce480d6a9aaec,
-        type: 3}
-      propertyPath: enemyObjectList.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: b7f37b13bbe5bff49b5e8e1f4254b0f6,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d29e295cebaf8544282ce480d6a9aaec, type: 3}
+--- !u!114 &1278031662 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5304574305715088411, guid: d29e295cebaf8544282ce480d6a9aaec,
+    type: 3}
+  m_PrefabInstance: {fileID: 980002488}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61f8a9646ec0a2e468ecb3bc8a7c26aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1511953281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -988,7 +976,7 @@ PrefabInstance:
         type: 3}
       propertyPath: waveController
       value: 
-      objectReference: {fileID: 860025240}
+      objectReference: {fileID: 1278031662}
     - target: {fileID: 6104134666639110399, guid: ce715580cd2528a4fb971f2bcd7aa777,
         type: 3}
       propertyPath: chileSlimes

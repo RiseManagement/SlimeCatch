@@ -9,6 +9,7 @@ public class ChildSlimeList : MonoBehaviour
     [SerializeField] private GameObject chileSlimes;
     private readonly Subject<int> _damageSlimeChild = new Subject<int>();
     private const int MAXOffActiveCount = 2;
+    private readonly List<GameObject> _aliveChildSlimeList = new List<GameObject>();
 
     private void Awake()
     {
@@ -16,6 +17,8 @@ public class ChildSlimeList : MonoBehaviour
         {
             _slimeChild.Add(child.gameObject);
         }
+        SetAliveSlime();
+        Debug.Log($"start alive slime count:{_slimeChild.Count}");
     }
 
     private void Start()
@@ -28,6 +31,7 @@ public class ChildSlimeList : MonoBehaviour
         {
             _slimeChild[value].SetActive(false);
             SlimeNoActive();
+            SetAliveSlime();
         }).AddTo(this);
     }
 
@@ -39,5 +43,19 @@ public class ChildSlimeList : MonoBehaviour
             child.SetActive(false);
             count++;
         }
+    }
+
+    private void SetAliveSlime()
+    {
+        foreach (var child in _slimeChild.Where(child => child.activeSelf))
+        {
+            _aliveChildSlimeList.Add(child);
+        }
+    }
+
+    public Vector3 GetAliveSlime()
+    {
+        var r = Random.Range(0, _aliveChildSlimeList.Count-1);
+        return _aliveChildSlimeList[r].transform.position;
     }
 }
