@@ -18,7 +18,6 @@ public class ChildSlimeList : MonoBehaviour
             _slimeChild.Add(child.gameObject);
         }
         SetAliveSlime();
-        Debug.Log($"start alive slime count:{_slimeChild.Count}");
     }
 
     private void Start()
