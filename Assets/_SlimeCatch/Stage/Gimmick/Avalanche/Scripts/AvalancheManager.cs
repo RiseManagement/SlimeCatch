@@ -1,13 +1,20 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
+using NaughtyAttributes;
 using UniRx;
 using UnityEngine;
 
-namespace _SlimeCatch.Stage.Gimmick
+namespace _SlimeCatch.Stage.Gimmick.Avalanche.Scripts
 {
-    public class ThunderManager : GimmickManager
+    public class AvalancheManager : GimmickManager
     {
-        [SerializeField] private ViewFlash viewFlash;
+        [SerializeField] private CameraShake cameraShake;
+
+        [Button("画面を揺らす")]
+        public void ShakeTest()
+        {
+            cameraShake.Shake();
+        }
 
         protected override void GimmickStart()
         {
@@ -15,9 +22,7 @@ namespace _SlimeCatch.Stage.Gimmick
                 .Subscribe(async timeValue =>
                 {
                     gimmickSeHandler.PlayOnFirstSe();
-                    await UniTask.Delay(TimeSpan.FromSeconds(2f));
-                    viewFlash.SetFlash();
-                    await UniTask.Delay(TimeSpan.FromSeconds(1f));
+                    await UniTask.Delay(TimeSpan.FromSeconds(3f));
                     gimmickSeHandler.PlayOnSecondSe();
                     gimmickAnimationHandler.StartAnimation();
                 }).AddTo(this);

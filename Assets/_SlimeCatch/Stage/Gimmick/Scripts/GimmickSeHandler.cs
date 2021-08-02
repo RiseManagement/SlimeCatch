@@ -1,13 +1,13 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 
 namespace _SlimeCatch.Stage.Gimmick
 {
-    public class ThunderSeHandler : MonoBehaviour
+    [RequireComponent(typeof(AudioSource))]
+    public class GimmickSeHandler : MonoBehaviour
     {
-        [SerializeField] private AudioClip thunderStartSe;
-        [SerializeField] private AudioClip thunderEndSe;
+        [SerializeField] private AudioClip firstSe;
+        [SerializeField] private AudioClip secondSe;
         private AudioSource _audioSource;
         private const float SeFadeTime = 2f;
 
@@ -16,15 +16,15 @@ namespace _SlimeCatch.Stage.Gimmick
             _audioSource = GetComponent<AudioSource>();
         }
 
-        public void PlayOnStartSe()
+        public void PlayOnFirstSe()
         {
             _audioSource.DOFade(1f, SeFadeTime);
-            _audioSource.PlayOneShot(thunderStartSe);
+            _audioSource.PlayOneShot(firstSe);
         }
 
-        public void PlayOnEndSe()
+        public void PlayOnSecondSe()
         {
-            _audioSource.PlayOneShot(thunderEndSe);
+            _audioSource.PlayOneShot(secondSe);
         }
 
         public async void StopSe()

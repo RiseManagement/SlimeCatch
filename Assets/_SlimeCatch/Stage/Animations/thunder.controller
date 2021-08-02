@@ -35,7 +35,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: IsThunder
+    m_ConditionEvent: IsGimmick
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7403992589635037084}
@@ -60,7 +60,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: IsThunder
+    m_ConditionEvent: IsGimmick
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4441905066856993978}
@@ -112,7 +112,7 @@ AnimatorController:
   m_Name: thunder
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: IsThunder
+  - m_Name: IsGimmick
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
