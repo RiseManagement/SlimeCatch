@@ -76,7 +76,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _initMousePosition: {x: 0, y: 0, z: 0}
   _CurrentMousePosition: {x: 0, y: 0, z: 0}
-  _GaugeEmpty: 0
+  gaugeEmpty: 0
+  parentActiveBar: {fileID: 2811600655800163645}
 --- !u!114 &2811600654174385504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,7 +506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slimeExtend: {fileID: 2811600654174385519}
-  ActiveSlider: {fileID: 2811600655800163642}
+  activeSlider: {fileID: 2811600655800163642}
 --- !u!1 &2811600655983293881
 GameObject:
   m_ObjectHideFlags: 0

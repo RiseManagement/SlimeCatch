@@ -1,43 +1,76 @@
-﻿using UnityEngine;
+﻿using System;
+using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace _SlimeCatch.Player
 {
+    [RequireComponent(typeof(BoxCollider2D))]
     public class SlimeExtend : MonoBehaviour
     {
         private Vector3 _mMouseDownPosition = Vector3.zero;
-        public Vector3 _initMousePosition = Vector3.zero;
-        public Vector3 _CurrentMousePosition = Vector3.zero;
-        public bool _GaugeEmpty = false;
+        private bool _isExtend;
+        private bool _isRestore;
+        private float _activeValue = 5f;
         private BoxCollider2D _mCollider;
         private const float MScaleX = 2.677196f;
+        [SerializeField] private ParentActiveBar parentActiveBar;
+        private CollisionChange _collisionChange;
+        private AngleRotation _angleRotation;
+        private Camera _mainCamera;
+        private Transform _transform;
+
+        private void Awake()
+        {
+            _transform = GetComponent<Transform>();
+            _collisionChange = GetComponent<CollisionChange>();
+            _angleRotation = GetComponent<AngleRotation>();
+            _mCollider = GetComponent<BoxCollider2D>();
+        }
 
         private void Start()
         {
-            _mCollider = GetComponent<BoxCollider2D>();
+            _mainCamera = Camera.main;
+        }
+
+        private void Update()
+        {
+            if (_isExtend && 0f < _activeValue)
+            {
+                _activeValue -= Time.deltaTime;
+                SetScale();
+            }
+            else if(_activeValue <= 5f && _isRestore)
+            { 
+                _activeValue += Time.deltaTime;
+            }
+            parentActiveBar.SetActiveValue(_activeValue);
+
+            if (_activeValue <= 0f)
+            {
+                WaitRestoreEnergy();
+            }
         }
 
         private void OnMouseDown()
         {
             // マウスクリックした際の初期位置を保存。
             _mMouseDownPosition = transform.position;
-            _initMousePosition = transform.position;
+            _isExtend = true;
+            _collisionChange.ChangeLayer(true);
+            _isRestore = false;
         }
 
-        private void OnMouseDrag()
+        private void OnMouseUp()
         {
-            if (_GaugeEmpty == true)
-            {
-                _CurrentMousePosition = _initMousePosition;
-                transform.position = _mMouseDownPosition;
-                transform.rotation = Quaternion.identity;
-                transform.localScale = Vector3.one;
-                return;
-            }
-            //マウスをドラッグしてる際の位置を取得
+            WaitRestoreEnergy();
+        }
+
+        private void SetScale()
+        {
             var inputPosition   = new Vector3( Input.mousePosition.x, Input.mousePosition.y, 9.5f );
             //スクリーン座標をワールド座標に変換する
-            var mousePos = Camera.main.ScreenToWorldPoint( inputPosition );
-            _CurrentMousePosition = inputPosition;
+            var mousePos = _mainCamera.ScreenToWorldPoint( inputPosition );
+            _angleRotation.UpdateSlimeRotation(mousePos,_transform);
             var dist = Vector3.Distance( mousePos, _mMouseDownPosition );
 
             var distX = Mathf.Clamp(dist, 0.05f, 4.0f);
@@ -47,15 +80,15 @@ namespace _SlimeCatch.Player
             _mCollider.size = new Vector3(MScaleX, distDs);
         }
 
-
-        private void OnMouseUp()
+        private async void WaitRestoreEnergy()
         {
-            // 位置、回転、スケールを元に戻す。
-            transform.position      = _mMouseDownPosition;
-            transform.rotation      = Quaternion.identity;
-            transform.localScale    = Vector3.one;
-            _CurrentMousePosition = _initMousePosition;
-            _GaugeEmpty = false;
+            _transform.position      = _mMouseDownPosition;
+            _transform.rotation      = Quaternion.identity;
+            _transform.localScale    = Vector3.one;
+            _collisionChange.ChangeLayer(false);
+            _isExtend = false;
+            await UniTask.Delay(TimeSpan.FromSeconds(2f));
+            _isRestore = true;
         }
     }
 }
