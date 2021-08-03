@@ -121,6 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!198 &290360119 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19800000, guid: 4b6cfb04f772a7b4eae54bdd60c54901,
+    type: 3}
+  m_PrefabInstance: {fileID: 1018640175}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &479588360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -417,13 +423,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 4b6cfb04f772a7b4eae54bdd60c54901, type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 4b6cfb04f772a7b4eae54bdd60c54901, type: 3}
+      propertyPath: startDelay.scalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 4b6cfb04f772a7b4eae54bdd60c54901, type: 3}
+      propertyPath: startDelay.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 4b6cfb04f772a7b4eae54bdd60c54901, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 19900000, guid: 4b6cfb04f772a7b4eae54bdd60c54901, type: 3}
       propertyPath: m_MaxParticleSize
-      value: 1000
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 19900000, guid: 4b6cfb04f772a7b4eae54bdd60c54901, type: 3}
       propertyPath: m_MinParticleSize
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 19900000, guid: 4b6cfb04f772a7b4eae54bdd60c54901, type: 3}
       propertyPath: m_Materials.Array.size
@@ -784,6 +806,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1768420884}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1962391376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1962391377}
+  - component: {fileID: 1962391378}
+  m_Layer: 0
+  m_Name: SandStormManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1962391377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962391376}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.26, y: 1.96, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1962391378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962391376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b8bea7a7cb3d37429440f79a59b4d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sandStorm: {fileID: 290360119}
 --- !u!1001 &2000698017
 PrefabInstance:
   m_ObjectHideFlags: 0
