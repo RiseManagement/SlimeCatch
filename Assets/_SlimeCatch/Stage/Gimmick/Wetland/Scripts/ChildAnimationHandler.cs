@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using NaughtyAttributes;
+using UniRx;
 using UnityEngine;
 
 namespace _SlimeCatch.Stage.Gimmick.Wetland.Scripts
@@ -10,14 +11,11 @@ namespace _SlimeCatch.Stage.Gimmick.Wetland.Scripts
         private const float AnimationTime = 15f;
         private float _firstPositionY;
         private Tweener _tweeter;
+        private bool _isFloatCompleted = true;
 
-        private void Awake()
-        {
-            _firstPositionY = transform.position.y;
-        }
 
         [Button("SinkTest")]
-        public void SinkTest()
+        private void SinkTest()
         {
             ChildSink();
         }
@@ -27,15 +25,33 @@ namespace _SlimeCatch.Stage.Gimmick.Wetland.Scripts
         {
             ChildFloat();
         }
+        
+        private void Awake()
+        {
+            _firstPositionY = transform.position.y;
+        }
+
+        private void Start()
+        {
+            this.ObserveEveryValueChanged(value => value._isFloatCompleted)
+                .Where(_ => _isFloatCompleted)
+                .Subscribe(_ =>
+                {
+                    ChildSink();
+                }).AddTo(this);
+        }
 
         public void ChildFloat()
         {
-            _tweeter = transform.DOMoveY(_firstPositionY, AnimationTime);
+            _tweeter = transform.DOMoveY(_firstPositionY, AnimationTime).OnComplete(() =>
+            {
+                _isFloatCompleted = true;
+            });
         }
 
-        public void ChildSink()
+        private void ChildSink()
         {
-           _tweeter = transform.DOMoveY(SinkPositionY, AnimationTime);
+            _tweeter = transform.DOMoveY(SinkPositionY, AnimationTime).OnComplete(() => _isFloatCompleted = false);
         }
 
         private void OnDestroy()
