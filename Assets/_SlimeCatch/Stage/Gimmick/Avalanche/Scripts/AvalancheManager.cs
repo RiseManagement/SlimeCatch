@@ -9,6 +9,7 @@ namespace _SlimeCatch.Stage.Gimmick.Avalanche.Scripts
     public class AvalancheManager : GimmickManager
     {
         [SerializeField] private CameraShake cameraShake;
+        [SerializeField] private GameObject avalancheCollider;
 
         [Button("画面を揺らす")]
         public void ShakeTest()
@@ -25,6 +26,7 @@ namespace _SlimeCatch.Stage.Gimmick.Avalanche.Scripts
                     await UniTask.Delay(TimeSpan.FromSeconds(3f));
                     gimmickSeHandler.PlayOnSecondSe();
                     gimmickAnimationHandler.StartAnimation();
+                    Instantiate(avalancheCollider);
                 }).AddTo(this);
         }
     }
