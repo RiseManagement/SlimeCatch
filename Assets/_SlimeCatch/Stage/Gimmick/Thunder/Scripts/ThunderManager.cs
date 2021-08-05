@@ -8,6 +8,7 @@ namespace _SlimeCatch.Stage.Gimmick
     public class ThunderManager : GimmickManager
     {
         [SerializeField] private ViewFlash viewFlash;
+        [SerializeField] private GameObject thunderCollider;
 
         protected override void GimmickStart()
         {
@@ -20,6 +21,7 @@ namespace _SlimeCatch.Stage.Gimmick
                     await UniTask.Delay(TimeSpan.FromSeconds(1f));
                     gimmickSeHandler.PlayOnSecondSe();
                     gimmickAnimationHandler.StartAnimation();
+                    Instantiate(thunderCollider);
                 }).AddTo(this);
         }
     }
