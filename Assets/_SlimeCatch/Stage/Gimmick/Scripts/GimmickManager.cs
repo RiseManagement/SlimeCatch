@@ -1,4 +1,5 @@
-﻿using UniRx;
+﻿using NaughtyAttributes;
+using UniRx;
 using UnityEngine;
 
 namespace _SlimeCatch.Stage.Gimmick
@@ -9,6 +10,12 @@ namespace _SlimeCatch.Stage.Gimmick
         [SerializeField] protected GimmickSeHandler gimmickSeHandler;
         
         protected const float LoopTime = 20f;
+
+        [Button("アニメーションTest")]
+        private void AnimationTest()
+        {
+            gimmickAnimationHandler.StartAnimation();
+        }
 
         private void Start()
         {
