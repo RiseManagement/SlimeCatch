@@ -1,5 +1,4 @@
 ﻿using System;
-using _SlimeCatch.Stage.Gimmick.Scripts;
 using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
