@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 
-namespace _SlimeCatch.Player
+namespace _SlimeCatch.Stage.Player.Scripts
 {
     public class ParentSlimeWeaponCollider : MonoBehaviour
     {
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (!other.gameObject.CompareTag("Weapon")) return;
-            Destroy(other.gameObject);
+            if (other.gameObject.CompareTag("Weapon") || other.gameObject.CompareTag("MolotovCocktail"))
+                Destroy(other.gameObject);
         }
     }
-    
 }
