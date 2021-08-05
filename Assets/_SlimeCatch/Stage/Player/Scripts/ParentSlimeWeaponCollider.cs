@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _SlimeCatch.Stage.Player.Scripts
+namespace _SlimeCatch.Stage.Player
 {
     public class ParentSlimeWeaponCollider : MonoBehaviour
     {
