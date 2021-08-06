@@ -11,17 +11,30 @@ namespace _SlimeCatch.Stage
         [SerializeField] private GameClearPopUp gameClearPopUp;
         [SerializeField] private GameOverPopUp gameOverPopUp;
         [SerializeField] private WaveController waveController;
+        private ChildSlimeList _childSlimeList;
 
-        private async void Start()
+        private void Awake()
         {
-            await IsGameClear();
+            _childSlimeList = GetComponent<ChildSlimeList>();
         }
 
-        private async UniTask IsGameClear()
+        private void Start()
+        {
+            IsGameOver();
+            IsGameClear();
+        }
+
+        private async void IsGameClear()
         {
             await UniTask.WaitUntil(() => waveController.endWave);
             await UniTask.Delay(TimeSpan.FromSeconds(1f));
             gameClearPopUp.SetView(waveController.GetStageEnum());
+        }
+
+        private async void IsGameOver()
+        {
+            await UniTask.WaitUntil(() => _childSlimeList.GetAliveSlimeChildCount == 0);
+            gameOverPopUp.SetView();
         }
     }
 }
