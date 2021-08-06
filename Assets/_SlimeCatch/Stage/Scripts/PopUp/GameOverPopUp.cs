@@ -27,6 +27,8 @@ namespace _SlimeCatch.Stage.PopUp
             {
                 _audioSource.PlayOneShot(retryButtonSe);
                 gameObject.SetActive(false);
+                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+
             }).AddTo(this);
 
             backStageSelectButton.OnClickAsObservable().Subscribe(async _ =>
