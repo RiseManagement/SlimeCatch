@@ -12,6 +12,7 @@ public class ChildSlimeList : MonoBehaviour
     private readonly Subject<int> _damageSlimeChild = new Subject<int>();
     private const int MAXOffActiveCount = 2;
     private readonly List<GameObject> _aliveChildSlimeList = new List<GameObject>();
+    public int GetAliveSlimeChildCount => _aliveChildSlimeList.Count;
 
     [Button("ChildrenFloat")]
     private void ChildrenFloatTest()
@@ -26,7 +27,6 @@ public class ChildSlimeList : MonoBehaviour
             _slimeChild.Add(child.gameObject);
         }
         SetAliveSlime();
-        Debug.Log($"start alive slime count:{_slimeChild.Count}");
     }
 
     private void Start()
@@ -55,16 +55,17 @@ public class ChildSlimeList : MonoBehaviour
 
     private void SetAliveSlime()
     {
+        _aliveChildSlimeList.Clear();
         foreach (var child in _slimeChild.Where(child => child.activeSelf))
         {
             _aliveChildSlimeList.Add(child);
         }
     }
 
-    public Vector3 GetAliveSlime()
+    public Vector3 GetAliveSlimePosition()
     {
         var r = Random.Range(0, _aliveChildSlimeList.Count-1);
-        return _aliveChildSlimeList[r].transform.position;
+        return 0 < GetAliveSlimeChildCount ? _aliveChildSlimeList[r].transform.position : Vector3.zero;
     }
 
     public void ChildrenFloat()
