@@ -931,6 +931,8 @@ MonoBehaviour:
   gimmickAnimationHandler: {fileID: 963956791}
   gimmickSeHandler: {fileID: 642676754}
   cameraShake: {fileID: 519420030}
+  avalancheCollider: {fileID: 2579893362266430618, guid: d07085867bc9c4642a2b70e5d4f56c50,
+    type: 3}
 --- !u!212 &1043573128 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1682609907135125870, guid: c62b2bb8e35481b4ea723f077e0bb36b,
