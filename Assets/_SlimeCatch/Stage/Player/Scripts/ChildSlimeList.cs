@@ -39,7 +39,6 @@ public class ChildSlimeList : MonoBehaviour
 
         _damageSlimeChild.Subscribe(value =>
         {
-            GetComponent<SlimesReceiveSE>().ReceiveSe();
 
             _slimeChild[value].SetActive(false);
             SlimeNoActive();
