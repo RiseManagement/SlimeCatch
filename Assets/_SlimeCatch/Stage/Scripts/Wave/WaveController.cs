@@ -45,7 +45,7 @@ namespace _SlimeCatch.Wave
 				if (r % 2 == 0)
 				{
 					sCount--;
-					if (sCount <= 0)
+					if (sCount < 0)
 					{
 						r = 1;
 					}
@@ -53,7 +53,7 @@ namespace _SlimeCatch.Wave
 				else
 				{
 					mCount--;
-					if (mCount <= 0)
+					if (mCount < 0)
 					{
 						r = 0;
 					}
