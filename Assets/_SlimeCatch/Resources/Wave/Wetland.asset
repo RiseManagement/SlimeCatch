@@ -16,9 +16,9 @@ MonoBehaviour:
   SlimeCount: 8
   WaveCount: 2
   WaveEnemyInfoList:
-  - S: 6
-    M: 5
-    L: 0
+  - S: 0
+    M: 6
+    L: 5
     XL: 0
   - S: 4
     M: 2
