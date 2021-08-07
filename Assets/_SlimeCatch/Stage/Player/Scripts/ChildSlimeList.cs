@@ -26,6 +26,7 @@ public class ChildSlimeList : MonoBehaviour
         {
             _slimeChild.Add(child.gameObject);
         }
+
         SetAliveSlime();
     }
 
@@ -35,8 +36,11 @@ public class ChildSlimeList : MonoBehaviour
         {
             child.GetComponent<ChildrenSlimeWeaponCollider>().IsAttack.Subscribe(_ => _damageSlimeChild.OnNext(index));
         }
+
         _damageSlimeChild.Subscribe(value =>
         {
+            GetComponent<SlimesReceiveSE>().ReceiveSe();
+
             _slimeChild[value].SetActive(false);
             SlimeNoActive();
             SetAliveSlime();
@@ -64,7 +68,7 @@ public class ChildSlimeList : MonoBehaviour
 
     public Vector3 GetAliveSlimePosition()
     {
-        var r = Random.Range(0, _aliveChildSlimeList.Count-1);
+        var r = Random.Range(0, _aliveChildSlimeList.Count - 1);
         return 0 < GetAliveSlimeChildCount ? _aliveChildSlimeList[r].transform.position : Vector3.zero;
     }
 
@@ -74,5 +78,10 @@ public class ChildSlimeList : MonoBehaviour
         {
             child.GetComponent<ChildAnimationHandler>()?.ChildFloat();
         }
+    }
+
+    public void SlimesSE()
+    {
+        GetComponent<SlimesReceiveSE>().ReceiveSe();
     }
 }
