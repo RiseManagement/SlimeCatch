@@ -79,9 +79,4 @@ public class ChildSlimeList : MonoBehaviour
             child.GetComponent<ChildAnimationHandler>()?.ChildFloat();
         }
     }
-
-    public void SlimesSE()
-    {
-        GetComponent<SlimesReceiveSE>().ReceiveSe();
-    }
 }
