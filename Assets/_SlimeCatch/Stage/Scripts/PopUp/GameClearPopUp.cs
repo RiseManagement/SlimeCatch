@@ -14,8 +14,17 @@ namespace _SlimeCatch.Stage.PopUp
         [SerializeField] private List<StageInfo> stageInfoList;
         [SerializeField] private Image nextStageImage;
         [SerializeField] private Text nextStageText;
+        [SerializeField] private AudioClip gameClearSe;
+        private AudioSource _audioSource;
+
+        private void Awake()
+        {
+            _audioSource = GetComponent<AudioSource>();
+        }
+
         public async void SetView(StageEnum stageEnum)
         {
+            _audioSource.PlayOneShot(gameClearSe);
             gameObject.SetActive(true);
             SetNextStageInfo(stageEnum);
             //todo シーン遷移の時間を調節する
