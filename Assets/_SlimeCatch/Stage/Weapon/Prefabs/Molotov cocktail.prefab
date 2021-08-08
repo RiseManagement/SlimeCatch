@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -1360858132132702312}
   m_Layer: 0
   m_Name: Molotov cocktail
-  m_TagString: MolotovCocktail
+  m_TagString: Weapon/MolotovCocktail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

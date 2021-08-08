@@ -1,5 +1,6 @@
 ﻿using System;
 using _SlimeCatch.Enemy;
+using _SlimeCatch.Player;
 using _SlimeCatch.Weapon;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;

@@ -1,27 +1,32 @@
 ﻿using UniRx;
 using UnityEngine;
 
-public class ChildrenSlimeWeaponCollider : MonoBehaviour
+namespace _SlimeCatch.Player
 {
-    public readonly BoolReactiveProperty IsAttack = new BoolReactiveProperty();
-    private SlimesReceiveSE _slimesReceiveSe;
-
-    private void Awake()
+    public class ChildrenSlimeWeaponCollider : MonoBehaviour
     {
-        _slimesReceiveSe = GetComponent<SlimesReceiveSE>();
-    }
+        public readonly BoolReactiveProperty IsAttack = new BoolReactiveProperty();
+        private SlimesReceiveSE _slimesReceiveSe;
 
-    public void OnCollisionEnter2D(Collision2D other)
-    {
-        
-        if (other.gameObject.CompareTag("MolotovCocktail"))
+        private void Awake()
         {
-            IsAttack.Value = true;
+            _slimesReceiveSe = GetComponent<SlimesReceiveSE>();
         }
 
-        if (other.gameObject.CompareTag("MolotovCocktail")||other.gameObject.CompareTag("Weapon"))
+        public void OnCollisionEnter2D(Collision2D other)
         {
-            _slimesReceiveSe.ReceiveSe();
+            
+            if (other.gameObject.CompareTag("Weapon"))
+            {
+                IsAttack.Value = true;
+            }
+
+            if (other.gameObject.CompareTag("Weapon"))
+            {
+                _slimesReceiveSe.ReceiveSe();
+            }
         }
     }
+    
 }
+

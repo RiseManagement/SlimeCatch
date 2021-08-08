@@ -1,21 +1,25 @@
 ﻿using UnityEngine;
 using UnityEngine.Serialization;
 
-[RequireComponent(typeof(AudioSource))]
-public class SlimesReceiveSE : MonoBehaviour
+namespace _SlimeCatch.Player
 {
-    [FormerlySerializedAs("WeaponReceiveSE")] [SerializeField]
-    private AudioClip weaponReceiveSe;
-
-    AudioSource audioSource;
-
-    private void Awake()
+    [RequireComponent(typeof(AudioSource))]
+    public class SlimesReceiveSE : MonoBehaviour
     {
-        audioSource = GetComponent<AudioSource>();
-    }
+        [FormerlySerializedAs("WeaponReceiveSE")] [SerializeField]
+        private AudioClip weaponReceiveSe;
 
-    public void ReceiveSe()
-    {
-        audioSource.PlayOneShot(weaponReceiveSe);
+        AudioSource audioSource;
+
+        private void Awake()
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
+
+        public void ReceiveSe()
+        {
+            audioSource.PlayOneShot(weaponReceiveSe);
+        }
     }
+    
 }
