@@ -1,11 +1,16 @@
-﻿using _SlimeCatch.Stage;
-using UniRx;
+﻿using UniRx;
 using UnityEngine;
 
 public class ChildrenSlimeWeaponCollider : MonoBehaviour
 {
     public readonly BoolReactiveProperty IsAttack = new BoolReactiveProperty();
-    public GameStageManager gameStageManager;
+    private SlimesReceiveSE _slimesReceiveSe;
+
+    private void Awake()
+    {
+        _slimesReceiveSe = GetComponent<SlimesReceiveSE>();
+    }
+
     public void OnCollisionEnter2D(Collision2D other)
     {
         
@@ -16,7 +21,7 @@ public class ChildrenSlimeWeaponCollider : MonoBehaviour
 
         if (other.gameObject.CompareTag("MolotovCocktail")||other.gameObject.CompareTag("Weapon"))
         {
-            gameStageManager.GetComponent<SlimesReceiveSE>().ReceiveSe();
+            _slimesReceiveSe.ReceiveSe();
         }
     }
 }

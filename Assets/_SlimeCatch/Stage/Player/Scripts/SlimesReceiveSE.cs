@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Serialization;
 
+[RequireComponent(typeof(AudioSource))]
 public class SlimesReceiveSE : MonoBehaviour
 {
     [FormerlySerializedAs("WeaponReceiveSE")] [SerializeField]
