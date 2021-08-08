@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using _SlimeCatch.Enemy;
-using _SlimeCatch.Stage.Enemy.Scripts;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Random = UnityEngine.Random;
