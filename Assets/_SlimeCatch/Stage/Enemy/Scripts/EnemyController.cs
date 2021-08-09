@@ -1,12 +1,12 @@
 ﻿using System;
-using _SlimeCatch.Enemy;
+using _SlimeCatch.Player;
 using _SlimeCatch.Weapon;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace _SlimeCatch.Stage.Enemy.Scripts
+namespace _SlimeCatch.Enemy
 {
     public class EnemyController : MonoBehaviour
     {

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7626759215819588956}
   m_Layer: 0
   m_Name: Spear
-  m_TagString: Weapon
+  m_TagString: Weapon/OtherWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 9200208618667222180}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.84, y: 0.07, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -98,18 +98,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.023907185, y: -0.035860777}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 11.99, y: 6.27}
+    oldSize: {x: 5.995, y: 3.1380079}
     newSize: {x: 11.99, y: 6.27}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 11.99, y: 6.27}
+  m_Size: {x: 6.060813, y: 3.2336788}
   m_EdgeRadius: 0
 --- !u!50 &8254623941651937030
 Rigidbody2D:
@@ -164,7 +164,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.8708969
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0

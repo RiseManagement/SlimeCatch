@@ -1,4 +1,5 @@
 ﻿using System;
+using _SlimeCatch.Player;
 using _SlimeCatch.Stage.PopUp;
 using _SlimeCatch.Wave;
 using Cysharp.Threading.Tasks;

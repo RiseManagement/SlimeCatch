@@ -1,22 +1,28 @@
-﻿using _SlimeCatch.Stage;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 
-public class ChildrenSlimeWeaponCollider : MonoBehaviour
+namespace _SlimeCatch.Player
 {
-    public readonly BoolReactiveProperty IsAttack = new BoolReactiveProperty();
-    public GameStageManager gameStageManager;
-    public void OnCollisionEnter2D(Collision2D other)
+    public class ChildrenSlimeWeaponCollider : MonoBehaviour
     {
-        
-        if (other.gameObject.CompareTag("MolotovCocktail"))
+        public readonly BoolReactiveProperty IsAttack = new BoolReactiveProperty();
+        private SlimesReceiveSE _slimesReceiveSe;
+
+        private void Awake()
         {
-            IsAttack.Value = true;
+            _slimesReceiveSe = GetComponent<SlimesReceiveSE>();
         }
 
-        if (other.gameObject.CompareTag("MolotovCocktail")||other.gameObject.CompareTag("Weapon"))
+        public async void OnCollisionEnter2D(Collision2D other)
         {
-            gameStageManager.GetComponent<SlimesReceiveSE>().ReceiveSe();
+            if (!other.gameObject.CompareTag("Weapon")) return;
+            _slimesReceiveSe.ReceiveSe();
+            await UniTask.Delay(TimeSpan.FromSeconds(1f));
+            IsAttack.Value = true;
         }
     }
+    
 }
+
