@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8018331507246918263}
   m_Layer: 0
   m_Name: Axe
-  m_TagString: Weapon
+  m_TagString: Weapon/OtherWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

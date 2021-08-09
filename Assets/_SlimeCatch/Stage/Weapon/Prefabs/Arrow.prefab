@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -2157867248301015167}
   m_Layer: 0
   m_Name: Arrow
-  m_TagString: Weapon
+  m_TagString: Weapon/OtherWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,7 +102,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.69, y: 4.98}
+    oldSize: {x: 0.538, y: 0.996}
     newSize: {x: 2.69, y: 4.98}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

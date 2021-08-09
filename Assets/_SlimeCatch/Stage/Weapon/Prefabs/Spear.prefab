@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7626759215819588956}
   m_Layer: 0
   m_Name: Spear
-  m_TagString: Weapon
+  m_TagString: Weapon/OtherWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
