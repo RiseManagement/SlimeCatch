@@ -1,4 +1,6 @@
-﻿using UniRx;
+﻿using System;
+using Cysharp.Threading.Tasks;
+using UniRx;
 using UnityEngine;
 
 namespace _SlimeCatch.Player
@@ -13,18 +15,12 @@ namespace _SlimeCatch.Player
             _slimesReceiveSe = GetComponent<SlimesReceiveSE>();
         }
 
-        public void OnCollisionEnter2D(Collision2D other)
+        public async void OnCollisionEnter2D(Collision2D other)
         {
-            
-            if (other.gameObject.CompareTag("Weapon"))
-            {
-                IsAttack.Value = true;
-            }
-
-            if (other.gameObject.CompareTag("Weapon"))
-            {
-                _slimesReceiveSe.ReceiveSe();
-            }
+            if (!other.gameObject.CompareTag("Weapon")) return;
+            _slimesReceiveSe.ReceiveSe();
+            await UniTask.Delay(TimeSpan.FromSeconds(1f));
+            IsAttack.Value = true;
         }
     }
     
