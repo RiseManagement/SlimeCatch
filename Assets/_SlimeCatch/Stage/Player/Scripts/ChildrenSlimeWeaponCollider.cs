@@ -17,10 +17,12 @@ namespace _SlimeCatch.Player
 
         public async void OnCollisionEnter2D(Collision2D other)
         {
-            if (!other.gameObject.CompareTag("Weapon")) return;
-            _slimesReceiveSe.ReceiveSe();
-            await UniTask.Delay(TimeSpan.FromSeconds(1f));
-            IsAttack.Value = true;
+            if (other.gameObject.CompareTag("Weapon/MolotovCocktail") || other.gameObject.CompareTag("Weapon/OtherWeapon"))
+            {
+                _slimesReceiveSe.ReceiveSe();
+                await UniTask.Delay(TimeSpan.FromSeconds(1f));
+                IsAttack.Value = true;
+            }
         }
     }
     
