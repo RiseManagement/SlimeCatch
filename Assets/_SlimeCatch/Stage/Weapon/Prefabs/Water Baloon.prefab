@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -5156442677515610892}
   m_Layer: 0
   m_Name: Water Baloon
-  m_TagString: Untagged
+  m_TagString: Weapon/WaterBalloon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,7 +102,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10, y: 10}
+    oldSize: {x: 2.5, y: 2.5}
     newSize: {x: 10, y: 10}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

@@ -24,6 +24,10 @@ namespace _SlimeCatch.Player
                 await UniTask.Delay(TimeSpan.FromSeconds(1f));
                 IsAttack.Value = true;
             }
+            if (other.gameObject.CompareTag("Weapon/WaterBalloon"))
+            {
+                _slimesReceiveSe.WaterBalloonSe();
+            }
         }
     }
 }
