@@ -1,4 +1,5 @@
 ﻿using System;
+using _SlimeCatch.Player;
 using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
@@ -25,6 +26,4 @@ namespace _SlimeCatch.Player
             }
         }
     }
-    
 }
-

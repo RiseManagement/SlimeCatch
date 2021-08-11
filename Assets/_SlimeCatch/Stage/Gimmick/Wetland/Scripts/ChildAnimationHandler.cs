@@ -12,7 +12,7 @@ namespace _SlimeCatch.Stage.Gimmick.Wetland.Scripts
         private float _firstPositionY;
         private Tweener _tweeter;
         private bool _isFloatCompleted = true;
-
+        private ChildSinkDeath _childSinkDeath;
 
         [Button("SinkTest")]
         private void SinkTest()
@@ -25,20 +25,18 @@ namespace _SlimeCatch.Stage.Gimmick.Wetland.Scripts
         {
             ChildFloat();
         }
-        
+
         private void Awake()
         {
             _firstPositionY = transform.position.y;
+            _childSinkDeath = GetComponent<ChildSinkDeath>();
         }
 
         private void Start()
         {
             this.ObserveEveryValueChanged(value => value._isFloatCompleted)
                 .Where(_ => _isFloatCompleted)
-                .Subscribe(_ =>
-                {
-                    ChildSink();
-                }).AddTo(this);
+                .Subscribe(_ => { ChildSink(); }).AddTo(this);
         }
 
         public void ChildFloat()
@@ -52,6 +50,7 @@ namespace _SlimeCatch.Stage.Gimmick.Wetland.Scripts
         private void ChildSink()
         {
             _tweeter = transform.DOMoveY(SinkPositionY, AnimationTime).OnComplete(() => _isFloatCompleted = false);
+            _childSinkDeath.SinkDeath();
         }
 
         private void OnDestroy()
