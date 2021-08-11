@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 
-namespace _SlimeCatch.Stage.Player.Scripts
+namespace _SlimeCatch.Player
 {
     public class ChildrenSlimeWeaponCollider : MonoBehaviour
     {
@@ -22,12 +22,6 @@ namespace _SlimeCatch.Stage.Player.Scripts
             _slimesReceiveSe.ReceiveSe();
             await UniTask.Delay(TimeSpan.FromSeconds(1f));
             IsAttack.Value = true;
-        }
-
-        public async void SinkDeath()
-        {
-            await UniTask.Delay(TimeSpan.FromSeconds(15f));
-            this.gameObject.SetActive(false);
         }
     }
 }

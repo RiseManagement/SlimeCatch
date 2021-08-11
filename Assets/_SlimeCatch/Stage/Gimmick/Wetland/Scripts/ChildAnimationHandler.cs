@@ -1,5 +1,4 @@
-﻿using _SlimeCatch.Stage.Player.Scripts;
-using DG.Tweening;
+﻿using DG.Tweening;
 using NaughtyAttributes;
 using UniRx;
 using UnityEngine;
@@ -13,7 +12,7 @@ namespace _SlimeCatch.Stage.Gimmick.Wetland.Scripts
         private float _firstPositionY;
         private Tweener _tweeter;
         private bool _isFloatCompleted = true;
-        private ChildrenSlimeWeaponCollider _childrenSlimeWeaponCollider;
+        private ChildSinkDeath _childSinkDeath;
 
         [Button("SinkTest")]
         private void SinkTest()
@@ -30,7 +29,7 @@ namespace _SlimeCatch.Stage.Gimmick.Wetland.Scripts
         private void Awake()
         {
             _firstPositionY = transform.position.y;
-            _childrenSlimeWeaponCollider = GetComponent<ChildrenSlimeWeaponCollider>();
+            _childSinkDeath = GetComponent<ChildSinkDeath>();
         }
 
         private void Start()
@@ -51,7 +50,7 @@ namespace _SlimeCatch.Stage.Gimmick.Wetland.Scripts
         private void ChildSink()
         {
             _tweeter = transform.DOMoveY(SinkPositionY, AnimationTime).OnComplete(() => _isFloatCompleted = false);
-            _childrenSlimeWeaponCollider.SinkDeath();
+            _childSinkDeath.SinkDeath();
         }
 
         private void OnDestroy()
