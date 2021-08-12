@@ -10,6 +10,7 @@ namespace _SlimeCatch.Player
         private AudioClip weaponReceiveSe;
 
         [SerializeField] private AudioClip waterBalloonSe;
+        [SerializeField] private AudioClip molotovCocktailSe;
 
         AudioSource audioSource;
 
@@ -25,6 +26,10 @@ namespace _SlimeCatch.Player
         public void WaterBalloonSe()
         {
             audioSource.PlayOneShot(waterBalloonSe);
+        }
+        public void MolotovCocktailSe()
+        {
+            audioSource.PlayOneShot(molotovCocktailSe);
         }
     }
     

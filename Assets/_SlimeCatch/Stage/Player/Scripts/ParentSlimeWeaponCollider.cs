@@ -6,7 +6,11 @@ namespace _SlimeCatch.Player
     {
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.CompareTag("Weapon/MolotovCocktail") || other.gameObject.CompareTag("Weapon/OtherWeapon"))
+            if (other.gameObject.CompareTag("Weapon/MolotovCocktail"))
+            {
+                GetComponent<SlimesReceiveSE>().MolotovCocktailSe();
+            }
+            if (other.gameObject.CompareTag("Weapon/OtherWeapon"))
             {
                 GetComponent<SlimesReceiveSE>().ReceiveSe();
             }
