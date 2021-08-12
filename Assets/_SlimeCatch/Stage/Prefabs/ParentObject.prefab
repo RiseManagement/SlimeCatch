@@ -223,7 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponReceiveSe: {fileID: 8300000, guid: 958408b32ccf3714ea02821877b0870c, type: 3}
   waterBalloonSe: {fileID: 8300000, guid: fffcc96d98c1f2141b54ff4a97d7f415, type: 3}
-  molotovCocktailSe: {fileID: 8300000, guid: 14bc045a71f31fc46893dd720e84d269, type: 3}
+  molotovCocktailSe: {fileID: 8300000, guid: 7add2f5277a115c4caa8cc3127b4b9ba, type: 3}
 --- !u!1 &2811600654317254478
 GameObject:
   m_ObjectHideFlags: 0
