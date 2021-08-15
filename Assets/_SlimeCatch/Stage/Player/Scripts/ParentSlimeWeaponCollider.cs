@@ -10,15 +10,26 @@ namespace _SlimeCatch.Player
             {
                 GetComponent<SlimesReceiveSE>().MolotovCocktailSe();
             }
+
             if (other.gameObject.CompareTag("Weapon/OtherWeapon"))
             {
                 GetComponent<SlimesReceiveSE>().ReceiveSe();
             }
+
             if (other.gameObject.CompareTag("Weapon/WaterBalloon"))
             {
                 GetComponent<SlimesReceiveSE>().WaterBalloonSe();
             }
-            if (other.gameObject.CompareTag("Weapon/MolotovCocktail") || other.gameObject.CompareTag("Weapon/WaterBalloon") || other.gameObject.CompareTag("Weapon/OtherWeapon")|| other.gameObject.CompareTag("Gimmick"))
+
+            if (other.gameObject.CompareTag("Weapon/Arrow"))
+            {
+                GetComponent<SlimesReceiveSE>().ReceiveSe();
+            }
+
+            if (other.gameObject.CompareTag("Weapon/MolotovCocktail") ||
+                other.gameObject.CompareTag("Weapon/WaterBalloon") ||
+                other.gameObject.CompareTag("Weapon/OtherWeapon") || other.gameObject.CompareTag("Weapon/Arrow") ||
+                other.gameObject.CompareTag("Gimmick"))
             {
                 Destroy(other.gameObject);
             }
