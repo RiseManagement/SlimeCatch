@@ -20,9 +20,20 @@ namespace _SlimeCatch.Player
         {
             if (other.gameObject.CompareTag("Weapon/MolotovCocktail") || other.gameObject.CompareTag("Weapon/OtherWeapon"))
             {
-                _slimesReceiveSe.ReceiveSe();
+                if (other.gameObject.CompareTag("Weapon/MolotovCocktail"))
+                {
+                    _slimesReceiveSe.MolotovCocktailSe();
+                }
+                if (other.gameObject.CompareTag("Weapon/OtherWeapon"))
+                {
+                    _slimesReceiveSe.ReceiveSe();
+                }
                 await UniTask.Delay(TimeSpan.FromSeconds(1f));
                 IsAttack.Value = true;
+            }
+            if (other.gameObject.CompareTag("Weapon/WaterBalloon"))
+            {
+                _slimesReceiveSe.WaterBalloonSe();
             }
         }
     }
