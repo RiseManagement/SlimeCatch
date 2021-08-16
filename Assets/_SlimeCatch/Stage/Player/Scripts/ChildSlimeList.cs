@@ -43,15 +43,15 @@ namespace _SlimeCatch.Player
             {
 
                 _slimeChild[value].SetActive(false);
-                SlimeNoActive();
+                SlimeNoActive(MAXOffActiveCount);
                 SetAliveSlime();
             }).AddTo(this);
         }
 
-        private void SlimeNoActive()
+        private void SlimeNoActive(int noActiveSlimeCount)
         {
             var count = 0;
-            foreach (var child in _slimeChild.Where(child => child.activeSelf && count < MAXOffActiveCount))
+            foreach (var child in _slimeChild.Where(child => child.activeSelf && count < noActiveSlimeCount))
             {
                 child.SetActive(false);
                 count++;

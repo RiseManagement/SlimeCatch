@@ -188,6 +188,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ThunderAreaCollider
       objectReference: {fileID: 0}
+    - target: {fileID: 6055328865151662438, guid: b26cf673b9acb4b4fb87367955597fea,
+        type: 3}
+      propertyPath: gimmickDeathSlimeCount
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b26cf673b9acb4b4fb87367955597fea, type: 3}
 --- !u!1001 &86016029
@@ -616,6 +621,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ThunderManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6001329521420043340, guid: bd000654a2b300f40a63d089bb128f29,
+        type: 3}
+      propertyPath: m_TagString
+      value: Gimmick/Thunder
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd000654a2b300f40a63d089bb128f29, type: 3}
