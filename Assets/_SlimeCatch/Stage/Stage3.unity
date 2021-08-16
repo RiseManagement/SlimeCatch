@@ -190,6 +190,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6055328865151662438, guid: b26cf673b9acb4b4fb87367955597fea,
         type: 3}
+      propertyPath: childSlimeList
+      value: 
+      objectReference: {fileID: 2130283123}
+    - target: {fileID: 6055328865151662438, guid: b26cf673b9acb4b4fb87367955597fea,
+        type: 3}
       propertyPath: gimmickDeathSlimeCount
       value: 2
       objectReference: {fileID: 0}
@@ -625,7 +630,7 @@ PrefabInstance:
     - target: {fileID: 6001329521420043340, guid: bd000654a2b300f40a63d089bb128f29,
         type: 3}
       propertyPath: m_TagString
-      value: Gimmick/Thunder
+      value: Gimmick
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd000654a2b300f40a63d089bb128f29, type: 3}
@@ -1422,3 +1427,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2130283123 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6104134666639110399, guid: ce715580cd2528a4fb971f2bcd7aa777,
+    type: 3}
+  m_PrefabInstance: {fileID: 1591826176}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3856a24b23e6622428f1eb39f9249e81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

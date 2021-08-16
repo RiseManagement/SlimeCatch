@@ -9,8 +9,7 @@ TagManager:
   - Weapon/OtherWeapon
   - Weapon
   - Weapon/WaterBalloon
-  - Gimmick/Thunder
-  - Gimmick/Avalanche
+  - Gimmick
   layers:
   - Default
   - TransparentFX
