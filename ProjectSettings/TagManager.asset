@@ -10,6 +10,7 @@ TagManager:
   - Weapon
   - Weapon/WaterBalloon
   - Gimmick
+  - Weapon/Spear
   layers:
   - Default
   - TransparentFX

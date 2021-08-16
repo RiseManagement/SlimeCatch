@@ -20,7 +20,7 @@ namespace _SlimeCatch.Player
         public async void OnCollisionEnter2D(Collision2D other)
         {
             if (other.gameObject.CompareTag("Weapon/MolotovCocktail") ||
-                other.gameObject.CompareTag("Weapon/OtherWeapon"))
+                other.gameObject.CompareTag("Weapon/OtherWeapon") || other.gameObject.CompareTag("Weapon/Spear"))
             {
                 if (other.gameObject.CompareTag("Weapon/MolotovCocktail"))
                 {
@@ -32,11 +32,11 @@ namespace _SlimeCatch.Player
                     _slimesReceiveSe.ReceiveSe();
                 }
 
-                if (other.gameObject.CompareTag("Weapon/Arrow"))
+                if (other.gameObject.CompareTag("Weapon/Spear"))
                 {
                     if (SceneManager.GetActiveScene().name == "Stage5")
                     {
-                        GetComponent<ChildSinkDeath>().CancelToken();
+                        await GetComponent<ChildSinkDeath>().CancelToken();
                         return;
                     }
                 }
