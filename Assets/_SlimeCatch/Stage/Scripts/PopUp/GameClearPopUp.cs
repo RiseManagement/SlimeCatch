@@ -27,6 +27,7 @@ namespace _SlimeCatch.Stage.PopUp
             _audioSource.PlayOneShot(gameClearSe);
             gameObject.SetActive(true);
             SetNextStageInfo(stageEnum);
+            PlayerPrefs.SetString("SceneName", SceneManager.GetActiveScene().name); //PlayerPrefsに現在のシーンを保存
             //todo シーン遷移の時間を調節する
             await UniTask.Delay(TimeSpan.FromSeconds(3f));
             SceneManager.LoadSceneAsync("_SlimeCatch/SelectStage/SelectStage");
