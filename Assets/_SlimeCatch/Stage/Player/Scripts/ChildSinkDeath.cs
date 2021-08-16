@@ -1,29 +1,12 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using _SlimeCatch.Stage.Gimmick.Wetland.Scripts;
+﻿using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using static System.TimeSpan;
-
 
 public class ChildSinkDeath : MonoBehaviour
 {
-    private CancellationTokenSource hoge = null;
-
-
-    public async Task CancelToken()
+    public async void SinkDeath()
     {
-        Debug.Log("キャンセル");
-        hoge.Cancel();
-        GetComponent<ChildAnimationHandler>().ChildFloat();
-    }
-
-    public async UniTask SinkDeath()
-    {
-        hoge = new CancellationTokenSource();
-
-        await UniTask.Delay(FromSeconds(15f), cancellationToken: hoge.Token);
-
+        await UniTask.Delay(TimeSpan.FromSeconds(15f));
         this.gameObject.SetActive(false);
     }
 }

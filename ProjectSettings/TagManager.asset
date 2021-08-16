@@ -10,7 +10,6 @@ TagManager:
   - Weapon/OtherWeapon
   - Weapon
   - Weapon/WaterBalloon
-  - Weapon/Arrow
   layers:
   - Default
   - TransparentFX
