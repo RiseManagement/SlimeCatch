@@ -23,10 +23,7 @@ namespace _SlimeCatch.Stage.Pose.SoundController
 			set {
 				mixer_name = "BgmVolume";
 				if (slider.minValue == value)
-				{
-					Debug.Log("ない");
 					mixer.SetFloat(mixer_name, -80f);
-				}
 				else
 					mixer.SetFloat(mixer_name, Mathf.Lerp(-20, 10, value));
 			}
