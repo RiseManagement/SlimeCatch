@@ -5,12 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Fire
+  - Gimmick
   - Weapon/MolotovCocktail
   - Weapon/OtherWeapon
-  - Weapon
-  - Weapon/WaterBalloon
-  - Gimmick
-  - Weapon/Spear
   layers:
   - Default
   - TransparentFX

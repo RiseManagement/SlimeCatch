@@ -26,7 +26,7 @@ namespace _SlimeCatch.Stage.Gimmick.Avalanche.Scripts
                     await UniTask.Delay(TimeSpan.FromSeconds(3f));
                     gimmickSeHandler.PlayOnSecondSe();
                     gimmickAnimationHandler.StartAnimation();
-                    Instantiate(avalancheCollider,transform);
+                    Instantiate(avalancheCollider);
                 }).AddTo(this);
         }
     }

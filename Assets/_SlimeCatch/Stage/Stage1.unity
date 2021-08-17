@@ -814,7 +814,8 @@ AudioSource:
   m_GameObject: {fileID: 1793807583}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 9215081747572108093, guid: 86e08596f2ff6e64d9eb96d3789a8a45,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 5a97937372b5d8c45a59eaead03277d3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -913,77 +914,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1899388530
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2119309225}
-    m_Modifications:
-    - target: {fileID: 7288630784127941336, guid: fd215c77a241fdd4dbcfad2ad6be7748,
-        type: 3}
-      propertyPath: m_Name
-      value: PoseController
-      objectReference: {fileID: 0}
-    - target: {fileID: 7288630784127941339, guid: fd215c77a241fdd4dbcfad2ad6be7748,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7288630784127941339, guid: fd215c77a241fdd4dbcfad2ad6be7748,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7288630784127941339, guid: fd215c77a241fdd4dbcfad2ad6be7748,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7288630784127941339, guid: fd215c77a241fdd4dbcfad2ad6be7748,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7288630784127941339, guid: fd215c77a241fdd4dbcfad2ad6be7748,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7288630784127941339, guid: fd215c77a241fdd4dbcfad2ad6be7748,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7288630784127941339, guid: fd215c77a241fdd4dbcfad2ad6be7748,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7288630784127941339, guid: fd215c77a241fdd4dbcfad2ad6be7748,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7288630784127941339, guid: fd215c77a241fdd4dbcfad2ad6be7748,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7288630784127941339, guid: fd215c77a241fdd4dbcfad2ad6be7748,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7288630784127941339, guid: fd215c77a241fdd4dbcfad2ad6be7748,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fd215c77a241fdd4dbcfad2ad6be7748, type: 3}
 --- !u!1001 &1929284410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1299,12 +1231,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f45250215d467db967bdea1929746c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &2119309225 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3528644725119350872, guid: ce715580cd2528a4fb971f2bcd7aa777,
-    type: 3}
-  m_PrefabInstance: {fileID: 3528644724860398961}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3528644724860398961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1312,6 +1238,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 244729811964448145, guid: ce715580cd2528a4fb971f2bcd7aa777,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 845150623942732508, guid: ce715580cd2528a4fb971f2bcd7aa777,
         type: 3}
       propertyPath: MaxDistance

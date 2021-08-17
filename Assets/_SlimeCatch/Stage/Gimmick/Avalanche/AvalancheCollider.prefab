@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5216909350741708762}
   m_Layer: 0
   m_Name: AvalancheCollider
-  m_TagString: Gimmick
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -41,22 +41,17 @@ namespace _SlimeCatch.Player
 
             _damageSlimeChild.Subscribe(value =>
             {
+
                 _slimeChild[value].SetActive(false);
-                SlimeNoActive(MAXOffActiveCount);
+                SlimeNoActive();
                 SetAliveSlime();
             }).AddTo(this);
         }
 
-        public void DamageGimmick(int downSlimeCount)
-        {
-            SlimeNoActive(downSlimeCount);
-            SetAliveSlime();
-        }
-
-        private void SlimeNoActive(int noActiveSlimeCount)
+        private void SlimeNoActive()
         {
             var count = 0;
-            foreach (var child in _slimeChild.Where(child => child.activeSelf && count < noActiveSlimeCount))
+            foreach (var child in _slimeChild.Where(child => child.activeSelf && count < MAXOffActiveCount))
             {
                 child.SetActive(false);
                 count++;
