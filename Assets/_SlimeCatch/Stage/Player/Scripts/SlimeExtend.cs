@@ -10,7 +10,7 @@ namespace _SlimeCatch.Player
         private Vector3 _mMouseDownPosition = Vector3.zero;
         private bool _isExtend;
         private bool _isRestore;
-        private float _activeValue = 5f;
+        private float _activeValue = 2f;
         private BoxCollider2D _mCollider;
         private const float MScaleX = 2.677196f;
         [SerializeField] private ParentActiveBar parentActiveBar;
