@@ -3,24 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UniRx;
+using Cysharp.Threading.Tasks;
 
 
 namespace _SlimeCatch.Stage.Pose.SoundController
 {
 	public class SoundController : MonoBehaviour
 	{
-		[SerializeField] UnityEngine.Audio.AudioMixer mixer;
+		[SerializeField] AudioMixer mixer;
 		private Slider slider;
+		string mixer_name;
 
 
 		public float bgmVolume
 		{
-			set {
+			
 
-				if(slider.minValue == slider.value)
-					mixer.SetFloat("BgmVolume",-80f);
+			set {
+				mixer_name = "BgmVolume";
+				if (slider.minValue == value)
+				{
+					Debug.Log("ない");
+					mixer.SetFloat(mixer_name, -80f);
+				}
 				else
-					mixer.SetFloat("BgmVolume", Mathf.Lerp(-10, 10, value));
+					mixer.SetFloat(mixer_name, Mathf.Lerp(-20, 10, value));
 			}
 		}
 
@@ -28,18 +36,23 @@ namespace _SlimeCatch.Stage.Pose.SoundController
 		{
 			set
 			{
-				if (slider.minValue == slider.value)
-					mixer.SetFloat("SeVolume", -80f);
+				mixer_name = "SeVolume";
+				if (slider.minValue == value)
+					mixer.SetFloat(mixer_name, -80f);
 				else
-					mixer.SetFloat("SeVolume", Mathf.Lerp(-10, 10, value));
+					mixer.SetFloat(mixer_name, Mathf.Lerp(-20, 10, value));
 			}
 		}
 
+		private void Awake()
+		{
+			slider = this.GetComponent<Slider>();
+		}
 
 		// Start is called before the first frame update
 		void Start()
 		{
-			slider =  this.GetComponent<Slider>();
+
 		}
 
 		// Update is called once per frame
