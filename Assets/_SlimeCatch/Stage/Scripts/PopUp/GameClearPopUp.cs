@@ -24,8 +24,8 @@ namespace _SlimeCatch.Stage.PopUp
 
         public async void SetView(StageEnum stageEnum)
         {
-            _audioSource.PlayOneShot(gameClearSe);
             gameObject.SetActive(true);
+            _audioSource.PlayOneShot(gameClearSe);
             SetNextStageInfo(stageEnum);
             //todo シーン遷移の時間を調節する
             await UniTask.Delay(TimeSpan.FromSeconds(3f));
