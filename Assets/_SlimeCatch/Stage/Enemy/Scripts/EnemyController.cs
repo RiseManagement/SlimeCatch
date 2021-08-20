@@ -37,6 +37,7 @@ namespace _SlimeCatch.Enemy
         {
             await Walk(moveDistance, moveTime);
             await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
+            AttackFinish = true;
             await ThrowWeapon();
             await Walk(-moveDistance, moveTime);
             MoveEnd = true;
@@ -90,7 +91,6 @@ namespace _SlimeCatch.Enemy
                 var weaponObject = Instantiate(weaponInfo.WeaponGameObject, new Vector3(-5.2f, high, 0), Quaternion.Euler(0, 180, 40), transform);
                 weaponObject.GetComponent<IWeaponMove>().WeaponMove(_childSlimeList.GetAliveSlimePosition(), weaponInfo.WeaponOrbit);
                 await UniTask.Delay(TimeSpan.FromSeconds(2f));
-                AttackFinish = true;
                 Destroy(weaponObject);
             }
         }
