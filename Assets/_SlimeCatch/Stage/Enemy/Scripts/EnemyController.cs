@@ -29,7 +29,7 @@ namespace _SlimeCatch.Enemy
         {
             _transform = GetComponent<Transform>();
             _weaponDecision = GetComponent<WeaponDecision>();
-            _childSlimeList = GameObject.FindObjectOfType<ChildSlimeList>();
+            _childSlimeList = FindObjectOfType<ChildSlimeList>();
         }
 
         // Start is called before the first frame update
