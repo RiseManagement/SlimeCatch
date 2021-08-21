@@ -5,13 +5,13 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _SlimeCatch.Enemy
 {
     public class EnemyController : MonoBehaviour
     {
-        [SerializeField, Label("移動距離(ベクトル)"), Range(1, 5)]
-        private float moveDistance;
+        private const float BackEndPosition = -10f;
 
         [SerializeField, Label("移動時間"), Range(1, 5)]
         private float moveTime;
@@ -29,28 +29,26 @@ namespace _SlimeCatch.Enemy
         {
             _transform = GetComponent<Transform>();
             _weaponDecision = GetComponent<WeaponDecision>();
-            _childSlimeList = GameObject.FindObjectOfType<ChildSlimeList>();
+            _childSlimeList = FindObjectOfType<ChildSlimeList>();
         }
 
         // Start is called before the first frame update
         private async void Start()
         {
-            await Walk(moveDistance, moveTime);
+            var randomMoveXDistance = Random.Range(-7.6f, -2f);
+            await Walk(randomMoveXDistance, moveTime);
             await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
+            AttackFinish = true;
             await ThrowWeapon();
-            await Walk(-moveDistance, moveTime);
+            _transform.Rotate(new Vector3(0f, 180f, 0f));
+            await Walk(BackEndPosition, moveTime);
             MoveEnd = true;
             Destroy(gameObject);
         }
 
         private async UniTask Walk(float distance, float time)
         {
-            if (distance < 0)
-            {
-                _transform.Rotate(new Vector3(0f, 180f, 0f));
-            }
-
-            await transform.DOMoveX(distance, time).SetRelative(true).ToAwaiter();
+            await transform.DOMoveX(distance, time).ToAwaiter();
         }
 
         private async UniTask ThrowWeapon()
@@ -90,7 +88,6 @@ namespace _SlimeCatch.Enemy
                 var weaponObject = Instantiate(weaponInfo.WeaponGameObject, new Vector3(-5.2f, high, 0), Quaternion.Euler(0, 180, 40), transform);
                 weaponObject.GetComponent<IWeaponMove>().WeaponMove(_childSlimeList.GetAliveSlimePosition(), weaponInfo.WeaponOrbit);
                 await UniTask.Delay(TimeSpan.FromSeconds(2f));
-                AttackFinish = true;
                 Destroy(weaponObject);
             }
         }

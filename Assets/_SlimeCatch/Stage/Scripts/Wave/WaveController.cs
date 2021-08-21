@@ -58,20 +58,20 @@ namespace _SlimeCatch.Wave
 					}
 				}
 
-				await EnemyAttack(r);
+				await EnemyAttack(r,CreatePosition(r));
 
 			}
 		
 			//Lの出現
 			for (var lIndex = 0; lIndex < waveObj.WaveEnemyInfoList[waveIndex].L; lIndex++)
 			{
-				await EnemyAttack(2);
+				await EnemyAttack(2,CreatePosition(2));
 			}
 			
 			//XLの出現
 			for (var xlIndex = 0; xlIndex < waveObj.WaveEnemyInfoList[waveIndex].XL; xlIndex++)
 			{
-				await EnemyAttack(3);
+				await EnemyAttack(3,CreatePosition(3));
 			}
 			
 			//waveの最後の敵の場合は消えるまで待つ
@@ -82,12 +82,30 @@ namespace _SlimeCatch.Wave
 			
 			return true;
 
-			async UniTask EnemyAttack(int enemyIndex)
+			async UniTask EnemyAttack(int enemyIndex,Vector3 createPosition)
 			{
-				var enemyObject = Instantiate(enemyObjectList[enemyIndex].EnemyGameObject, transform);
+				var enemyObject = Instantiate(enemyObjectList[enemyIndex].EnemyGameObject,transform);
+				enemyObject.transform.localPosition = createPosition;
 				enemyController = enemyObject.GetComponent<EnemyController>();
 				await UniTask.WaitUntil(() => enemyController.AttackFinish);
 			}
+		}
+
+		private static Vector3 CreatePosition(int enemyIndex)
+		{
+			switch (enemyIndex)
+			{
+				case 0:
+					return new Vector3(-10f, Random.Range(-3.55f, 0.38f));
+				case 1:
+					return new Vector3(-10f, Random.Range(-3.3f, 1f));
+				case 2:
+					return new Vector3(-12f, Random.Range(-2.8f, 2.5f));
+				case 3:
+					return new Vector3(-12.5f, Random.Range(-1.72f, 1f));
+
+			}
+			return Vector3.zero;
 		}
 	}
 }
