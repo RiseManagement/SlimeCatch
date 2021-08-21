@@ -30,5 +30,18 @@ namespace _SlimeCatch.Title
                     SceneManager.LoadSceneAsync("SelectStage");
                 }).AddTo(this);
         }
+
+        private void SetInitStageOpenInfo()
+        {
+            if (!PlayerPrefs.HasKey("FirstGame"))
+            {
+                for (var index = 2; index <= 6; index++)
+                {
+                    SettingPrefs.SetBool($"Stage{index}",false);
+                }
+                SettingPrefs.SetBool("FirstGame",true);
+                
+            }
+        }
     }
 }
