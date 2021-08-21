@@ -133,7 +133,8 @@ AudioSource:
   m_GameObject: {fileID: 1682609907135125857}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -1161406782005755299, guid: 86e08596f2ff6e64d9eb96d3789a8a45,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -233,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponReceiveSe: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}
+  mixer: {fileID: 24100000, guid: 86e08596f2ff6e64d9eb96d3789a8a45, type: 2}
 --- !u!114 &8144112812176129561
 MonoBehaviour:
   m_ObjectHideFlags: 0
