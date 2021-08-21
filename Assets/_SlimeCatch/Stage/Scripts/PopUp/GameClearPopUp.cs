@@ -26,7 +26,12 @@ namespace _SlimeCatch.Stage.PopUp
         {
             gameObject.SetActive(true);
             _audioSource.PlayOneShot(gameClearSe);
-            SetNextStageInfo(stageEnum);
+            if (!_SlimeCatch.SelectStage.AnimationManager.playFlg)
+            {
+                SetNextStageInfo(stageEnum);
+            }
+            //SetNextStageInfo(stageEnum);
+            PlayerPrefs.SetString("SceneName", SceneManager.GetActiveScene().name);
             //todo シーン遷移の時間を調節する
             await UniTask.Delay(TimeSpan.FromSeconds(3f));
             SceneManager.LoadSceneAsync("_SlimeCatch/SelectStage/SelectStage");
@@ -34,10 +39,10 @@ namespace _SlimeCatch.Stage.PopUp
 
         private void SetNextStageInfo(StageEnum stageEnum)
         {
-            foreach (var stageInfo in stageInfoList.Where(stageInfo => stageInfo.stageName == stageEnum))
+            foreach (var stageInfo in stageInfoList.Where(stageInfo => stageInfo.stageName == stageEnum.Next()))
             {
                 nextStageImage.sprite = stageInfo.backGroundImage;
-                nextStageText.text = $"{stageEnum}ステージ解放";
+                nextStageText.text = $"{stageEnum.Next()}ステージ解放";
             }
         }
     }
