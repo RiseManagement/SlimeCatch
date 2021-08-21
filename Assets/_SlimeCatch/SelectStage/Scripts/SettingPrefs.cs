@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SettingPrefs : MonoBehaviour
 {
@@ -8,6 +6,12 @@ public class SettingPrefs : MonoBehaviour
     {
         var value = PlayerPrefs.GetInt(key, defalutValue ? 1 : 0);
         return value == 1;
+    }
+
+    public static bool IsClearStage(string stageName)
+    {
+        var value = PlayerPrefs.GetInt(stageName);
+        return value != 0;
     }
 
     public static void SetBool(string key, bool value)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using _SlimeCatch.Wave;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -26,12 +27,14 @@ namespace _SlimeCatch.Stage.PopUp
         {
             gameObject.SetActive(true);
             _audioSource.PlayOneShot(gameClearSe);
-            if (!_SlimeCatch.SelectStage.AnimationManager.playFlg)
+            if (!SelectStage.AnimationManager.playFlg)
             {
                 SetNextStageInfo(stageEnum);
             }
-            //SetNextStageInfo(stageEnum);
             PlayerPrefs.SetString("SceneName", SceneManager.GetActiveScene().name);
+            var stageNumber = int.Parse(Regex.Replace(SceneManager.GetActiveScene().name, @"[^0-9]", ""));
+            var nextStageIndex = stageNumber + 1;
+            SettingPrefs.SetBool($"Stage{nextStageIndex}",true);
             //todo シーン遷移の時間を調節する
             await UniTask.Delay(TimeSpan.FromSeconds(3f));
             SceneManager.LoadSceneAsync("_SlimeCatch/SelectStage/SelectStage");
