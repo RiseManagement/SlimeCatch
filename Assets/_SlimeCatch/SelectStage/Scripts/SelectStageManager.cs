@@ -1,6 +1,8 @@
-﻿using _SlimeCatch.Save;
+﻿using System.Collections.Generic;
+using _SlimeCatch.Save;
 using _SlimeCatch.Title;
 using DG.Tweening;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,17 +18,25 @@ namespace _SlimeCatch.SelectStage
         private ILoadController _loadController;
         private const float AnimationTime = 1f;
 
+        [Button("クリアデータ初期化")]
+        private void ClearSaveData()
+        {
+            for (var index = 1; index <= 6; index++)
+            {
+                SettingPrefs.SetBool($"Stage{index}",false);
+            }
+        }
+
         private void Awake()
         {
             _canvasGroup = GetComponent<CanvasGroup>();
             _loadController = new SaveLoadController();
             _stageIconView = GetComponent<StageIconView>();
-
         }
 
         private async void Start()
         {
-            _stageIconView.SetInteractable(_loadController.GetStageClearList());
+            _stageIconView.SetInteractable(GetStageOpenData());
             await _canvasGroup.DOFade(1f,AnimationTime).ToAwaiter();
             _isInput = true;
         }
@@ -84,6 +94,17 @@ namespace _SlimeCatch.SelectStage
             audioController.ClickOnPlaySe();
             await _canvasGroup.DOFade(0f,AnimationTime).ToAwaiter();
             SceneManager.LoadSceneAsync($"stage{stageNo}");
+        }
+
+        private static IEnumerable<bool> GetStageOpenData()
+        {
+            var saveList = new List<bool>();
+            for (var index = 1; index <= 6; index++)
+            {
+                saveList.Add(SettingPrefs.IsClearStage($"Stage{index}"));
+            }
+
+            return saveList;
         }
 
     }
