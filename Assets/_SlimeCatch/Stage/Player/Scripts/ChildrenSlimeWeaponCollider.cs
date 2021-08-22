@@ -33,8 +33,21 @@ namespace _SlimeCatch.Player
                     }
                 }
 
-                await UniTask.Delay(TimeSpan.FromSeconds(1f));
-                IsAttack.Value = true;
+                if (other.gameObject.CompareTag("Weapon/MolotovCocktail"))
+                {
+                    Destroy(other.gameObject);
+                    await UniTask.Delay(TimeSpan.FromSeconds(1f));
+
+                    IsAttack.Value = true;
+                }
+
+                if (other.gameObject.CompareTag("Weapon/OtherWeapon"))
+                {
+                    Destroy(other.gameObject);
+                    await UniTask.Delay(TimeSpan.FromSeconds(1f));
+
+                    this.gameObject.SetActive(false);
+                }
             }
         }
     }
