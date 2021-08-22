@@ -1136,6 +1136,13 @@ PrefabInstance:
       propertyPath: waveController
       value: 
       objectReference: {fileID: 1143526536}
+    - target: {fileID: 1549047315097096950, guid: ce715580cd2528a4fb971f2bcd7aa777,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Pause
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 3528644725119350872, guid: ce715580cd2528a4fb971f2bcd7aa777,
         type: 3}
       propertyPath: m_RootOrder
