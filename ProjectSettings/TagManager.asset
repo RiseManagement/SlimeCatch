@@ -8,6 +8,7 @@ TagManager:
   - Gimmick
   - Weapon/MolotovCocktail
   - Weapon/OtherWeapon
+  - Weapon/Spear
   layers:
   - Default
   - TransparentFX
