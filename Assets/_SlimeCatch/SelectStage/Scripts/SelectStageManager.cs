@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using _SlimeCatch.Save;
 using _SlimeCatch.Title;
 using DG.Tweening;
 using NaughtyAttributes;
@@ -15,7 +14,6 @@ namespace _SlimeCatch.SelectStage
         [SerializeField] private AudioController audioController; 
         private StageIconView _stageIconView;
         private CanvasGroup _canvasGroup;
-        private ILoadController _loadController;
         private const float AnimationTime = 1f;
 
         [Button("クリアデータ初期化")]
@@ -27,10 +25,15 @@ namespace _SlimeCatch.SelectStage
             }
         }
 
+        [Button("全データ削除")]
+        private void DeleteAll()
+        {
+            PlayerPrefs.DeleteAll();
+        }
+
         private void Awake()
         {
             _canvasGroup = GetComponent<CanvasGroup>();
-            _loadController = new SaveLoadController();
             _stageIconView = GetComponent<StageIconView>();
         }
 
