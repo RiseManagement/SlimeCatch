@@ -17,6 +17,7 @@ namespace _SlimeCatch.Title
         private void Awake()
         {
             _canvasGroup = GetComponent<CanvasGroup>();
+            SetInitStageOpenInfo();
         }
 
         private void Start()
@@ -31,17 +32,14 @@ namespace _SlimeCatch.Title
                 }).AddTo(this);
         }
 
-        private void SetInitStageOpenInfo()
+        private static void SetInitStageOpenInfo()
         {
-            if (!PlayerPrefs.HasKey("FirstGame"))
+            if (PlayerPrefs.HasKey("FirstGame")) return;
+            for (var index = 1; index <= 6; index++)
             {
-                for (var index = 2; index <= 6; index++)
-                {
-                    SettingPrefs.SetBool($"Stage{index}",false);
-                }
-                SettingPrefs.SetBool("FirstGame",true);
-                
+                SettingPrefs.SetBool($"Stage{index}", index == 1);
             }
+            SettingPrefs.SetBool("FirstGame",true);
         }
     }
 }
