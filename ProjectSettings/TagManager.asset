@@ -9,6 +9,7 @@ TagManager:
   - Weapon/MolotovCocktail
   - Weapon/OtherWeapon
   - Weapon/Spear
+  - Weapon/Waterballon
   layers:
   - Default
   - TransparentFX
