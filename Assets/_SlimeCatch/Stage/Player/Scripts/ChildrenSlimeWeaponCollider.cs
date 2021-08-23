@@ -21,21 +21,35 @@ namespace _SlimeCatch.Player
         public async void OnCollisionEnter2D(Collision2D other)
         {
             if (other.gameObject.CompareTag("Weapon/MolotovCocktail") ||
-                other.gameObject.CompareTag("Weapon/OtherWeapon") || other.gameObject.CompareTag("Weapon/Spear"))
+                other.gameObject.CompareTag("Weapon/OtherWeapon") || other.gameObject.CompareTag("Weapon/Spear") ||
+                other.gameObject.CompareTag("Weapon/Waterballon"))
             {
-                _slimesReceiveSe.ReceiveSe();
+                if (other.gameObject.CompareTag("Weapon/Waterballon"))
+                {
+                    _slimesReceiveSe.ReceiveSeWaterballon();
+                    Destroy(other.gameObject);
+                    return;
+                }
+
                 if (other.gameObject.CompareTag("Weapon/Spear"))
                 {
+                    _slimesReceiveSe.ReceiveSe();
+
                     if (SceneManager.GetActiveScene().name == "Stage5")
                     {
                         await GetComponent<ChildSinkDeath>().CancelToken();
                         return;
                     }
+
+                    Destroy(other.gameObject);
+                    this.gameObject.SetActive(false);
                 }
 
                 if (other.gameObject.CompareTag("Weapon/MolotovCocktail"))
                 {
+                    _slimesReceiveSe.ReceiveSeMotokov();
                     Destroy(other.gameObject);
+
                     await UniTask.Delay(TimeSpan.FromSeconds(1f));
 
                     IsAttack.Value = true;
@@ -43,7 +57,9 @@ namespace _SlimeCatch.Player
 
                 if (other.gameObject.CompareTag("Weapon/OtherWeapon"))
                 {
+                    _slimesReceiveSe.ReceiveSe();
                     Destroy(other.gameObject);
+
                     await UniTask.Delay(TimeSpan.FromSeconds(1f));
 
                     this.gameObject.SetActive(false);

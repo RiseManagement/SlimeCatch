@@ -234,7 +234,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponReceiveSe: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}
-  mixer: {fileID: 24100000, guid: 86e08596f2ff6e64d9eb96d3789a8a45, type: 2}
+  waterballon: {fileID: 8300000, guid: 81652031b64c342cc8dbc59c138d77c5, type: 3}
+  molotovcocktail: {fileID: 8300000, guid: 2a396d03d8765a54a9a18ef1cd8d0a81, type: 3}
 --- !u!114 &8144112812176129561
 MonoBehaviour:
   m_ObjectHideFlags: 0
