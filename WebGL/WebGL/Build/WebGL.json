@@ -1,7 +1,7 @@
 {
 "companyName": "Rise",
 "productName": "SlimeCatch",
-"productVersion": "0.0.422",
+"productVersion": "0.0.424",
 "dataUrl": "WebGL.data.unityweb",
 "wasmCodeUrl": "WebGL.wasm.code.unityweb",
 "wasmFrameworkUrl": "WebGL.wasm.framework.unityweb",
